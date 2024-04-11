@@ -3,7 +3,7 @@ import React from "react";
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-between items-center p-10 px-20 bg-yellow-50">
+    <div className="flex justify-between items-center p-10 px-32 bg-yellow-50">
       <div>
         <Image src={require("../../public/markaz.png")} alt="markaz" />
       </div>
