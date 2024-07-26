@@ -41,7 +41,7 @@ export default function HomePage() {
         <Subjectcard />
       </div>
 
-      <div className="absolute">
+      <div className="relative p-20">
         <Image
           src={journeyBg}
           alt="journey"
@@ -56,7 +56,7 @@ export default function HomePage() {
             padding: "20px",
           }}
         />
-        <div className="flex justify-between p-20 relative bottom-[600px]">
+        <div className="flex justify-between p-20 absolute bottom-[100px]">
           <div className="space-y-16">
             <h1 className="font-bold text-6xl text-white">
               Embark on <br /> Your Journey <br /> Today
@@ -69,7 +69,7 @@ export default function HomePage() {
               Islamic principles and values.
             </p>
           </div>
-          <div className="self-end">
+          <div className="self-end ">
             <Button text="Start now" />
           </div>
         </div>
