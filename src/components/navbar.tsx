@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export const Navbar = () => {
@@ -10,10 +11,18 @@ export const Navbar = () => {
 
       <div>
         <ul className="flex justify-between gap-10 font-bold">
-          <li>Home</li>
-          <li>About</li>
-          <li>FAQ</li>
-          <li>Blog</li>
+          <Link href={"/"}>
+            <li>Home</li>
+          </Link>
+          <Link href={"/about"}>
+            <li>About</li>
+          </Link>
+          <Link href={"/faq"}>
+            <li>FAQ</li>
+          </Link>
+          <Link href={"/blog"}>
+            <li>Blog</li>
+          </Link>
         </ul>
       </div>
 

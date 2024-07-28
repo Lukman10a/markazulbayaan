@@ -6,12 +6,52 @@ import Image from "next/image";
 import { Button } from "../button";
 import heroImage from "../../../public/assets/hero.png";
 import journeyBg from "../../../public/assets/journey_bg.png";
+import quran from "../../../public/assets/quran.svg";
+import volume from "../../../public/assets/volume.svg";
+// import verified from "../../../public/assets/verified.svg";
 
 export default function HomePage() {
   return (
     <section>
-      <Navbar />
       <Hero />
+
+      <div className="p-20">
+        <div className="text-center space-y-6">
+          <h1 className="text-[#760808] text-5xl font-bold">
+            A Platform to learn the Qur’an & Sunnah
+          </h1>
+          <p className="font-medium text-xl px-44">
+            Learn the proper recitation of the Quran (Tajweed) and delve into
+            the teachings and practices of Prophet Muhammad (PBUH) as found in
+            the Sunnah.
+          </p>
+        </div>
+        <div className="flex justify-between px-24 p-10">
+          <div className=" text-center">
+            <Image src={quran} alt="" />
+            <div className="mt-6 space-y-2">
+              <p className="text-[#E8B33F] font-bold text-4xl">$462B</p>
+              <p className="text-[#3F2E07]">Supported</p>
+            </div>
+          </div>
+
+          <div className=" text-center">
+            <Image src={volume} alt="" />
+            <div className="mt-6 space-y-2">
+              <p className="text-[#E8B33F] font-bold text-4xl">$462B</p>
+              <p className="text-[#3F2E07]">Supported</p>
+            </div>
+          </div>
+
+          <div className=" text-center">
+            <Image src={quran} alt="" />
+            <div className="mt-6 space-y-2">
+              <p className="text-[#E8B33F] font-bold text-4xl">$462B</p>
+              <p className="text-[#3F2E07]">Supported</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="p-10">
         <section className="flex items-center p-10 rounded-3xl bg-custom-gradient">
@@ -56,8 +96,8 @@ export default function HomePage() {
             padding: "20px",
           }}
         />
-        <div className="flex justify-between p-20 absolute bottom-[100px]">
-          <div className="space-y-16">
+        <div className=" p-20 absolute bottom-[100px]">
+          <div className="space-y-16 relative">
             <h1 className="font-bold text-6xl text-white">
               Embark on <br /> Your Journey <br /> Today
             </h1>
@@ -69,9 +109,9 @@ export default function HomePage() {
               Islamic principles and values.
             </p>
           </div>
-          <div className="self-end ">
-            <Button text="Start now" />
-          </div>
+        </div>
+        <div className="absolute right-44 bottom-44">
+          <Button text="Start now" />
         </div>
       </div>
     </section>

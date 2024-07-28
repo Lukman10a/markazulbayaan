@@ -2,8 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./button";
 import heroImg from "../../public/assets/hero_bg.png";
+import Link from "next/link";
 
 export const Hero = () => {
+  const handleClick = () => {
+    console.log("Contact form submitted");
+  };
   return (
     <div className="p-10 ">
       <div className="relative">
@@ -30,7 +34,9 @@ export const Hero = () => {
             teachings of the Quran and <br /> Sunnah, and immerse yourself in
             the rich tapestry of Islamic monotheism at Markazul-Bayan.
           </p>
-          <Button text="Contact us" />
+          <Link href={"/contact"}>
+            <Button text="Contact us" handleClick={handleClick} />
+          </Link>
         </div>
       </div>
     </div>
