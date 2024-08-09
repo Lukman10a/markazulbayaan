@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "./button";
 import heroImg from "../../public/assets/hero_bg.png";
 import Link from "next/link";
+import Button from "./button";
 
 export const Hero = () => {
   const handleClick = () => {
@@ -35,7 +35,7 @@ export const Hero = () => {
             the rich tapestry of Islamic monotheism at Markazul-Bayan.
           </p>
           <Link href={"/contact"}>
-            <Button text="Contact us" handleClick={handleClick} />
+            <Button text="Contact us" onClick={handleClick} />
           </Link>
         </div>
       </div>

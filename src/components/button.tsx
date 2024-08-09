@@ -1,22 +1,38 @@
-import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface ButtonProps {
   text: string;
-  iconSrc?: string;
-  handleClick?: () => void;
+  className?: string;
+  href?: string;
+  asLink?: boolean;
+  onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, handleClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  className,
+  href,
+  asLink,
+  onClick,
+}) => {
+  const buttonClasses = cn("font-medium text-black", className);
+
+  if (asLink && href) {
+    return (
+      <Link href={href} passHref legacyBehavior>
+        <button className={buttonClasses}>
+          <a>{text}</a>
+        </button>
+      </Link>
+    );
+  }
+
   return (
-    <button
-      onClick={handleClick}
-      className="flex justify-center items-center gap-4 rounded-md bg-[#E8B33F] p-4 w-36 text-white"
-    >
-      <p>{text}</p>
-      <Image src={require("../../public/assets/arrow.png")} alt="arrow" />
+    <button className={buttonClasses} onClick={onClick}>
+      {text}
     </button>
   );
 };
 
-// {iconSrc && <Image src={iconSrc} alt="icon" width={20} height={20} />}
+export default Button;

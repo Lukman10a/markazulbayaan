@@ -1,14 +1,12 @@
 import React from "react";
-import { Navbar } from "../navbar";
 import { Hero } from "../hero";
 import { Subjectcard } from "../subjectcard";
 import Image from "next/image";
-import { Button } from "../button";
 import heroImage from "../../../public/assets/hero.png";
 import journeyBg from "../../../public/assets/journey_bg.png";
 import quran from "../../../public/assets/quran.svg";
 import volume from "../../../public/assets/volume.svg";
-// import verified from "../../../public/assets/verified.svg";
+import Button from "../button";
 
 export default function HomePage() {
   return (
