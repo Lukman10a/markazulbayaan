@@ -1,7 +1,7 @@
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import {
   DropdownMenu,
@@ -16,7 +16,7 @@ import Button from "../button";
 
 export function MobileMenu() {
   const [menuIsOpen, toggleMenuIsOpen] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     toggleMenuIsOpen(false);
