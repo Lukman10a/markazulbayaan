@@ -3,7 +3,7 @@ import logo from "../../../public/assets/markaz.png";
 import Image from "next/image";
 import Link from "next/link";
 import { inter } from "@/lib/utils";
-import DesktopNavbar from "./DesktopNav";
+import DesktopNavbar from "./desktopNav";
 import { MobileMenu } from "./mobileNav";
 
 export const servicesSubnav = [
