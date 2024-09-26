@@ -12,7 +12,6 @@ export default function HomePage() {
   return (
     <section>
       <Hero />
-
       <div className="p-20">
         <div className="text-center space-y-6">
           <h1 className="text-[#760808] text-5xl font-bold">
