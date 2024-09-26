@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import blog2 from "/public/assets/blog2.png";
@@ -13,7 +12,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { DummyData, Testimonial } from "@/lib/types";
 import Loader from "@/components/Loader";
-
+import Link from "next/link";
 
 // Dummy CMS data for both Blog and additional sections
 const dummyData: DummyData = {
@@ -117,7 +116,10 @@ const Blog: React.FC = () => {
   }, []);
 
   const createSlug = (title: string) => {
-    return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+    return title
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "");
   };
 
   if (!data) {
@@ -131,7 +133,6 @@ const Blog: React.FC = () => {
         className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 "
         style={{ backgroundImage: `url(${data.hero.image})` }}
       >
-
         <div className="absolute inset-0 bg-cover bg-center"></div>
         <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
           <p className="py-4 text-xs md:text-sm">
@@ -149,7 +150,6 @@ const Blog: React.FC = () => {
           <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
             {data.hero.buttonText}
           </button>
-
         </div>
       </section>
 
@@ -177,13 +177,11 @@ const Blog: React.FC = () => {
               <p className="text-gray-600 mb-2">
                 {data.featuredPost.description}
               </p>
-             <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
+              <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
                 <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
                   Read More
                 </button>
-             </Link>
-
-      
+              </Link>
             </div>
           </div>
         </section>
@@ -213,7 +211,10 @@ const Blog: React.FC = () => {
 
                 <p className="text-sm text-gray-500">{post.description}</p>
 
-                <Link href={`/blog/${createSlug(post.title)}`} className="text-yellow-500">
+                <Link
+                  href={`/blog/${createSlug(post.title)}`}
+                  className="text-yellow-500"
+                >
                   Read More
                 </Link>
               </div>
@@ -275,8 +276,8 @@ const Blog: React.FC = () => {
 
       {/* Testimonials Section */}
       <div className="bg-yellow-50">
-        <div className="md:flex md:items-center md:justify-between mx-auto px-4 py-8 container ">
-          <section className="mx-auto px-4 py-8 container">
+        <div className="md:flex md:items-center md:justify-between  px-4 py-8 container">
+          <section className="px-4 py-8 container">
             <p className="py-4 uppercase font-bold text-neutral-700">
               Testimonials
             </p>
