@@ -1,4 +1,6 @@
+
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 // Dummy CMS data for both Blog and additional sections
@@ -74,6 +76,10 @@ const Blog: React.FC = () => {
     }, 1000);
   }, []);
 
+  const createSlug = (title: string) => {
+    return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+  };
+
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -82,15 +88,17 @@ const Blog: React.FC = () => {
     <div className="">
       {/* Hero Section */}
       <section className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 " style={{ backgroundImage: `url(${data.hero.image})` }}>
-        <div className="absolute inset-0 bg-cover bg-center" ></div>
+        <div className="absolute inset-0 bg-cover bg-center"></div>
         <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
           <p className='py-4 text-xs md:text-sm'>POSTED ON <span className='font-bold'>MARKAZUL - BAYAN </span></p>
           <h1 className="text-lg md:text-5xl font-bold mb-4">{data.hero.title}</h1>
           <p className="mb-4 text-sm md:text-lg">{data.hero.description}</p>
           <p className="text-xs md:text-sm mb-4">By <span className='text-yellow-500'>{data.hero.author} </span> | {data.hero.date}</p>
-          <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-            {data.hero.buttonText}
-          </button>
+          <Link href={`/blog/${createSlug(data.hero.title)}`}>
+            <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+              {data.hero.buttonText}
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -98,15 +106,17 @@ const Blog: React.FC = () => {
         {/* Featured Post Section */}
         <section className=" mx-auto px-4 py-8 container">
           <h2 className="text-xl font-bold mb-4">Featured Post</h2>
-          <div className=" rounded-lg overflow-hidden shadow-lg">
+          <div className="rounded-lg overflow-hidden shadow-lg">
             <img src={data.featuredPost.image} alt={data.featuredPost.title} className="w-full h-54 object-cover" />
             <div className="p-6 py-8">
-              <p className=" text-xs mb-4">By <span className='text-amber-900 font-bold'>{data.featuredPost.author}</span> | {data.featuredPost.date}</p>
+              <p className="text-xs mb-4">By <span className='text-amber-900 font-bold'>{data.featuredPost.author}</span> | {data.featuredPost.date}</p>
               <h3 className="text-lg font-bold mb-2">{data.featuredPost.title}</h3>
               <p className="text-gray-600 mb-2">{data.featuredPost.description}</p>
-              <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-                Read More
-              </button>
+              <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
+                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+                  Read More
+                </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -122,8 +132,9 @@ const Blog: React.FC = () => {
               <div key={index} className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg">
                 <p className="text-xs text-gray-600 mb-2">By <span className='text-amber-900 font-bold'>{post.author} </span> | {post.date}</p>
                 <h3 className="text-sm font-bold mb-2">{post.title}</h3>
-                
-                
+                <Link href={`/blog/${createSlug(post.title)}`} className="text-yellow-500">
+                  Read More
+                </Link>
               </div>
             ))}
           </div>
