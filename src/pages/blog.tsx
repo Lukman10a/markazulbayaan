@@ -1,69 +1,109 @@
 
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import blog2 from "/public/assets/blog2.png";
+import blog3 from "/public/assets/blog3.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { DummyData, Testimonial } from "@/lib/types";
+import Loader from "@/components/Loader";
+
 
 // Dummy CMS data for both Blog and additional sections
-const dummyData = {
+const dummyData: DummyData = {
   hero: {
-    title: "Road map for beginners in Arabic language, Qur'an, Reading and writing",
+    title:
+      "Embark on Your Journey to Master Arabic, Qur'an Recitation, and Writing",
     date: "May 23, 2022",
     author: "Abu Abdullah Ibrahim",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    description:
+      "Join our structured programs tailored for beginners looking to excel in Arabic language, Qur'an, reading, and writing. Discover a comprehensive roadmap for your success.",
     buttonText: "Read More",
-    image: "/assets/blog1.png" // Replace with real image path
+    image: "/assets/blog1.png",
   },
   featuredPost: {
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    title: "The Key to Mastering Arabic Grammar: A Comprehensive Guide",
     author: "Abu Lubaba Al-Asalafy",
-    date: "May 23, 2022",
-    description: "Duis aute irure dolor sit amet consectetur.",
-    image: "/assets/blog2.png" // Replace with real image path
+    date: "June 10, 2022",
+    description:
+      "Master the intricacies of Arabic grammar with this step-by-step guide designed for learners of all levels.",
+    image: blog2,
   },
   allPosts: [
     {
-      title: "8 Figma design systems that you can download for free today.",
+      title: "5 Essential Tips to Improve Your Qur'an Recitation",
       author: "Abu Zayda Al-Muwaffaq",
-      date: "Aug 23, 2021"
+      description:
+        "Looking to memorize the Qur'an? Follow these proven techniques for quick and effective memorization.",
+      date: "Aug 10, 2023",
     },
     {
-      title: "8 Figma design systems that you can download for free today.",
+      title: "How to Develop Fluency in Spoken Arabic in 6 Months",
       author: "Abu Tohir As-Salafy",
-      date: "Aug 23, 2021"
+      description:
+        "Start reading Arabic with ease by following these simple steps, designed for absolute beginners.",
+      date: "Sept 1, 2023",
     },
     {
-      title: "8 Figma design systems that you can download for free today.",
+      title:
+        "The Importance of Writing Skills in Arabic for Effective Communication",
       author: "Abu Qoseem Al-Ilorly",
-      date: "Aug 23, 2021"
+      description:
+        "Looking to memorize the Qur'an? Follow these proven techniques for quick and effective memorization.",
+      date: "Oct 12, 2021",
     },
     {
-      title: "8 Figma design systems that you can download for free today.",
+      title: "Understanding Tajweed: A Complete Guide for Beginners",
       author: "Abu Hanifa Ibrahim",
-      date: "Aug 23, 2021"
-    }
+      description:
+        "Master the art of Tajweed and improve your Qur'an recitation with this detailed overview of essential rules.",
+      date: "Nov 20, 2021",
+    },
   ],
   aboutUs: {
-    title: "We are a community of content writers who share their learnings",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum imperdiet nisi, ut lobortis magna aliquet ut.",
-    buttonText: "Read More"
+    title: "We Are a Dedicated Team of Educators Focused on Islamic Learning",
+    description:
+      "Our mission is to provide accessible and high-quality content to help students excel in the Arabic language, Qur'an recitation, and Islamic studies.",
+    buttonText: "Read More",
   },
   ourMission: {
-    title: "Creating valuable content for readers all around the world",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Empowering Students with Knowledge of Qur'an and Arabic Language",
+    description:
+      "Our aim is to provide structured, well-crafted courses and resources to help individuals achieve their learning goals.",
   },
   whyWeStarted: {
-    title: "It started out as a simple idea and evolved into our passion",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-    buttonText: "Discover our story",
-    image: "/assets/blog3.png" // Replace with real image path
+    title: "Inspired by the Need for Quality Arabic and Qur'an Education",
+    description:
+      "What started as a simple initiative to help local students quickly turned into a global mission to share knowledge and foster learning.",
+    buttonText: "Discover Our Story",
+    image: "/assets/blog3.png",
   },
   testimonials: [
     {
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      quote:
+        "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
       name: "Abu Jamal Al-Athary",
-      location: "Oluklujo, Ilorin Nigeria"
-    }
-  ]
+      location: "Olunlade, Ilorin Nigeria",
+    },
+    {
+      quote:
+        "Markazul-Bayan's approach to teaching the Arabic language is exceptional. I've learned so much in such a short time, and the teachers are incredibly supportive.",
+      name: "Abu Khadija Al-Fulani",
+      location: "Zaria, Nigeria",
+    },
+    {
+      quote:
+        "I appreciate the structured roadmap provided for beginners. It helped me develop a solid foundation in Qur'an recitation and writing skills.",
+      name: "Abu Isa Ibn Daud",
+      location: "Kano, Nigeria",
+    },
+  ],
 };
 
 const Blog: React.FC = () => {
@@ -81,57 +121,98 @@ const Blog: React.FC = () => {
   };
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
-    <div className="">
+    <main>
       {/* Hero Section */}
-      <section className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 " style={{ backgroundImage: `url(${data.hero.image})` }}>
+      <section
+        className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 "
+        style={{ backgroundImage: `url(${data.hero.image})` }}
+      >
+
         <div className="absolute inset-0 bg-cover bg-center"></div>
         <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
-          <p className='py-4 text-xs md:text-sm'>POSTED ON <span className='font-bold'>MARKAZUL - BAYAN </span></p>
-          <h1 className="text-lg md:text-5xl font-bold mb-4">{data.hero.title}</h1>
+          <p className="py-4 text-xs md:text-sm">
+            POSTED ON <span className="font-bold">MARKAZUL - BAYAN </span>
+          </p>
+          <h1 className="text-lg md:text-5xl font-bold mb-4">
+            {data.hero.title}
+          </h1>
           <p className="mb-4 text-sm md:text-lg">{data.hero.description}</p>
-          <p className="text-xs md:text-sm mb-4">By <span className='text-yellow-500'>{data.hero.author} </span> | {data.hero.date}</p>
-          <Link href={`/blog/${createSlug(data.hero.title)}`}>
-            <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-              {data.hero.buttonText}
-            </button>
-          </Link>
+
+          <p className="text-xs md:text-sm mb-4">
+            By <span className="text-yellow-500">{data.hero.author} </span> |{" "}
+            {data.hero.date}
+          </p>
+          <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+            {data.hero.buttonText}
+          </button>
+
         </div>
       </section>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 mb-8 mx-auto px-4 py-8 container'>
+      <div className="grid grid-cols-1 md:grid-cols-2 mb-8 mx-auto px-4 py-8 container">
         {/* Featured Post Section */}
         <section className=" mx-auto px-4 py-8 container">
           <h2 className="text-xl font-bold mb-4">Featured Post</h2>
-          <div className="rounded-lg overflow-hidden shadow-lg">
-            <img src={data.featuredPost.image} alt={data.featuredPost.title} className="w-full h-54 object-cover" />
+          <div className=" rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src={data.featuredPost.image}
+              alt={data.featuredPost.title}
+              className="w-full h-54 object-cover"
+            />
             <div className="p-6 py-8">
-              <p className="text-xs mb-4">By <span className='text-amber-900 font-bold'>{data.featuredPost.author}</span> | {data.featuredPost.date}</p>
-              <h3 className="text-lg font-bold mb-2">{data.featuredPost.title}</h3>
-              <p className="text-gray-600 mb-2">{data.featuredPost.description}</p>
-              <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
+              <p className=" text-xs mb-4">
+                By{" "}
+                <span className="text-amber-900 font-bold">
+                  {data.featuredPost.author}
+                </span>{" "}
+                | {data.featuredPost.date}
+              </p>
+              <h3 className="text-lg font-bold mb-2">
+                {data.featuredPost.title}
+              </h3>
+              <p className="text-gray-600 mb-2">
+                {data.featuredPost.description}
+              </p>
+             <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
                 <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
                   Read More
                 </button>
-              </Link>
+             </Link>
+
+      
             </div>
           </div>
         </section>
 
         {/* All Posts Section */}
-        <section className='mx-auto px-4 py-8 container'>
+        <section className="mx-auto px-4 py-8 container">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">All Posts</h2>
-            <a href="#" className="text-yellow-500">View All</a>
+            <a href="#" className="text-yellow-500">
+              View All
+            </a>
           </div>
           <div className="grid grid-cols-1 gap-6">
             {data.allPosts.map((post: any, index: number) => (
-              <div key={index} className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg">
-                <p className="text-xs text-gray-600 mb-2">By <span className='text-amber-900 font-bold'>{post.author} </span> | {post.date}</p>
+              <div
+                key={index}
+                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
+              >
+                <p className="text-xs text-gray-600 mb-2">
+                  By{" "}
+                  <span className="text-amber-900 font-bold">
+                    {post.author}{" "}
+                  </span>{" "}
+                  | <span>{post.date}</span>
+                </p>
                 <h3 className="text-sm font-bold mb-2">{post.title}</h3>
+
+                <p className="text-sm text-gray-500">{post.description}</p>
+
                 <Link href={`/blog/${createSlug(post.title)}`} className="text-yellow-500">
                   Read More
                 </Link>
@@ -140,8 +221,8 @@ const Blog: React.FC = () => {
           </div>
         </section>
       </div>
-      
-      <div className='bg-yellow-50'>
+
+      <div className="bg-yellow-50">
         {/* About Us and Our Mission Section */}
         <section className="grid md:grid-cols-2 gap-6 mb-8 bg-yellow-50 mx-auto px-4 py-8 container">
           {/* About Us */}
@@ -162,22 +243,28 @@ const Blog: React.FC = () => {
         </section>
       </div>
 
-     <div className='flex justify-center mx-auto'>
+      <div className="flex justify-center mx-auto">
         {/* Why We Started Section */}
         <section className="relative mb-16 mx-auto pl-6 py-8 container">
           <div className="relative grid  items-center">
             {/* Image */}
             <div className="relative w-2/3 md:w-1/2 h-96 rounded-lg overflow-hidden shadow-lg">
-              <div 
-                className="absolute inset-0 bg-cover bg-center " 
-                style={{ backgroundImage: `url(${data.whyWeStarted.image})` }}>
-              </div>
+              <div
+                className="absolute inset-0 bg-cover bg-center "
+                style={{ backgroundImage: `url(${data.whyWeStarted.image})` }}
+              ></div>
             </div>
             {/* Text Content */}
             <div className="min-w-[150px] absolute md:-translate-x-1/2 translate-x-12 translate-y-16 md:right-0 md:top-1/2 transform md:-translate-y-1/2 bg-white p-8 rounded-lg shadow-lg w-1/2 md:w-3/5 lg:w-2/5">
-              <h2 className="text-xs md:text-2xl font-bold mb-4">Why We Started</h2>
-              <p className="text-xs md:text-xl text-gray-700 mb-4">{data.whyWeStarted.title}</p>
-              <p className="mb-6 text-xs md:text-lg">{data.whyWeStarted.description}</p>
+              <h2 className="text-xs md:text-2xl font-bold mb-4">
+                Why We Started
+              </h2>
+              <p className="text-xs md:text-xl text-gray-700 mb-4">
+                {data.whyWeStarted.title}
+              </p>
+              <p className="mb-6 text-xs md:text-lg">
+                {data.whyWeStarted.description}
+              </p>
               <button className="bg-yellow-500 text-white md:px-6 text-xs md:text-lg px-2 py-1 md:py-3 rounded-lg hover:bg-yellow-600 transition">
                 {data.whyWeStarted.buttonText}
               </button>
@@ -186,48 +273,60 @@ const Blog: React.FC = () => {
         </section>
       </div>
 
-
-{/* Testimonials Section */}
-<div  className='bg-yellow-50'>
-<div className='  md:flex md:items-center md:justify-between mx-auto px-4 py-8 container '>
-  <section className="mx-auto px-4 py-8 container">
-    <p className='py-4 uppercase font-bold text-neutral-700'>Testimonials</p>
-    <h2 className="text-3xl font-bold mb-8">What people say about <br/> <span className='text-orange-500'>MARKAZUL-BAYAN</span></h2>
-    <div className="flex flex-col md:flex-row justify-between gap-8">
-      {data.testimonials.map((testimonial: any, index: number) => (
-        <div key={index} className=" rounded-lg flex flex-col justify-between">
-          <div className="mb-4">
-            <p className="text-sm mb-4">"{testimonial.quote}"</p>
-          </div>
-          
+      {/* Testimonials Section */}
+      <div className="bg-yellow-50">
+        <div className="md:flex md:items-center md:justify-between mx-auto px-4 py-8 container ">
+          <section className="mx-auto px-4 py-8 container">
+            <p className="py-4 uppercase font-bold text-neutral-700">
+              Testimonials
+            </p>
+            <h2 className="text-3xl font-bold mb-8">
+              What people say about <br />{" "}
+              <span className="text-orange-500">MARKAZUL-BAYAN</span>
+            </h2>
+            {/* Carousel for testimonials */}
+          </section>
+          <Carousel className="w-full">
+            <CarouselContent>
+              {data.testimonials.map(
+                (
+                  testimonial: Testimonial,
+                  index: React.Key | null | undefined
+                ) => (
+                  <CarouselItem key={index}>
+                    <Card className="p-6">
+                      <CardContent>
+                        <p className="text-sm mb-4">
+                          &ldquo;{testimonial.quote}&rdquo;
+                        </p>
+                        <div className="flex items-center">
+                          <Image
+                            src={"/assets/profile.png"}
+                            alt="profile image"
+                            width={50}
+                            height={50}
+                          />
+                          <div className="ml-4">
+                            <p className="text-xs md:text-lg">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-xs md:text-sm">
+                              {testimonial.location}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                )
+              )}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
-      ))}
-    </div>
-  </section>
-  <section className='mx-auto px-4 py-8 container'>
-        <p className='text-xs md:text-sm'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <div className='md:flex md:justify-between md:items-center py-6'>
-          <div className='flex justify-between items-center gap-4'>
-            <div>
-              <Image src={'/assets/profile.png'} alt='profile image' width={50} height={50}/>
-            </div>
-            <div>
-              <p className='text-xs md:text-lg'>Abu Jamal Al-Athary</p>
-              <p className='text-xs md:text-sm'>Olunlade, Ilorin Nigeria.</p>
-            </div>
-          </div>
-          <div className='flex justify-between py-4 md:py-0'>
-          <Image src={'/assets/Back Button.png'} alt='rev arrow' width={50} height={50}/>
-          <Image src={'/assets/Next Button.png'} alt='fwd arrow' width={50} height={50}/>
-          </div>
-        </div>
-  </section>
-</div>
-</div>
-
-    </div>
+      </div>
+    </main>
   );
 };
 

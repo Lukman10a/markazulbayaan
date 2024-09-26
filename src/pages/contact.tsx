@@ -149,10 +149,10 @@ export default function Contact() {
   };
 
   return (
-    <Fragment>
+    <>
       <section className="relative isolate text-white">
         <div className="absolute inset-0 z-[-1] flex flex-col">
-          <div className="h-1/2 w-full overflow-hidden bg-[url(/assets/contactbg.jpg)] bg-cover"></div>
+          <div className="h-1/2 w-full overflow-hidden bg-[url(/assets/journey_bg.png)] bg-cover"></div>
           <div className="h-1/2 bg-black"></div>
         </div>
         <div className="flex justify-between gap-7 px-16 py-10 md:flex-wrap md:px-8 md:py-8">
@@ -278,6 +278,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </Fragment>
+    </>
   );
 }
