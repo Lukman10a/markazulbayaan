@@ -1,8 +1,10 @@
 ---
 layout: blog
 title: The difference between اليعقوب and يعقوب:"
-date: 1999-12-31 11:59:59 -0800
-thumbnail: "/images/prince.jpg"
+description: Looking to memorize the Qur'an? Follow these proven techniques for
+  quick and effective memorization.
+date: 2024-09-26
+thumbnail: /images/uploads/04mutoonalqasim.jpg
 author: Lukmān Bn Abdir-Raūf As-Salafī
 ---
 

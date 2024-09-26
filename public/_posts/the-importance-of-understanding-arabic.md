@@ -1,6 +1,8 @@
 ---
 layout: blog
 title: The Importance of Understanding Arabic
+description: Looking to memorize the Qur'an? Follow these proven techniques for
+  quick and effective memorization.
 date: 2024-09-26T07:24:00.000Z
 thumbnail: /images/uploads/matn-mukhtasar-al-adhkār_0000.jpg
 author: Abū Kawthar Lukmān Bn Abdir-Raūf As-Salafī
