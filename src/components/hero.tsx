@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import heroImg from "../../public/assets/hero_bg.png";
+import heroImage from "../../public/assets/heroImage.jpg";
 import Link from "next/link";
 import Button from "./button";
 
@@ -9,34 +10,35 @@ export const Hero = () => {
     console.log("Contact form submitted");
   };
   return (
-    <div className="p-10 ">
+    <div className="m-[3vmin] max-h-[600px] h-[100vmin] ">
       <div className="relative">
         <Image
-          src={heroImg}
+          src={heroImage}
           alt="hero_bg"
           style={{
             backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "600px",
+            backgroundPosition: "bottom-right",
+            height: "100vmin",
+            maxHeight: "600px",
             width: "100%",
             objectFit: "cover",
             borderRadius: "20px",
-            overflow: "hidden",
           }}
         />
-        <div className="px-20 space-y-10 text-white absolute top-36">
-          <h1 className="text-7xl font-bold">
+        <div className="absolute inset-0 bg-black opacity-70 rounded-[20px]"></div>
+        <div className="px-[5vw] text-white absolute top-[10vmin]  lg:top-[7vmax] ">
+          <h1 className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  ">
             Seeking Knowledge
             <br /> is a duty of all Muslims
           </h1>
-          <p className="text-lg font-medium">
+          <p className="text-[3vmin] sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[60%]">
             Unlock the beauty of the Arabic language, delve into the profound
-            teachings of the Quran and <br /> Sunnah, and immerse yourself in
-            the rich tapestry of Islamic monotheism at Markazul-Bayan.
+            teachings of the Quran and Sunnah, and immerse yourself in the rich
+            tapestry of Islamic monotheism at Markazul-Bayan.
           </p>
-          <Link href={"/contact"}>
+          <div className="my-[2.5vmin]">
             <Button text="Contact us" onClick={handleClick} />
-          </Link>
+          </div>
         </div>
       </div>
     </div>

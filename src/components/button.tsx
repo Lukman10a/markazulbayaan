@@ -16,13 +16,16 @@ const Button: React.FC<ButtonProps> = ({
   asLink,
   onClick,
 }) => {
-  const buttonClasses = cn("font-medium text-black", className);
+  const buttonClasses = cn(
+    "font-semibold text-[15px] bg-[#e8b33f] w-[100%] md:w-[190px] py-[12px] md:py-[20px] rounded-md text-[white] my-[2vmin]",
+    className
+  );
 
   if (asLink && href) {
     return (
       <Link href={href} passHref legacyBehavior>
         <button className={buttonClasses}>
-          <a>{text}</a>
+          <a>{text} </a>
         </button>
       </Link>
     );
@@ -30,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={buttonClasses} onClick={onClick}>
-      {text}
+      {text} &rarr;
     </button>
   );
 };
