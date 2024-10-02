@@ -10,14 +10,18 @@ const config: any = {
   media_folder: "public/images/uploads",
   public_folder: "/images/uploads",
   // publish_mode: "editorial_workflow",
-
+  slug: {
+    encoding: "ascii",
+    clean_accents: true,
+    sanitize_replacement: "_",
+  },
   collections: [
     {
       name: "blog",
       label: "Blog",
       folder: "/public/_posts/",
       create: true,
-      slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+      slug: "{{slug}}",
       fields: [
         { label: "Layout", name: "layout", widget: "hidden", default: "blog" },
         { label: "Title", name: "title", widget: "string" },

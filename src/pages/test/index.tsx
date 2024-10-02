@@ -1,48 +1,59 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
+import { getSortedPostsData } from "@/lib/getMarkdownData";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PostData } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
+import Image from "next/image";
 
 export const getStaticProps = async () => {
-  const postsDirectory = path.join(process.cwd(), "public/_posts");
-  const fileNames = fs.readdirSync(postsDirectory);
-
-  const allPostsData = fileNames.map((fileName) => {
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-
-    const { data } = matter(fileContents);
-
-    // Convert date to string format (e.g., ISO string)
-    const date =
-      data.date instanceof Date ? data.date.toISOString() : data.date;
-
-    return {
-      fileName,
-      ...data,
-      date, // Include the stringified date
-    };
-  });
+  const allPostsData = getSortedPostsData();
 
   return {
     props: {
-      posts: allPostsData,
+      posts: allPostsData || [], // Always return an array
     },
   };
 };
 
-const HomePage = ({ posts }) => {
+const HomePage = ({ posts }: { posts: PostData[] }) => {
+  console.log({ posts });
+
   return (
-    <div>
+    <main className="p-10">
       <h1>Welcome to My Blog</h1>
-      {posts.map((post) => (
-        <div key={post.fileName}>
-          <h2>{post.title}</h2>
-          <p>{post.date}</p>
-          <Link href={`/posts/${post.fileName}`}>Read More</Link>
-        </div>
-      ))}
-    </div>
+      <section className="grid grid-cols-responsive250 gap-4">
+        {posts.map((post: PostData) => (
+          <Card key={post.slug} className="w-fit">
+            {/* Use slug as the key */}
+            <CardHeader>
+              <CardTitle>{post.title}</CardTitle>
+              {/* Use title instead of fileName */}
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="w-full">
+                <Image
+                  src={post?.thumbnail as string}
+                  alt={post.slug}
+                  width={200}
+                  height={200}
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="flex gap items-center text-sm text-purple-500">
+                <span>{post.author}</span> <span>{formatDate(post.date)}</span>
+              </div>
+
+              <h2>{post.description}</h2>
+
+              {/* Date should already be a string */}
+              <Link href={`/test/${post.slug}`}>Read More</Link>
+              {/* Use slug */}
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+    </main>
   );
 };
 

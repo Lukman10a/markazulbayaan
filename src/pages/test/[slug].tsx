@@ -1,49 +1,41 @@
-// pages/posts/[slug].tsx
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { getAllPostIds, getPostData } from "@/lib/getMarkdownData";
+import { PostData } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-export const getStaticPaths = async () => {
-  const postsDirectory = path.join(process.cwd(), "public/_posts");
-  const fileNames = fs.readdirSync(postsDirectory);
+const PostPage = ({ post }: { post: PostData }) => {
+  console.log({ post });
 
-  const paths = fileNames.map((fileName) => ({
-    params: { slug: fileName.replace(/\.md$/, "") }, // Removing .md extension
-  }));
-
-  return {
-    paths,
-    fallback: false, // This will show a 404 for paths not returned by getStaticPaths
-  };
-};
-
-export const getStaticProps = async ({ params }) => {
-  const postsDirectory = path.join(process.cwd(), "public/_posts");
-  const fullPath = path.join(postsDirectory, `${params.slug}`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-
-  const { data, content } = matter(fileContents);
-
-  console.log({ data });
-
-  return {
-    props: {
-      post: {
-        content,
-        ...data,
-      },
-    },
-  };
-};
-
-const PostPage = ({ post }) => {
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.date}</p>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+    <div className="prose p-7 max-w-prose">
+      <h1>{post.title}</h1> {/* Use title for the heading */}
+      <p>{formatDate(post.date)}</p> {/* Display the formatted date */}
+      <Markdown remarkPlugins={[remarkGfm]}>{post.body}</Markdown>
     </div>
   );
 };
 
 export default PostPage;
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds();
+  console.log({ paths });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const postData = getPostData(params.slug); // Ensure you're using the correct param
+
+  console.log({ postData, params });
+
+  return {
+    props: {
+      post: postData,
+    },
+  };
+}

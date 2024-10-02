@@ -1,81 +1,53 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import yaml from "js-yaml";
+import { PostData } from "./types"; // Import your type
 
 const postsDirectory = path.join(process.cwd(), "public/_posts");
 
-export type PostContent = {
-  readonly date: string;
-  readonly title: string;
-  readonly slug: string;
-  readonly fullPath: string;
-};
-
-let postCache: PostContent[];
-
-export function fetchPostContent(): PostContent[] {
-  if (postCache) {
-    return postCache;
-  }
-  // Get file names under /posts
+export function getSortedPostsData(): PostData[] {
   const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsData: PostData[] = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
 
-  const allPostsData = fileNames
-    .filter((it) => it.endsWith(".md"))
-    .map((fileName) => {
-      // Read markdown file as string
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
 
-      // Use gray-matter to parse the post metadata section
-      const matterResult = matter(fileContents, {
-        engines: {
-          yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
-        },
-      });
-      const matterData = matterResult.data as {
-        date: string;
-        title: string;
-        slug: string;
-        fullPath: string;
-      };
-      matterData.fullPath = fullPath;
-
-      const slug = fileName.replace(/\.md$/, "");
-
-      // Validate slug string
-      if (matterData.slug !== slug) {
-        throw new Error(
-          "slug field not match with the path of its content source"
-        );
-      }
-
-      return matterData;
-    });
-  // Sort posts by date
-  postCache = allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
+    // Ensure data matches the PostData type
+    return {
+      slug,
+      ...data,
+      date: data.date instanceof Date ? data.date.toISOString() : data.date, // Ensure date is a string
+    } as PostData; // Type assertion
   });
-  return postCache;
+
+  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function countPosts(tag?: string): number {
-  return fetchPostContent().filter(
-    (it) => !tag || (it.tags && it.tags.includes(tag))
-  ).length;
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => ({
+    params: {
+      slug: fileName.replace(/\.md$/, ""), // Corrected to 'slug'
+    },
+  }));
 }
 
-export function listPostContent(
-  page: number,
-  limit: number,
-  tag?: string
-): PostContent[] {
-  return fetchPostContent()
-    .filter((it) => !tag || (it.tags && it.tags.includes(tag)))
-    .slice((page - 1) * limit, page * limit);
+export function getPostData(slug: string): PostData {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  const matterResult = matter(fileContents);
+
+  // Combine the data with the slug
+  return {
+    slug,
+    ...matterResult.data,
+    date:
+      matterResult.data.date instanceof Date
+        ? new Date(matterResult.data.date).toISOString()
+        : matterResult.data.date,
+    body: matterResult.content,
+  } as PostData; // Type assertion
 }

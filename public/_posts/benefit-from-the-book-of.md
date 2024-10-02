@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Benefit from the book عوائق الطلب of Shaikh Abdus-Salām Barjas Āl-AbdilKareem
+title: Benefit from the book عوائق الطلب of Shaikh Abdus-Salām Barjas Āl-AbdilKareem A
 description: Looking to memorize the Qur'an? Follow these proven techniques for
   quick and effective memorization.
 date: 2024-09-26

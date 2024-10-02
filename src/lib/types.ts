@@ -58,4 +58,15 @@ export interface DummyData {
   testimonials: Testimonial[];
 }
 
+// types.ts
+export interface PostData {
+  slug: string;
+  title: string;
+  description: string;
+  date: string; // Use Date type if you want to work with Date objects
+  thumbnail?: string; // Optional
+  author: string;
+  body: string; // The actual content of the post
+}
+
 // Example usage
