@@ -1,71 +1,94 @@
 import React, { useEffect, useState } from "react";
 // import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 // import Button from "./button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+
+const TestimonialsData = [
+  {
+    quote:
+      "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
+    name: "Abu Jamal Al-Athary",
+    location: "Olunlade, Ilorin Nigeria",
+  },
+  {
+    quote:
+      "Markazul-Bayan's approach to teaching the Arabic language is exceptional. I've learned so much in such a short time, and the teachers are incredibly supportive.",
+    name: "Abu Khadija Al-Fulani",
+    location: "Zaria, Nigeria",
+  },
+  {
+    quote:
+      "I appreciate the structured roadmap provided for beginners. It helped me develop a solid foundation in Qur'an recitation and writing skills.",
+    name: "Abu Isa Ibn Daud",
+    location: "Kano, Nigeria",
+  },
+];
 
 export function Testimonials() {
   return (
-    <section className="pt-10">
-      {/* <div className="px-10">
-        <Button
-          text={"Archives"}
-          className="rounded-full bg-[#006CFE] p-2 font-normal text-white"
-        />
-        <h3 className="mb-8 mt-3 w-9/12 text-7xl font-medium md:w-full 2md:mb-8 2md:text-5xl">
-          <span className="text-[#BBBBBB]">What our</span>{" "}
-          <span>Customers say about </span>{" "}
-          <span className="text-[#BBBBBB]">us.</span>
-        </h3>
+    <section className="py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
+      <div className=" ">
+        <div className="md:flex md:items-center md:justify-between  px-4 py-8 container">
+          <section className="px-4 py-8 container md:min-w-[40%]">
+            <p className="py-4 uppercase font-bold text-neutral-700">
+              Testimonials
+            </p>
+            <h2 className="text-3xl font-bold mb-8">
+              What people say about <br />{" "}
+              <span className="text-orange-500">MARKAZUL-BAYAN</span>
+            </h2>
+            {/* Carousel for testimonials */}
+          </section>
+          <Carousel className="w-full">
+            <CarouselContent>
+              {TestimonialsData.map(
+                (
+                  testimonial: Testimonial,
+                  index: React.Key | null | undefined
+                ) => (
+                  <CarouselItem key={index}>
+                    <Card className="p-6">
+                      <CardContent>
+                        <p className="text-sm mb-4">
+                          &ldquo;{testimonial.quote}&rdquo;
+                        </p>
+                        <div className="flex items-center">
+                          <Image
+                            src={"/../../public/assets/profile.png"}
+                            alt="profile image"
+                            width={50}
+                            height={50}
+                          />
+                          <div className="ml-4">
+                            <p className="text-xs md:text-lg">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-xs md:text-sm">
+                              {testimonial.location}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                )
+              )}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
       </div>
-
-      <div className="dark:bg-grid-white/[0.05] relative flex h-[20rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black">
-        <InfiniteMovingCards
-          items={testimonials}
-          direction="right"
-          speed="slow"
-        />
-      </div>
-      <div className="dark:bg-grid-white/[0.05] relative flex h-[20rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black">
-        <InfiniteMovingCards
-          className="bg-white text-black"
-          items={testimonials}
-          direction="left"
-          speed="slow"
-        />
-      </div> */}
-      Testimonial
     </section>
   );
 }
 
-const testimonials = [
-  {
-    quote:
-      "Partnering with Consology has been a game-changer for our business. Their innovative solutions and dedicated support have significantly enhanced our operational efficiency.",
-    name: "Yusuf Abbass",
-    title: "CTO - Microsoft",
-  },
-  {
-    quote:
-      "The team at Consology truly understands our needs and consistently delivers outstanding results. Their expertise in software development is unparalleled.",
-    name: "Sarah Johnson",
-    title: "CEO - Tech Innovators Inc.",
-  },
-  {
-    quote:
-      "From the initial consultation to the final product, Consology exceeded our expectations at every stage. Their attention to detail and commitment to quality are second to none.",
-    name: "David Smith",
-    title: "Product Manager - StartUp Solutions",
-  },
-  {
-    quote:
-      "We were impressed by [Your Company's] ability to integrate seamlessly with our existing systems. Their solutions have driven significant growth and efficiency for our business.",
-    name: "Emma Brown",
-    title: "COO - Enterprise Technologies",
-  },
-  {
-    quote:
-      "Consology provided us with a comprehensive software solution that addressed all our needs. Their team was professional, responsive, and a pleasure to work with.",
-    name: "Michael Lee",
-    title: "IT Director - Global Enterprises",
-  },
-];
+export default Testimonials;
