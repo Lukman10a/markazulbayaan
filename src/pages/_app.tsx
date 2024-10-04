@@ -2,7 +2,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navBar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Montserrat } from "@next/font/google";
+import { Montserrat } from "next/font/google";
 
 import { useRouter } from "next/router";
 import { Fragment } from "react";

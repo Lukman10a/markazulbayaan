@@ -2,13 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import blog2 from "/public/assets/blog2.png";
 import blog3 from "/public/assets/blog3.png";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { DummyData, Testimonial } from "@/lib/types";
 import Loader from "@/components/Loader";
@@ -83,26 +77,6 @@ const dummyData: DummyData = {
     buttonText: "Discover Our Story",
     image: "/assets/blog3.png",
   },
-  testimonials: [
-    {
-      quote:
-        "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
-      name: "Abu Jamal Al-Athary",
-      location: "Olunlade, Ilorin Nigeria",
-    },
-    {
-      quote:
-        "Markazul-Bayan's approach to teaching the Arabic language is exceptional. I've learned so much in such a short time, and the teachers are incredibly supportive.",
-      name: "Abu Khadija Al-Fulani",
-      location: "Zaria, Nigeria",
-    },
-    {
-      quote:
-        "I appreciate the structured roadmap provided for beginners. It helped me develop a solid foundation in Qur'an recitation and writing skills.",
-      name: "Abu Isa Ibn Daud",
-      location: "Kano, Nigeria",
-    },
-  ],
 };
 
 const Blog: React.FC = () => {
@@ -131,8 +105,7 @@ const Blog: React.FC = () => {
       {/* Hero Section */}
       <section
         className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 "
-        style={{ backgroundImage: `url(${data.hero.image})` }}
-      >
+        style={{ backgroundImage: `url(${data.hero.image})` }}>
         <div className="absolute inset-0 bg-cover bg-center"></div>
         <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
           <p className="py-4 text-xs md:text-sm">
@@ -198,8 +171,7 @@ const Blog: React.FC = () => {
             {data.allPosts.map((post: any, index: number) => (
               <div
                 key={index}
-                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
-              >
+                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg">
                 <p className="text-xs text-gray-600 mb-2">
                   By{" "}
                   <span className="text-amber-900 font-bold">
@@ -213,8 +185,7 @@ const Blog: React.FC = () => {
 
                 <Link
                   href={`/blog/${createSlug(post.title)}`}
-                  className="text-yellow-500"
-                >
+                  className="text-yellow-500">
                   Read More
                 </Link>
               </div>
@@ -252,8 +223,9 @@ const Blog: React.FC = () => {
             <div className="relative w-2/3 md:w-1/2 h-96 rounded-lg overflow-hidden shadow-lg">
               <div
                 className="absolute inset-0 bg-cover bg-center "
-                style={{ backgroundImage: `url(${data.whyWeStarted.image})` }}
-              ></div>
+                style={{
+                  backgroundImage: `url(${data.whyWeStarted.image})`,
+                }}></div>
             </div>
             {/* Text Content */}
             <div className="min-w-[150px] absolute md:-translate-x-1/2 translate-x-12 translate-y-16 md:right-0 md:top-1/2 transform md:-translate-y-1/2 bg-white p-8 rounded-lg shadow-lg w-1/2 md:w-3/5 lg:w-2/5">
@@ -272,60 +244,6 @@ const Blog: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="bg-yellow-50">
-        <div className="md:flex md:items-center md:justify-between  px-4 py-8 container">
-          <section className="px-4 py-8 container">
-            <p className="py-4 uppercase font-bold text-neutral-700">
-              Testimonials
-            </p>
-            <h2 className="text-3xl font-bold mb-8">
-              What people say about <br />{" "}
-              <span className="text-orange-500">MARKAZUL-BAYAN</span>
-            </h2>
-            {/* Carousel for testimonials */}
-          </section>
-          <Carousel className="w-full">
-            <CarouselContent>
-              {data.testimonials.map(
-                (
-                  testimonial: Testimonial,
-                  index: React.Key | null | undefined
-                ) => (
-                  <CarouselItem key={index}>
-                    <Card className="p-6">
-                      <CardContent>
-                        <p className="text-sm mb-4">
-                          &ldquo;{testimonial.quote}&rdquo;
-                        </p>
-                        <div className="flex items-center">
-                          <Image
-                            src={"/assets/profile.png"}
-                            alt="profile image"
-                            width={50}
-                            height={50}
-                          />
-                          <div className="ml-4">
-                            <p className="text-xs md:text-lg">
-                              {testimonial.name}
-                            </p>
-                            <p className="text-xs md:text-sm">
-                              {testimonial.location}
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                )
-              )}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
       </div>
     </main>
   );

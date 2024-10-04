@@ -13,7 +13,7 @@ export const Hero = () => {
     <div className="m-[3vmin] max-h-[600px] h-[100vmin] ">
       <div className="relative">
         <Image
-          src={heroImage}
+          src={heroImg}
           alt="hero_bg"
           style={{
             backgroundSize: "cover",
@@ -25,7 +25,7 @@ export const Hero = () => {
             borderRadius: "20px",
           }}
         />
-        <div className="absolute inset-0 bg-black opacity-70 rounded-[20px]"></div>
+        <div className="absolute inset-0 bg-[#DF9D0C] opacity-10 rounded-[20px]"></div>
         <div className="px-[5vw] text-white absolute top-[10vmin]  lg:top-[7vmax] ">
           <h1 className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  ">
             Seeking Knowledge
