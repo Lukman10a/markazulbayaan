@@ -7,10 +7,8 @@ thumbnail: /images/uploads/imagre-of-a-bursted-pipe-at-the-backyard-of-a-house-1
 author: "Animi deserunt vel "
 ---
 
-\*\*اليعقوب\*\*:
+**اليعقوب\***:
 
-– Its plural is: اليعاقيب
-
-– A male partridge (A bird)
-
-– It is an Arabic word
+- Its plural is: اليعاقيب
+- A male partridge (A bird)
+- It is an Arabic word

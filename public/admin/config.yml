@@ -35,4 +35,45 @@ collections:
         }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Author", name: "author", widget: "string" }
+      - {
+          label: "Featured Post",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+          hint: "Mark this post as featured to display it on the homepage",
+        }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  # New Featured Collection
+  - name: "featured"
+    label: "Featured Posts"
+    folder: "/public/_featured/"
+    create: true
+    format: "frontmatter"
+    title: "Featured {{title}}"
+    fields:
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "featured",
+        }
+      - {
+          label: "Title",
+          name: "title",
+          widget: "relation",
+          collection: "blog", # Link to the blog collection
+          search_fields: ["title"],
+          value_field: "{{title}}",
+          display_fields: ["title"],
+        }
+      - {
+          label: "Post to Feature",
+          name: "post",
+          widget: "relation",
+          collection: "blog", # Link to the blog collection
+          search_fields: ["title"],
+          value_field: "{{slug}}", # Store the slug of the blog post
+          display_fields: ["title"],
+        }
