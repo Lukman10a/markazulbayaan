@@ -14,6 +14,7 @@ import CommunityCard from "../CommityCard";
 import finer from "../../../public/assets/finer.png";
 import personalize from "../../../public/assets/personalize.png";
 import soty from "../../../public/assets/soty.png";
+import Navbar from "../Nav";
 
 interface CommunityCardData {
   title: string;
@@ -184,31 +185,32 @@ export default function HomePage() {
         </div>
 
         {/* Right Side: Image and Popup Section */}
-        <div className="relative md:w-1/2">
+        <div className="relative md:w-1/2 w-full">
           {/* Main Image */}
-          <div className="rounded-lg overflow-hidden shadow-lg w-auto ">
+          <div className="rounded-lg overflow-hidden shadow-lg mb-5">
             <Image
               src={lamp} // Make sure to add the correct image path here
               alt="Islamic Knowledge Image"
               width={500}
               height={400}
-              layout="responsive"
-              className="object-cover"
+              layout="intrinsic" // Use intrinsic to better control the image size
+              className="w-full h-auto" // This will make the image fill the width on mobile and adjust height proportionally
             />
           </div>
 
           {/* Popup Card */}
-          <div className="absolute bottom-4 -left-8 bg-white p-4 rounded-lg shadow-lg border-2 border-yellow-500 w-64">
+          <div className="absolute bottom-12 left-6 md:-left-8 bg-white p-4 rounded-lg shadow-lg border-2 border-yellow-500 w-64">
             <h3 className="text-lg font-semibold mb-2">Smoker Cessation</h3>
-            <ul className="  text-gray-600">
+            <ul className="text-gray-600">
               <div className="flex gap-2 mb-3">
-                <div className=" bg-[#EF5A3B] p-2 rounded-full self-start">
+                <div className="bg-[#EF5A3B] p-2 rounded-full self-start">
                   <Image
                     src={finer} // Make sure to add the correct image path here
-                    alt="Islamic Knowledge Image"
-                    width={400}
-                    height={500}
-                    className="  w-7"
+                    alt="Finer Icon"
+                    width={50}
+                    height={50}
+                    layout="intrinsic" // Intrinsic layout for consistent sizing
+                    className="w-8 h-8" // Define size explicitly for smaller screens
                   />
                 </div>
                 <p className="text-[14px]">
@@ -216,33 +218,33 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex gap-2 mb-3">
-                <div className=" bg-[#EFBD31] p-2 rounded-full self-start">
+                <div className="bg-[#EFBD31] p-2 rounded-full self-start">
                   <Image
                     src={personalize} // Make sure to add the correct image path here
-                    alt="Islamic Knowledge Image"
-                    width={400}
-                    height={500}
-                    className="  w-7"
+                    alt="Personalized Plan Icon"
+                    width={50}
+                    height={50}
+                    layout="intrinsic"
+                    className="w-8 h-8" // Explicit size for better scaling
                   />
                 </div>
                 <p className="text-[14px]">Your personalized plan treatment</p>
               </div>
               <div className="flex gap-2 mb-3">
-                <div className=" bg-[#37AA54] p-2 rounded-full self-start">
+                <div className="bg-[#37AA54] p-2 rounded-full self-start">
                   <Image
                     src={soty} // Make sure to add the correct image path here
-                    alt="Islamic Knowledge Image"
-                    width={400}
-                    height={500}
-                    className="  w-7"
+                    alt="Quitting Journey Icon"
+                    width={50}
+                    height={50}
+                    layout="intrinsic"
+                    className="w-8 h-8" // Explicit size for better scaling
                   />
                 </div>
                 <p className="text-[14px]">
                   Start your quitting story & journey
                 </p>
               </div>
-              <li></li>
-              <li></li>
             </ul>
           </div>
         </div>
