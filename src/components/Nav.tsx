@@ -158,16 +158,16 @@ const Navbar: React.FC = () => {
         <div className="md:hidden mt-4">
           <ul className="space-y-4 text-gray-700 text-center">
             <li>
-              <Link href="#home">Home</Link>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="#about">About</Link>
+              <Link href="/about">About</Link>
             </li>
             <li>
               <Link href="/#faq">FAQ</Link>
             </li>
             <li>
-              <Link href="#blog">Blog</Link>
+              <Link href="blog">Blog</Link>
             </li>
           </ul>
 

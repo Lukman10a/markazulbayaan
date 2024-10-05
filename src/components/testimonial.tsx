@@ -93,10 +93,11 @@ export function Testimonials() {
               )
             )}
           </CarouselContent>
-          <div>
+          {/*TODO: ADD/UNCOMMENT later when ready to fix */}
+          {/* <div>
             <CarouselPrevious />
             <CarouselNext />
-          </div>
+          </div> */}
         </Carousel>
       </div>
     </section>
