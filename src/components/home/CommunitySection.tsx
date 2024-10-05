@@ -35,7 +35,7 @@ const communityCardDataArray: CommunityCardProps[] = [
 
 export const CommunitySection = () => {
   return (
-    <div className="bg-gray-900 py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw] mb-20">
+    <section className="bg-gray-900 py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw] mb-20 bg-[url('../../public/assets/mask-group.png')]">
       <div className="mx-auto text-center">
         {/* Header Section */}
         <div className="mb-10">
@@ -61,7 +61,7 @@ export const CommunitySection = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

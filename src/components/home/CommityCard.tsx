@@ -23,7 +23,7 @@ const CommunityCard: React.FC<CommunityCardProps> = ({
   link,
 }) => {
   return (
-    <Card className="bg-gray-800 text-white border-2 border-yellow-500">
+    <Card className="bg-black text-white border-2 border-yellow-500">
       <CardHeader>
         <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-4 mx-auto">
           {icon}
