@@ -9,6 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "custom-text": "0px 4px 3.7px 0px #00000066 inset", // Custom shadow
+      },
+      textShadow: {
+        sm: "0 1px 2px var(--tw-shadow-color)",
+        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+        lg: "0 8px 16px var(--tw-shadow-color)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

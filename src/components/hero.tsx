@@ -1,8 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import heroImg from "../../public/assets/hero_bg.png";
-import heroImage from "../../public/assets/heroImage.jpg";
-import Link from "next/link";
 import Button from "./button";
 
 export const Hero = () => {
@@ -27,7 +25,15 @@ export const Hero = () => {
         />
 
         <div className="px-[5vw] text-white absolute top-[10vmin]  lg:top-[7vmax] ">
-          <h1 className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  ">
+          <h1
+            style={{
+              color: "transparent",
+              textShadow: "0px 4px 1px #F8E7C5",
+              backgroundClip: "text",
+              backgroundColor: "#565656",
+            }}
+            className="text-[8vmin]  md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  "
+          >
             Seeking Knowledge
             <br /> is a duty of all Muslims
           </h1>

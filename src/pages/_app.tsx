@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
