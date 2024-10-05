@@ -1,11 +1,17 @@
 import Image from "next/image";
-import React from "react";
-import hadith from "../../public/assets/had.svg";
-import quran from "../../public/assets/qur.svg";
-import fiqh from "../../public/assets/fiqh.svg";
-import arabic from "../../public/assets/arabic.svg";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import hadith from "/public/assets/had.svg";
+import quran from "/public/assets/qur.svg";
+import fiqh from "/public/assets/fiqh.svg";
+import arabic from "/public/assets/arabic.svg";
 
-const SUBJECT = [
+const SUBJECTS = [
   {
     id: 1,
     icon: quran,
@@ -33,25 +39,28 @@ const SUBJECT = [
   },
 ];
 
-export const SubjectCard = () => {
+export function SubjectCard() {
   return (
-    <section className="py-16 grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))]  gap-[2vw] md:gap-[4vw] sm:px-[5vw] justify-center items-center">
-      {SUBJECT.map(({ id, icon, title, description }) => (
-        <div
-          key={id}
-          className="text-center p-[6vmin] rounded-md bg-white shadow-md"
-        >
-          <div className="p-3 bg-[#e8b33f52] mb-6 mx-[auto] inline-block rounded-full">
-            <Image src={icon} alt={title} className="w-6 h-6" />
-          </div>
-          <div>
-            <h1 className="text-[#760808] text-[4vmin] font-bold leading-tight mb-1">
-              {title}
-            </h1>
-            <p className="text-gray-600">{description}</p>
-          </div>
-        </div>
-      ))}
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {SUBJECTS.map(({ id, icon, title, description }) => (
+          <Card key={id} className="flex flex-col h-full">
+            <CardHeader>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#e8b33f52] flex items-center justify-center">
+                <Image src={icon} alt={title} width={24} height={24} />
+              </div>
+              <CardTitle className="text-[#760808] text-xl sm:text-2xl font-bold text-center">
+                {title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <CardDescription className="text-gray-600 text-center">
+                {description}
+              </CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </section>
   );
-};
+}

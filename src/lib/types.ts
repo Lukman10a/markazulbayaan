@@ -55,7 +55,7 @@ export interface DummyData {
   aboutUs: AboutUs;
   ourMission: OurMission;
   whyWeStarted: WhyWeStarted;
-  testimonials: Testimonial[];
+  // testimonials: Testimonial[];
 }
 
 // types.ts

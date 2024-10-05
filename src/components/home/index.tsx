@@ -15,73 +15,13 @@ import soty from "../../../public/assets/soty.png";
 import Faq from "../Faq";
 import { SubjectCard } from "../subjectcard";
 import CommunitySection from "./CommunitySection";
+import StatSection from "./StatSection";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <section className="px-10 pt-4 md:py-10">
-        <div className="md:text-center sm:space-y-6 space-y-4 ">
-          <h1 className="text-[#760808] text-[6.5vmin] md:text-5xl font-bold leading-tight">
-            A Platform to Learn the Qur’an & Sunnah
-          </h1>
-          <p className="sm:text-[2.5vmin] lg:px-[22vw] text-[3vmin] leading-relaxed font-medium">
-            Gain mastery in Quranic recitation (Tajweed) and immerse yourself in
-            the teachings of Prophet Muhammad (PBUH), with a focus on the Sunnah
-            and Islamic practices.
-          </p>
-        </div>
-
-        <div className="sm:flex gap-[10vw] items-center md:justify-center px-1 p-10">
-          <div className="text-center  flex sm:block">
-            <Image
-              src={quran}
-              alt="Quran Icon"
-              className="items-center w-[15vmin]"
-            />
-            <div className="sm:mt-6 sm:space-y-2 items-center p-4 sm:p-0">
-              <p className="text-[#E8B33F] font-bold text-[5vmin] md:text-[5vmin]">
-                1000+
-              </p>
-              <p className="text-[#3F2E07] text-[2.5vmin] sm:text-[2vmin] font-medium">
-                Quranic Lessons Delivered
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center flex sm:block">
-            <Image
-              src={volume}
-              alt="Tajweed Icon"
-              className="items-center w-[15vmin]"
-            />
-            <div className="sm:mt-6 sm:space-y-2 items-center p-4 sm:p-0">
-              <p className="text-[#E8B33F] font-bold text-[5vmin] md:text-[5vmin]">
-                50,000+
-              </p>
-              <p className="text-[#3F2E07] text-[2.5vmin] sm:text-[2vmin] font-medium">
-                Hours of Learning
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center flex sm:block">
-            <Image
-              src={moon}
-              alt="Community Icon"
-              className="items-center w-[15vmin]"
-            />
-            <div className="sm:mt-6 sm:space-y-2 items-center p-4 sm:p-0">
-              <p className="text-[#E8B33F] font-bold text-[5vmin] md:text-[4vmin]">
-                29m+
-              </p>
-              <p className="text-[#3F2E07] text-[2.5vmin] sm:text-[2vmin] font-medium">
-                Active Learners
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StatSection />
 
       <section className="p-10 lg:px-[6vw]  bg-custom-gradient ">
         <section className="md:flex items-center md:py-[7vmax] rounded-3xlmd:gap-10">

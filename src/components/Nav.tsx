@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
             <Link href="/about">About</Link>
           </li>
           <li className="hover:text-gray-900 font-semibold">
-            <Link href="#faq">FAQ</Link>
+            <Link href="/#faq">FAQ</Link>
           </li>
           <li className="hover:text-gray-900 font-semibold">
             <Link href="blog">Blog</Link>
@@ -145,12 +145,12 @@ const Navbar: React.FC = () => {
         </Menu>
 
         {/* Contact Button for Desktop */}
-        <a
-          href="#contact"
+        <Link
+          href="/contact"
           className="hidden md:inline-block bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600"
         >
           Contact us
-        </a>
+        </Link>
       </div>
 
       {/* Mobile Menu - Toggle on hamburger click */}
@@ -164,7 +164,7 @@ const Navbar: React.FC = () => {
               <Link href="#about">About</Link>
             </li>
             <li>
-              <Link href="#faq">FAQ</Link>
+              <Link href="/#faq">FAQ</Link>
             </li>
             <li>
               <Link href="#blog">Blog</Link>

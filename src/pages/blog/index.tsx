@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import blog2 from "/public/assets/blog2.png";
-import blog3 from "/public/assets/blog3.png";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { DummyData, Testimonial } from "@/lib/types";
 import Loader from "@/components/Loader";
 import Link from "next/link";
@@ -106,7 +104,8 @@ const Blog: React.FC = () => {
       {/* Hero Section */}
       <section
         className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 "
-        style={{ backgroundImage: `url(${data.hero.image})` }}>
+        style={{ backgroundImage: `url(${data.hero.image})` }}
+      >
         <div className="absolute inset-0 bg-cover bg-center"></div>
         <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
           <p className="py-4 text-xs md:text-sm">
@@ -172,7 +171,8 @@ const Blog: React.FC = () => {
             {data.allPosts.map((post: any, index: number) => (
               <div
                 key={index}
-                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg">
+                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
+              >
                 <p className="text-xs text-gray-600 mb-2">
                   By{" "}
                   <span className="text-amber-900 font-bold">
@@ -186,7 +186,8 @@ const Blog: React.FC = () => {
 
                 <Link
                   href={`/blog/${createSlug(post.title)}`}
-                  className="text-yellow-500">
+                  className="text-yellow-500"
+                >
                   Read More
                 </Link>
               </div>
@@ -226,7 +227,8 @@ const Blog: React.FC = () => {
                 className="absolute inset-0 bg-cover bg-center "
                 style={{
                   backgroundImage: `url(${data.whyWeStarted.image})`,
-                }}></div>
+                }}
+              ></div>
             </div>
             {/* Text Content */}
             <div className="min-w-[150px] absolute md:-translate-x-1/2 translate-x-12 translate-y-16 md:right-0 md:top-1/2 transform md:-translate-y-1/2 bg-white p-8 rounded-lg shadow-lg w-1/2 md:w-3/5 lg:w-2/5">
@@ -239,9 +241,12 @@ const Blog: React.FC = () => {
               <p className="mb-6 text-xs md:text-lg">
                 {data.whyWeStarted.description}
               </p>
-              <button className="bg-yellow-500 text-white md:px-6 text-xs md:text-lg px-2 py-1 md:py-3 rounded-lg hover:bg-yellow-600 transition">
+              <Link
+                href={"/about"}
+                className="bg-yellow-500 text-white md:px-6 text-xs md:text-lg px-2 py-1 md:py-3 rounded-lg hover:bg-yellow-600 transition"
+              >
                 {data.whyWeStarted.buttonText}
-              </button>
+              </Link>
             </div>
           </div>
         </section>

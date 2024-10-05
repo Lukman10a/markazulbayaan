@@ -1,38 +1,35 @@
 import React from "react";
-import CommunityCard from "./CommityCard";
+import CommunityCard, { CommunityCardProps } from "./CommityCard";
+import { Clock, Users, GraduationCap, Award } from "lucide-react";
 
-const communityCardDataArray = [
+const communityCardDataArray: CommunityCardProps[] = [
   {
     title: "Flexible Learning",
     description:
-      "We understand that life is busy, and that’s why our courses are designed to accommodate your schedule. Learn at your own pace, from the comfort of your home, with access to all learning materials whenever you need them.",
-    imageSrc: "/assets/flexible.svg", // Replace with actual icon path
-    altText: "Flexible Learning Icon",
-    link: "/flexible-learning", // Replace with actual link
+      "Learn at your own pace, from the comfort of your home, with access to all learning materials whenever you need them.",
+    icon: <Clock className="w-6 h-6 text-gray-800" />,
+    link: "/flexible-learning",
   },
   {
     title: "Expert Guidance",
     description:
-      "Our highly qualified instructors are passionate about helping you succeed. With years of experience and a deep understanding of Islamic education, they are dedicated to making your learning experience enriching and rewarding.",
-    imageSrc: "/assets/guidance.svg", // Replace with actual icon path
-    altText: "Expert Guidance Icon",
-    link: "/expert-guidance", // Replace with actual link
+      "Our highly qualified instructors are passionate about helping you succeed in your Islamic education journey.",
+    icon: <GraduationCap className="w-6 h-6 text-gray-800" />,
+    link: "/expert-guidance",
   },
   {
     title: "Community of Learners",
     description:
-      "Join a vibrant, supportive community of like-minded learners who share your passion for gaining knowledge. Connect, interact, and grow together on your journey of Islamic education.",
-    imageSrc: "/assets/community.svg", // Replace with actual icon path
-    altText: "Community of Learners Icon",
-    link: "/community-learners", // Replace with actual link
+      "Join a vibrant, supportive community of like-minded learners who share your passion for gaining knowledge.",
+    icon: <Users className="w-6 h-6 text-gray-800" />,
+    link: "/community-learners",
   },
   {
     title: "Certification on Completion",
     description:
-      "Earn a recognized certificate upon the successful completion of your course, demonstrating your dedication and achievement in Arabic language studies, Quranic recitation, or Islamic monotheism.",
-    imageSrc: "/assets/certificate.svg", // Replace with actual icon path
-    altText: "Certification Icon",
-    link: "/certification", // Replace with actual link
+      "Earn a recognized certificate upon the successful completion of your course, demonstrating your dedication and achievement.",
+    icon: <Award className="w-6 h-6 text-gray-800" />,
+    link: "/certification",
   },
 ];
 
@@ -58,8 +55,7 @@ export const CommunitySection = () => {
               key={index}
               title={communityCardData.title}
               description={communityCardData.description}
-              imageSrc={communityCardData.imageSrc}
-              altText={communityCardData.altText}
+              icon={communityCardData.icon}
               link={communityCardData.link}
             />
           ))}

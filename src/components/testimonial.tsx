@@ -9,8 +9,9 @@ import {
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Testimonial } from "@/lib/types";
+import Autoplay from "embla-carousel-autoplay";
 
-const TestimonialsData = [
+const testimonialsData = [
   {
     quote:
       "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
@@ -34,28 +35,39 @@ const TestimonialsData = [
 export function Testimonials() {
   return (
     <section className="py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
-      <div className="flex items-center justify-between px-4 py-8">
-        <section className="px-4 py-8 flex-1">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-8">
+        {/* Text Section */}
+        <section className="px-4 py-8 flex-1 text-center lg:text-left">
           <p className="py-4 uppercase font-bold text-neutral-700">
             Testimonials
           </p>
-          <h2 className="text-3xl font-bold mb-8">
-            What people say about <br />{" "}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8">
+            What people say about <br />
             <span className="text-orange-500">MARKAZUL-BAYAN</span>
           </h2>
         </section>
         {/* Carousel for testimonials */}
-        <Carousel className="flex-1">
+        <Carousel
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
+          className="flex-1 w-full lg:w-auto"
+        >
           <CarouselContent>
-            {TestimonialsData.map(
+            {testimonialsData.map(
               (
                 testimonial: Testimonial,
                 index: React.Key | null | undefined
               ) => (
-                <CarouselItem key={index}>
+                <CarouselItem
+                  key={index}
+                  className="max-w-full lg:max-w-md mx-auto"
+                >
                   <Card className="p-6">
                     <CardContent>
-                      <p className="text-sm mb-4">
+                      <p className="text-sm md:text-base lg:text-lg mb-4">
                         &ldquo;{testimonial.quote}&rdquo;
                       </p>
                       <div className="flex items-center">
@@ -64,9 +76,10 @@ export function Testimonials() {
                           alt="profile image"
                           width={50}
                           height={50}
+                          className="rounded-full"
                         />
                         <div className="ml-4">
-                          <p className="text-xs md:text-lg">
+                          <p className="text-xs md:text-base">
                             {testimonial.name}
                           </p>
                           <p className="text-xs md:text-sm">
@@ -80,8 +93,10 @@ export function Testimonials() {
               )
             )}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <div>
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
         </Carousel>
       </div>
     </section>

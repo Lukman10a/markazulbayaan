@@ -20,7 +20,7 @@ export function MobileMenu() {
 
   useEffect(() => {
     toggleMenuIsOpen(false);
-  }, [router]);
+  }, []);
 
   return (
     <DropdownMenu onOpenChange={toggleMenuIsOpen} open={menuIsOpen}>
@@ -68,20 +68,6 @@ export function MobileMenu() {
               Career
             </Link>
           </DropdownMenuItem>
-          {/* <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Insights</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                {insightsSubnav.map((insight) => (
-                  <DropdownMenuItem key={insight.title}>
-                    <Link href={insight.href} className="w-full">
-                      {insight.title}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FaGoogle, FaTwitter, FaInstagram } from "react-icons/fa";
 import markaz from "../../public/assets/markaz.png";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
@@ -27,18 +28,18 @@ const Footer: React.FC = () => {
 
           {/* Navigation Links: Stacked on mobile, aligned horizontally on larger screens */}
           <nav className="flex flex-col gap-[2.2vmax] md:gap-[3vmax] md:flex-row pb-12">
-            <a href="/" className="hover:text-gray-400 self-start mb-2">
+            <Link href="/" className="hover:text-gray-400 self-start mb-2">
               Home
-            </a>
-            <a href="/about" className="hover:text-gray-400 self-start mb-2">
+            </Link>
+            <Link href="/about" className="hover:text-gray-400 self-start mb-2">
               About us
-            </a>
-            <a href="/faq" className="hover:text-gray-400 self-start mb-2">
+            </Link>
+            <Link href="/faq" className="hover:text-gray-400 self-start mb-2">
               FAQ
-            </a>
-            <a href="/blog" className="hover:text-gray-400 self-start mb-2">
+            </Link>
+            <Link href="/blog" className="hover:text-gray-400 self-start mb-2">
               Blog
-            </a>
+            </Link>
           </nav>
         </div>
         {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}
@@ -47,21 +48,24 @@ const Footer: React.FC = () => {
             href="https://google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full">
+            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+          >
             <FaGoogle size={20} />
           </a>
           <a
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full">
+            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+          >
             <FaTwitter size={20} />
           </a>
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full">
+            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+          >
             <FaInstagram size={20} />
           </a>
         </div>

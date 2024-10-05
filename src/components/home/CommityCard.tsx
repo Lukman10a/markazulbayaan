@@ -1,40 +1,46 @@
-import Image from "next/image";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-interface CommunityCardProps {
+export interface CommunityCardProps {
   title: string;
   description: string;
-  imageSrc: string;
-  altText: string;
+  icon: React.ReactNode;
   link: string;
 }
 
 const CommunityCard: React.FC<CommunityCardProps> = ({
   title,
   description,
-  imageSrc,
-  altText,
+  icon,
   link,
 }) => {
   return (
-    <div className="bg-gray-800 text-white p-8 rounded-lg relative shadow-lg border-2 border-yellow-500 mb-8">
-      {/* Icon */}
-      <div className="absolute  -top-8 left-1/2 transform -translate-x-1/2">
-        <Image
-          src={imageSrc}
-          alt={altText}
-          width={64}
-          height={64}
-          className="rounded-full bg-white p-2"
-        />
-      </div>
-
-      <h3 className="mt-12 text-xl font-semibold mb-4">{title}</h3>
-      <p className="text-gray-400 mb-6">{description}</p>
-      <Link href={link} className="text-yellow-400 underline font-bold">
-        Learn more
-      </Link>
-    </div>
+    <Card className="bg-gray-800 text-white border-2 border-yellow-500">
+      <CardHeader>
+        <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+          {icon}
+        </div>
+        <CardTitle className="text-xl font-semibold text-center">
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription className="text-gray-400 mb-6">
+          {description}
+        </CardDescription>
+        <Button asChild variant="link" className="text-yellow-400 p-0">
+          <Link href={link}>Learn more</Link>
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 
