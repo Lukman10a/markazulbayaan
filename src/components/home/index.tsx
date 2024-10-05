@@ -20,30 +20,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <div className="p-20">
-        <div className="text-center space-y-6">
-          <h1 className="text-[#760808] text-5xl font-bold">
-=======
-
-      <div className="p-[2vmin] mt-[3vmin]">
-        <div className="md:text-center space-y-6 ">
-          <h1 className="text-[#760808] text-[7vmin] sm:text-[6vmin] font-bold px-[25px] leading-tight">
->>>>>>> Sheriff/homepage
-=======
-      <div className="px-10 pt-4 md:py-10">
-        <div className="md:text-center sm:space-y-6 space-y-4 ">
-          <h1 className="text-[#760808] text-[6.5vmin] md:text-5xl font-bold leading-tight ">
->>>>>>> e9b5bc0 (Homepage completed)
-            A Platform to learn the Qur’an & Sunnah
-=======
       <section className="px-10 pt-4 md:py-10">
         <div className="md:text-center sm:space-y-6 space-y-4 ">
           <h1 className="text-[#760808] text-[6.5vmin] md:text-5xl font-bold leading-tight">
             A Platform to Learn the Qur’an & Sunnah
->>>>>>> 9471515 (feat: update content amnd modularize some componenets)
           </h1>
           <p className="sm:text-[2.5vmin] lg:px-[22vw] text-[3vmin] leading-relaxed font-medium">
             Gain mastery in Quranic recitation (Tajweed) and immerse yourself in
@@ -123,7 +103,7 @@ export default function HomePage() {
           />
         </section>
       </section>
-      <section className="space-y-2 px-10 lg:px-[6vw] ">
+      <section className="space-y-2 px-10 lg:px-[6vw]">
         <h1 className="font-bold text-[4vmax] lg:text-[3vmax] text-[#CD9418]">
           What we offer
         </h1>
