@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClasses = cn(
-    "font-semibold text-[15px] bg-yellow-500 hover:bg-yellow-400  w-[100%] md:w-[190px] py-[12px] md:py-[20px] rounded-md text-[white] my-[2vmin]",
+    "font-semibold text-[15px] bg-yellow-500 hover:bg-yellow-400  w-[100%] md:w-[170px] py-[12px] md:py-[20px] rounded-md text-[white] my-[2vmin]",
     className
   );
 
