@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-// import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
-// import Button from "./button";
+import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -10,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { Testimonial } from "@/lib/types";
 
 const TestimonialsData = [
   {
@@ -34,58 +33,56 @@ const TestimonialsData = [
 
 export function Testimonials() {
   return (
-    <section className="container py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
-      <div className="">
-        <div className="md:flex md:items-center md:justify-between  px-4 py-8 container">
-          <section className="px-4 py-8 container md:min-w-[40%]">
-            <p className="py-4 uppercase font-bold text-neutral-700">
-              Testimonials
-            </p>
-            <h2 className="text-3xl font-bold mb-8">
-              What people say about <br />{" "}
-              <span className="text-orange-500">MARKAZUL-BAYAN</span>
-            </h2>
-            {/* Carousel for testimonials */}
-          </section>
-          <Carousel className="w-full">
-            <CarouselContent>
-              {TestimonialsData.map(
-                (
-                  testimonial: Testimonial,
-                  index: React.Key | null | undefined
-                ) => (
-                  <CarouselItem key={index}>
-                    <Card className="p-6">
-                      <CardContent>
-                        <p className="text-sm mb-4">
-                          &ldquo;{testimonial.quote}&rdquo;
-                        </p>
-                        <div className="flex items-center">
-                          <Image
-                            src={"/../../public/assets/profile.png"}
-                            alt="profile image"
-                            width={50}
-                            height={50}
-                          />
-                          <div className="ml-4">
-                            <p className="text-xs md:text-lg">
-                              {testimonial.name}
-                            </p>
-                            <p className="text-xs md:text-sm">
-                              {testimonial.location}
-                            </p>
-                          </div>
+    <section className="py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
+      <div className="flex items-center justify-between px-4 py-8">
+        <section className="px-4 py-8 flex-1">
+          <p className="py-4 uppercase font-bold text-neutral-700">
+            Testimonials
+          </p>
+          <h2 className="text-3xl font-bold mb-8">
+            What people say about <br />{" "}
+            <span className="text-orange-500">MARKAZUL-BAYAN</span>
+          </h2>
+        </section>
+        {/* Carousel for testimonials */}
+        <Carousel className="flex-1">
+          <CarouselContent>
+            {TestimonialsData.map(
+              (
+                testimonial: Testimonial,
+                index: React.Key | null | undefined
+              ) => (
+                <CarouselItem key={index}>
+                  <Card className="p-6">
+                    <CardContent>
+                      <p className="text-sm mb-4">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </p>
+                      <div className="flex items-center">
+                        <Image
+                          src={"/assets/profile.png"}
+                          alt="profile image"
+                          width={50}
+                          height={50}
+                        />
+                        <div className="ml-4">
+                          <p className="text-xs md:text-lg">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-xs md:text-sm">
+                            {testimonial.location}
+                          </p>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                )
-              )}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              )
+            )}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
