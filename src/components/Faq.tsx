@@ -2,20 +2,29 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "How does slice work?",
-    answer: "Slice is a tool that allows you to break down...",
+    question: "What courses does Markazul-Bayan offer?",
+    answer:
+      "Markazul-Bayan offers courses in Arabic language, Quranic studies, and Islamic monotheism, designed to cater to different proficiency levels.",
   },
   {
-    question: "Is my data course?",
-    answer: "Yes, your data is handled with utmost security...",
+    question: "How do I enroll in a course?",
+    answer:
+      "To enroll, simply visit our Courses page, select the course you're interested in, and follow the registration instructions.",
   },
   {
-    question: "Does slice work well with large teams?",
-    answer: "Slice is highly scalable and works well with teams of any size...",
+    question: "Are the courses beginner-friendly?",
+    answer:
+      "Yes, we offer beginner, intermediate, and advanced levels to ensure that students at any stage of learning can benefit from our courses.",
   },
   {
-    question: "How do I create a new account?",
-    answer: "To create a new account, you simply click on the signup button...",
+    question: "Is there a certification upon course completion?",
+    answer:
+      "Yes, upon successful completion of your course, you will receive a certificate that acknowledges your achievement.",
+  },
+  {
+    question: "Can I learn at my own pace?",
+    answer:
+      "Absolutely. Our courses are designed with flexibility in mind, allowing students to learn at their own pace.",
   },
 ];
 
@@ -27,7 +36,7 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="mx-auto my-10 px-4 lg:px-36">
+    <section id="faq" className="mx-auto my-10 px-4 lg:px-36">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: FAQ Description */}
         <div>
@@ -49,7 +58,8 @@ const FAQ: React.FC = () => {
             <div key={index} className="border-b border-gray-300 pb-4">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full text-left text-gray-700 text-lg font-medium focus:outline-none">
+                className="flex justify-between items-center w-full text-left text-gray-700 text-lg font-medium focus:outline-none"
+              >
                 <span>{faq.question}</span>
                 <span className="text-2xl">
                   {openIndex === index ? "-" : "+"}
