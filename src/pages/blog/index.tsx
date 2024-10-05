@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DummyData, Testimonial } from "@/lib/types";
 import Loader from "@/components/Loader";
 import Link from "next/link";
+import Testimonials from "@/components/testimonial";
 
 // Dummy CMS data for both Blog and additional sections
 const dummyData: DummyData = {
@@ -245,6 +246,7 @@ const Blog: React.FC = () => {
           </div>
         </section>
       </div>
+      <Testimonials />
     </main>
   );
 };

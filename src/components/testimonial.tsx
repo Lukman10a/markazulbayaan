@@ -34,8 +34,8 @@ const TestimonialsData = [
 
 export function Testimonials() {
   return (
-    <section className="py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
-      <div className=" ">
+    <section className="container py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
+      <div className="">
         <div className="md:flex md:items-center md:justify-between  px-4 py-8 container">
           <section className="px-4 py-8 container md:min-w-[40%]">
             <p className="py-4 uppercase font-bold text-neutral-700">

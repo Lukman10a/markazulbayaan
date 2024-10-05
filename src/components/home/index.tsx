@@ -3,7 +3,6 @@ import { Hero } from "../hero";
 import { Subjectcard } from "../subjectcard";
 import Image from "next/image";
 import heroImage from "../../../public/assets/reading.jpg";
-import journeyBg from "../../../public/assets/journey_bg.png";
 import lamp from "../../../public/assets/lamp.png";
 import quran from "../../../public/assets/quran.svg";
 import volume from "../../../public/assets/volume.svg";
@@ -14,7 +13,7 @@ import CommunityCard from "../CommityCard";
 import finer from "../../../public/assets/finer.png";
 import personalize from "../../../public/assets/personalize.png";
 import soty from "../../../public/assets/soty.png";
-import Navbar from "../Nav";
+import Faq from "../Faq";
 
 interface CommunityCardData {
   title: string;
@@ -236,7 +235,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-900 py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw]">
+      <div className="bg-gray-900 py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw] mb-20">
         <div className=" mx-auto text-center">
           {/* Header Section */}
           <h2 className="text-white text-xl font-normal mb-2">
@@ -245,13 +244,13 @@ export default function HomePage() {
           <h1 className="text-[6.5vmin] text-white font-semibold mb-4">
             Join our Community of Islamic Learners
           </h1>
-          <p className="text-white text-[16px]  mb-12 lg:w-[50%] mx-auto">
+          <p className="text-white text-[16px]  mb-24 lg:w-[50%] mx-auto">
             No insurance company. Nexus Mutual is run entirely by its members.
             Only members can decide which claims are valid.
           </p>
 
           {/* Card Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-[80%] sm:w-[70%] md:w-[50%] lg:w-[100%] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-[90%] sm:w-[70%] md:w-[50%] lg:w-[100%] mx-auto">
             {/* Map over the cardDataArray to generate the Card components */}
             {communityCardDataArray.map((communityCardData, index) => (
               <CommunityCard
@@ -266,6 +265,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <Faq />
     </section>
   );
 }

@@ -17,7 +17,7 @@ const CommunityCard: React.FC<CommunityCardProps> = ({
   link,
 }) => {
   return (
-    <div className="bg-gray-800 text-white p-8 rounded-lg relative shadow-lg border-2 border-yellow-500">
+    <div className="bg-gray-800 text-white p-8 rounded-lg relative shadow-lg border-2 border-yellow-500 mb-8">
       {/* Icon */}
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
         <Image

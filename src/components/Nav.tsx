@@ -9,6 +9,7 @@ import Link from "next/link"; // Using Link component for navigation
 import markaz from "../../public/assets/markaz.png";
 import uk from "../../public/assets/ukflag.png";
 import saudi from "../../public/assets/saudiflag.png";
+import dropdown from "../../public/assets/dropdown.png";
 
 const Navbar: React.FC = () => {
   const [language, setLanguage] = useState<string>("English");
@@ -36,18 +37,18 @@ const Navbar: React.FC = () => {
         </button>
 
         {/* Nav Links for Desktop */}
-        <ul className="hidden md:flex space-x-8 text-gray-700">
-          <li className="hover:text-gray-900">
-            <Link href="#home">Home</Link>
+        <ul className="hidden md:flex space-x-12 text-gray-700">
+          <li className="hover:text-gray-900 font-semibold">
+            <Link href="/home">Home</Link>
           </li>
-          <li className="hover:text-gray-900">
-            <Link href="#about">About</Link>
+          <li className="hover:text-gray-900 font-semibold">
+            <Link href="/about">About</Link>
           </li>
-          <li className="hover:text-gray-900">
+          <li className="hover:text-gray-900 font-semibold">
             <Link href="#faq">FAQ</Link>
           </li>
-          <li className="hover:text-gray-900">
-            <Link href="#blog">Blog</Link>
+          <li className="hover:text-gray-900 font-semibold">
+            <Link href="blog">Blog</Link>
           </li>
         </ul>
 
@@ -66,6 +67,14 @@ const Navbar: React.FC = () => {
               height={400}
             />
             <span>{language}</span>
+
+            <Image
+              src={dropdown}
+              alt="Logo"
+              className=" mr-4 w-auto "
+              width={500}
+              height={400}
+            />
           </Menu.Button>
 
           <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
@@ -85,6 +94,17 @@ const Navbar: React.FC = () => {
                       height={400}
                     />{" "}
                     English
+                    {language === "English" ? (
+                      <Image
+                        src="/assets/mark.png"
+                        alt="Logo"
+                        className=" ml-2 w-auto "
+                        width={500}
+                        height={400}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </button>
                 )}
               </Menu.Item>
@@ -103,6 +123,17 @@ const Navbar: React.FC = () => {
                       height={400}
                     />{" "}
                     Arabic
+                    {language === "Arabic" ? (
+                      <Image
+                        src="/assets/mark.png"
+                        alt="Logo"
+                        className=" ml-2 w-auto "
+                        width={500}
+                        height={400}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </button>
                 )}
               </Menu.Item>

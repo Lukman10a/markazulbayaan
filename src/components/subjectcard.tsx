@@ -19,7 +19,7 @@ export const Subjectcard = () => {
         <div
           key={id}
           className="text-center p-[6vmin]  rounded-md bg-white shadow-md ">
-          <div className="p-3 bg-[#E8B33F]  mb-6 mx-[auto] inline-block rounded-full">
+          <div className="p-3 bg-[#e8b33f52]  mb-6 mx-[auto] inline-block rounded-full">
             <Image src={icon} alt={title} className="w-6 h-6 " />
           </div>
           <div>
