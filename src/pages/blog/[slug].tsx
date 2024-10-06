@@ -3,7 +3,30 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import React from 'react';
-import OtherBlogs from './otherPost';
+import OtherBlogs from '../../components/otherPost';
+import { getPostData, getAllPostIds } from "@/cms/utils"; // Import the utility functions
+
+
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: false, // This will show a 404 for paths not returned by getStaticPaths
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = getPostData(params?.slug as string);
+
+  return {
+    props: {
+      post: postData,
+    },
+  };
+};
+
 
 // Define types for the blog post data
 interface Post {
@@ -58,76 +81,5 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   );
 };
 
-// Fetch all possible slugs for Static Generation (SSG)
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Replace this with your data fetching logic (API, CMS, database, etc.)
-  const posts = [
-    { slug: 'road-map-for-beginners-in-arabic-language-quran-reading-and-writing' },
-    { slug: 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit' },
-    { slug: '8-figma-design-systems-that-you-can-download-for-free-today' },
-  ];
-
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
-  }));
-
-  return {
-    paths,
-    fallback: true, // Enable fallback for ISR (Incremental Static Regeneration)
-  };
-};
-
-// Fetch post data based on slug for Static Generation (SSG)
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params?.slug as string;
-
-  // Replace this with your data fetching logic
-  const posts = [
-    {
-      slug: 'road-map-for-beginners-in-arabic-language-quran-reading-and-writing',
-      title: "Road map for beginners in Arabic language, Qur'an, Reading and writing",
-      author: 'Abu Abdullah',
-      date: 'September 23, 2022',
-      description: 'This is the first post description.',
-      content: 'Full content of the first post.',
-      image: '/assets/blog1.png',
-    },
-    {
-      slug: 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit',
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      author: 'Abu Zayda',
-      date: 'October 5, 2022',
-      description: 'This is the second post description.',
-      content: 'Full content of the second post.',
-      image: '/assets/blog2.png',
-    },
-    {
-      slug: '8-figma-design-systems-that-you-can-download-for-free-today',
-      title: "8 Figma design systems that you can download for free today.",
-      author: 'Abu Jamal',
-      date: 'November 12, 2022',
-      description: 'This is the third post description.',
-      content: 'Full content of the third post.',
-      image: '/assets/blog3.png',
-    },
-  ];
-
-  // Find the post by slug
-  const post = posts.find((p) => p.slug === slug);
-
-  // If the post is not found, return 404
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      post,
-    },
-    revalidate: 10, // Enable ISR, regenerate the page every 10 seconds if a new request comes in
-  };
-};
 
 export default BlogPost;

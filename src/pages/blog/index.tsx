@@ -6,6 +6,18 @@ import { DummyData, Testimonial } from "@/lib/types";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import Testimonials from "@/components/testimonial";
+import { getSortedPostsData } from "@/cms/utils"; // Import the utility function
+
+
+export const getStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+
+  return {
+    props: {
+      posts: allPostsData,
+    },
+  };
+};
 
 // Dummy CMS data for both Blog and additional sections
 const dummyData: DummyData = {

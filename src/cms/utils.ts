@@ -1,115 +1,58 @@
-// import fs from "fs";
-// import matter from "gray-matter";
-// import path from "path";
-// // import yaml from "js-yaml";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+import { PostData } from "../lib/types";
 
-// const postsDirectory = path.join(process.cwd(), "public/_posts");
+// example if using typescript: this is based on the post schema we created in the config.yml
 
-// export type PostContent = {
-//   readonly date: string;
-//   readonly title: string;
-//   readonly slug: string;
-//   readonly fullPath: string;
-// };
+export interface LocalPostData {
+  slug: string;
+  title: string;
+  description: string;
+  date: string; // Use Date type if you want to work with Date objects
+  thumbnail?: string; // Optional
+  author: string;
+  body: string; // The actual content of the post
+}
 
-// let postCache: PostContent[];
+const postsDirectory = path.join(process.cwd(), "content/posts");
 
-// export function fetchPostContent(): PostContent[] {
-//   if (postCache) {
-//     return postCache;
-//   }
-//   // Get file names under /posts
-//   const fileNames = fs.readdirSync(postsDirectory);
+export function getSortedPostsData(): PostData[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsData: PostData[] = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
 
-//   const allPostsData = fileNames
-//     .filter((it) => it.endsWith(".md"))
-//     .map((fileName) => {
-//       // Read markdown file as string
-//       const fullPath = path.join(postsDirectory, fileName);
-//       const fileContents = fs.readFileSync(fullPath, "utf8");
+    return {
+      slug,
+      ...data,
+      date: data.date instanceof Date ? data.date.toISOString() : data.date,
+    } as PostData;
+  });
 
-//       // Use gray-matter to parse the post metadata section
-//       const matterResult = matter(fileContents, {
-//         engines: {
-//           yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
-//         },
-//       });
-//       const matterData = matterResult.data as {
-//         date: string;
-//         title: string;
-//         slug: string;
-//         fullPath: string;
-//       };
-//       matterData.fullPath = fullPath;
+  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
 
-//       const slug = fileName.replace(/\.md$/, "");
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => ({
+    params: {
+      slug: fileName.replace(/\.md$/, ""), // Removing .md extension
+    },
+  }));
+}
 
-//       // Validate slug string
-//       if (matterData.slug !== slug) {
-//         throw new Error(
-//           "slug field not match with the path of its content source"
-//         );
-//       }
+export function getPostData(slug: string): PostData {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const matterResult = matter(fileContents);
 
-//       return matterData;
-//     });
-//   // Sort posts by date
-//   postCache = allPostsData.sort((a, b) => {
-//     if (a.date < b.date) {
-//       return 1;
-//     } else {
-//       return -1;
-//     }
-//   });
-//   return postCache;
-// }
-
-// export function countPosts(tag?: string): number {
-//   return fetchPostContent().filter(
-//     (it) => !tag || (it.tags && it.tags.includes(tag))
-//   ).length;
-// }
-
-// export function listPostContent(
-//   page: number,
-//   limit: number,
-//   tag?: string
-// ): PostContent[] {
-//   return fetchPostContent()
-//     .filter((it) => !tag || (it.tags && it.tags.includes(tag)))
-//     .slice((page - 1) * limit, page * limit);
-// }
-
-// // src/libs/utils.ts
-
-// export const getFolderMarkups = (
-//   directory: string
-// ): matter.GrayMatterFile<string>[] | null => {
-//   /* Converts all files in a directory to gray-matter objects */
-//   try {
-//     const directoryPath = path.join(process.cwd(), directory);
-//     const files = fs.readdirSync(directoryPath);
-
-//     return files.map((filename) => {
-//       const filePath = path.join(directoryPath, filename);
-//       const data = matter.read(filePath);
-//       return data;
-//     });
-//   } catch (error) {
-//     return null;
-//   }
-// };
-
-// export const getMarkup = (
-//   directory: string,
-//   filename: string
-// ): matter.GrayMatterFile<string> | null => {
-//   /* Converts specific file to a gray-matter object */
-//   try {
-//     const file = matter.read(path.join(process.cwd(), directory, filename));
-//     return file;
-//   } catch (error) {
-//     console.error(error);
-//     return null;
-//   }
-// };
+  return {
+    slug,
+    ...matterResult.data,
+    date: matterResult.data.date instanceof Date ? new Date(matterResult.data.date).toISOString() : matterResult.data.date,
+    body: matterResult.content,
+  } as PostData;
+}
