@@ -9,12 +9,13 @@ export interface Hero {
   image: string; // Assuming this is a path to an image
 }
 
-export interface FeaturedPost {
+export interface FeaturedPostData {
   title: string;
   author: string;
   date: string; // Could also be a Date if you parse it into a Date object
   description: string;
   image: string | StaticImageData; // Assuming this is a path to an image
+  slug: string;
 }
 
 export interface BlogPost {
@@ -50,12 +51,9 @@ export interface Testimonial {
 
 export interface DummyData {
   hero: Hero;
-  featuredPost: FeaturedPost;
-  allPosts: BlogPost[];
   aboutUs: AboutUs;
   ourMission: OurMission;
   whyWeStarted: WhyWeStarted;
-  // testimonials: Testimonial[];
 }
 
 // types.ts
@@ -64,7 +62,16 @@ export interface PostData {
   title: string;
   description: string;
   date: string; // Use Date type if you want to work with Date objects
-  thumbnail?: string; // Optional
+  thumbnail: string | StaticImageData; // Optional
+  author: string;
+  body: string; // The actual content of the post
+}
+export interface FeaturedPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string; // Use Date type if you want to work with Date objects
+  thumbnail?: string | StaticImageData; // Optional
   author: string;
   body: string; // The actual content of the post
 }

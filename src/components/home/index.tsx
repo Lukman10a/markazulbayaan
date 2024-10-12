@@ -96,7 +96,6 @@ export default function HomePage() {
               alt="Islamic Knowledge Image"
               width={500}
               height={400}
-              layout="intrinsic" // Use intrinsic to better control the image size
               className="w-full h-auto" // This will make the image fill the width on mobile and adjust height proportionally
             />
           </div>
@@ -112,7 +111,6 @@ export default function HomePage() {
                     alt="Qualified Instructors Icon"
                     width={50}
                     height={50}
-                    layout="intrinsic" // Intrinsic layout for consistent sizing
                     className="w-8 h-8" // Define size explicitly for smaller screens
                   />
                 </div>
@@ -127,7 +125,6 @@ export default function HomePage() {
                     alt="Flexible Study Plan Icon"
                     width={50}
                     height={50}
-                    layout="intrinsic"
                     className="w-8 h-8" // Explicit size for better scaling
                   />
                 </div>
@@ -142,7 +139,6 @@ export default function HomePage() {
                     alt="Community Support Icon"
                     width={50}
                     height={50}
-                    layout="intrinsic"
                     className="w-8 h-8" // Explicit size for better scaling
                   />
                 </div>

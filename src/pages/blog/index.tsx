@@ -1,11 +1,29 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import blog2 from "/public/assets/blog2.png";
-
-import { DummyData, Testimonial } from "@/lib/types";
-import Loader from "@/components/Loader";
+import React, { useState } from "react";
+import { DummyData, Testimonial, PostData, FeaturedPost } from "@/lib/types";
 import Link from "next/link";
 import Testimonials from "@/components/testimonial";
+import { getSortedFeaturedPostsData, getSortedPostsData } from "@/cms/utils";
+import Pagination from "@/components/pagination";
+import DefaultThumbnail from "@/components/defaultThumbnail";
+import { formatDate } from "@/lib/utils";
+
+const POSTS_PER_PAGE = 6;
+
+export const getStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+  const allFeaturedPostData = getSortedFeaturedPostsData().map((post) => ({
+    ...post,
+    date: post.date || null,
+  }));
+
+  return {
+    props: {
+      posts: allPostsData || [],
+      featuredPosts: allFeaturedPostData || [],
+    },
+  };
+};
 
 // Dummy CMS data for both Blog and additional sections
 const dummyData: DummyData = {
@@ -19,45 +37,6 @@ const dummyData: DummyData = {
     buttonText: "Read More",
     image: "/assets/blog1.png",
   },
-  featuredPost: {
-    title: "The Key to Mastering Arabic Grammar: A Comprehensive Guide",
-    author: "Abu Lubaba Al-Asalafy",
-    date: "June 10, 2022",
-    description:
-      "Master the intricacies of Arabic grammar with this step-by-step guide designed for learners of all levels.",
-    image: blog2,
-  },
-  allPosts: [
-    {
-      title: "5 Essential Tips to Improve Your Qur'an Recitation",
-      author: "Abu Zayda Al-Muwaffaq",
-      description:
-        "Looking to memorize the Qur'an? Follow these proven techniques for quick and effective memorization.",
-      date: "Aug 10, 2023",
-    },
-    {
-      title: "How to Develop Fluency in Spoken Arabic in 6 Months",
-      author: "Abu Tohir As-Salafy",
-      description:
-        "Start reading Arabic with ease by following these simple steps, designed for absolute beginners.",
-      date: "Sept 1, 2023",
-    },
-    {
-      title:
-        "The Importance of Writing Skills in Arabic for Effective Communication",
-      author: "Abu Qoseem Al-Ilorly",
-      description:
-        "Looking to memorize the Qur'an? Follow these proven techniques for quick and effective memorization.",
-      date: "Oct 12, 2021",
-    },
-    {
-      title: "Understanding Tajweed: A Complete Guide for Beginners",
-      author: "Abu Hanifa Ibrahim",
-      description:
-        "Master the art of Tajweed and improve your Qur'an recitation with this detailed overview of essential rules.",
-      date: "Nov 20, 2021",
-    },
-  ],
   aboutUs: {
     title: "We Are a Dedicated Team of Educators Focused on Islamic Learning",
     description:
@@ -78,179 +57,187 @@ const dummyData: DummyData = {
   },
 };
 
-const Blog: React.FC = () => {
-  const [data, setData] = useState<any>(null);
+const Blog = ({
+  posts,
+  featuredPosts,
+}: {
+  posts: PostData[];
+  featuredPosts: FeaturedPost[];
+}) => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    // Simulate fetching data from CMS
-    setTimeout(() => {
-      setData(dummyData);
-    }, 1000);
-  }, []);
+  const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const createSlug = (title: string) => {
-    return title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
-
-  if (!data) {
-    return <Loader />;
-  }
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <main>
+    <main className="">
       {/* Hero Section */}
       <section
-        className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8 "
-        style={{ backgroundImage: `url(${data.hero.image})` }}
+        className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8"
+        style={{ backgroundImage: `url(${posts[0].thumbnail})` }}
       >
-        <div className="absolute inset-0 bg-cover bg-center"></div>
-        <div className="relative z-10 md:mx-auto md:px-4 md:py-24 md:container">
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 md:py-24">
           <p className="py-4 text-xs md:text-sm">
-            POSTED ON <span className="font-bold">MARKAZUL - BAYAN </span>
+            POSTED ON <span className="font-bold">MARKAZUL - BAYAN</span>
           </p>
-          <h1 className="text-lg md:text-5xl font-bold mb-4">
-            {data.hero.title}
+          <h1 className="text-2xl md:text-5xl font-bold mb-4 capitalize">
+            {posts[0].title}
           </h1>
-          <p className="mb-4 text-sm md:text-lg">{data.hero.description}</p>
-
+          {/* <p className="mb-4 text-sm md:text-lg">{posts[0].description}</p> */}
           <p className="text-xs md:text-sm mb-4">
-            By <span className="text-yellow-500">{data.hero.author} </span> |{" "}
-            {data.hero.date}
+            By <span className="text-yellow-500">{posts[0].author} </span> |{" "}
+            {formatDate(posts[0].date)}
           </p>
-          <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-            {data.hero.buttonText}
-          </button>
+          <Link href={`/blog/${posts[0].slug}`} passHref>
+            <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+              Read More
+            </button>
+          </Link>
         </div>
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mb-8 mx-auto px-4 py-8 container">
+      <div className="px-4 py-8 container mx-auto">
         {/* Featured Post Section */}
-        <section className=" mx-auto px-4 py-8 container">
-          <h2 className="text-xl font-bold mb-4">Featured Post</h2>
-          <div className=" rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src={data.featuredPost.image}
-              alt={data.featuredPost.title}
-              className="w-full h-54 object-cover"
-            />
-            <div className="p-6 py-8">
-              <p className=" text-xs mb-4">
-                By{" "}
-                <span className="text-amber-900 font-bold">
-                  {data.featuredPost.author}
-                </span>{" "}
-                | {data.featuredPost.date}
-              </p>
-              <h3 className="text-lg font-bold mb-2">
-                {data.featuredPost.title}
-              </h3>
-              <p className="text-gray-600 mb-2">
-                {data.featuredPost.description}
-              </p>
-              <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
-                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-                  Read More
-                </button>
-              </Link>
-            </div>
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Featured Post</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+            {featuredPosts.map((featuredPost: FeaturedPost, index: number) => (
+              <article
+                key={index}
+                className="rounded-lg overflow-hidden border border-amber-500 grid grid-rows-[auto_1fr_auto] p-3 justify-center"
+              >
+                <DefaultThumbnail
+                  title={featuredPost.title}
+                  imageUrl={featuredPost?.thumbnail}
+                />
+                <h3 className="text-lg font-bold my-2">{featuredPost.title}</h3>
+                <div className="">
+                  <p className="text-gray-600 mb-2">
+                    {featuredPost.description}
+                  </p>
+                  <Link href={`/blog/${featuredPost.slug}`}>
+                    <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+                      Read More
+                    </button>
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         {/* All Posts Section */}
-        <section className="mx-auto px-4 py-8 container">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">All Posts</h2>
-            <a href="#" className="text-yellow-500">
-              View All
-            </a>
-          </div>
-          <div className="grid grid-cols-1 gap-6">
-            {data.allPosts.map((post: any, index: number) => (
-              <div
+        <section className="container mx-auto">
+          <h2 className="text-2xl font-bold mb-6">All Posts</h2>
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+            {currentPosts.map((post: PostData, index: number) => (
+              <article
                 key={index}
-                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
+                className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 grid grid-rows-[auto_1fr_auto]"
               >
-                <p className="text-xs text-gray-600 mb-2">
-                  By{" "}
-                  <span className="text-amber-900 font-bold">
-                    {post.author}{" "}
-                  </span>{" "}
-                  | <span>{post.date}</span>
-                </p>
-                <h3 className="text-sm font-bold mb-2">{post.title}</h3>
+                <div className="relative h-48">
+                  <Image
+                    src={post.thumbnail || "/placeholder.svg"}
+                    alt={post.title}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="p-6 grid grid-rows-[auto_1fr_auto] gap-2">
+                  <p>
+                    By<span className="text-[#760808]"> {post.author}</span> |{" "}
+                    <span>{formatDate(post.date)}</span>
+                  </p>
 
-                <p className="text-sm text-gray-500">{post.description}</p>
-
-                <Link
-                  href={`/blog/${createSlug(post.title)}`}
-                  className="text-yellow-500"
-                >
-                  Read More
-                </Link>
-              </div>
+                  <div>
+                    <h3 className="text-xl font-bold capitalize mb-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 line-clamp-3">
+                      {post.description}
+                    </p>
+                  </div>
+                  <Link href={`/blog/${post.slug}`} passHref>
+                    <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition mt-auto">
+                      Read More
+                    </button>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
+          <Pagination
+            postsPerPage={POSTS_PER_PAGE}
+            totalPosts={posts.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         </section>
       </div>
 
-      <div className="bg-yellow-50">
-        {/* About Us and Our Mission Section */}
-        <section className="grid md:grid-cols-2 gap-6 mb-8 bg-yellow-50 mx-auto px-4 py-8 container">
-          {/* About Us */}
-          <div className=" p-6 rounded-lg">
-            <h2 className="text-sm font-semibold mb-4">About Us</h2>
-            <p className="text-2xl font-bold mb-4">{data.aboutUs.title}</p>
-            <p className="text-gray-600 mb-4">{data.aboutUs.description}</p>
-            <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-              {data.aboutUs.buttonText}
-            </button>
-          </div>
-          {/* Our Mission */}
-          <div className=" p-6 rounded-lg  mx-auto px-4 py-8 container">
-            <h2 className="text-sm font-semibold mb-4">Our Mission</h2>
-            <p className="text-2xl font-bold mb-4">{data.ourMission.title}</p>
-            <p className="text-gray-600">{data.ourMission.description}</p>
-          </div>
-        </section>
-      </div>
-
-      <div className="flex justify-center mx-auto">
-        {/* Why We Started Section */}
-        <section className="relative mb-16 mx-auto pl-6 py-8 container">
-          <div className="relative grid  items-center">
-            {/* Image */}
-            <div className="relative w-2/3 md:w-1/2 h-96 rounded-lg overflow-hidden shadow-lg">
-              <div
-                className="absolute inset-0 bg-cover bg-center "
-                style={{
-                  backgroundImage: `url(${data.whyWeStarted.image})`,
-                }}
-              ></div>
+      {/* About Us and Our Mission Section */}
+      <section className="bg-yellow-50 py-12 ">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h2 className="text-sm font-semibold mb-2">About Us</h2>
+              <p className="text-2xl font-bold mb-4">
+                {dummyData.aboutUs.title}
+              </p>
+              <p className="text-gray-600 mb-4">
+                {dummyData.aboutUs.description}
+              </p>
+              <Link href="/about" passHref>
+                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+                  {dummyData.aboutUs.buttonText}
+                </button>
+              </Link>
             </div>
-            {/* Text Content */}
-            <div className="min-w-[150px] absolute md:-translate-x-1/2 translate-x-12 translate-y-16 md:right-0 md:top-1/2 transform md:-translate-y-1/2 bg-white p-8 rounded-lg shadow-lg w-1/2 md:w-3/5 lg:w-2/5">
-              <h2 className="text-xs md:text-2xl font-bold mb-4">
-                Why We Started
-              </h2>
-              <p className="text-xs md:text-xl text-gray-700 mb-4">
-                {data.whyWeStarted.title}
+            <div>
+              <h2 className="text-sm font-semibold mb-2">Our Mission</h2>
+              <p className="text-2xl font-bold mb-4">
+                {dummyData.ourMission.title}
               </p>
-              <p className="mb-6 text-xs md:text-lg">
-                {data.whyWeStarted.description}
+              <p className="text-gray-600">
+                {dummyData.ourMission.description}
               </p>
-              <Link
-                href={"/about"}
-                className="bg-yellow-500 text-white md:px-6 text-xs md:text-lg px-2 py-1 md:py-3 rounded-lg hover:bg-yellow-600 transition"
-              >
-                {data.whyWeStarted.buttonText}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why We Started Section */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="relative">
+            <div className="relative w-full md:w-2/3 h-96 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={dummyData.whyWeStarted.image}
+                alt="Why We Started"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-lg md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 md:w-1/2 mt-8 md:mt-0">
+              <h2 className="text-2xl font-bold mb-4">Why We Started</h2>
+              <p className="text-xl text-gray-700 mb-4">
+                {dummyData.whyWeStarted.title}
+              </p>
+              <p className="mb-6">{dummyData.whyWeStarted.description}</p>
+              <Link href="/about" passHref>
+                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
+                  {dummyData.whyWeStarted.buttonText}
+                </button>
               </Link>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
       <Testimonials />
     </main>
   );
