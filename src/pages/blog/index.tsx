@@ -1,23 +1,32 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import blog2 from "/public/assets/blog2.png";
-
-import { DummyData, Testimonial } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
+import { DummyData, Testimonial, PostData, FeaturedPost } from "@/lib/types";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import Testimonials from "@/components/testimonial";
-import { getSortedPostsData } from "@/cms/utils"; // Import the utility function
+import { getSortedFeaturedPostsData, getSortedPostsData } from "@/cms/utils"; // Import the utility function
+
+
+const POSTS_TO_SHOW = 3; // Number of posts to show initially
 
 
 export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData();
+  const allFeaturedPostData = getSortedFeaturedPostsData().map((post) => ({
+    ...post,
+    date: post.date || null,  // Ensure date is not undefined
+  }));
 
   return {
     props: {
-      posts: allPostsData,
+      posts: allPostsData || [],
+      featuredPosts: allFeaturedPostData || [],
     },
   };
 };
+
 
 // Dummy CMS data for both Blog and additional sections
 const dummyData: DummyData = {
@@ -31,14 +40,19 @@ const dummyData: DummyData = {
     buttonText: "Read More",
     image: "/assets/blog1.png",
   },
-  featuredPost: {
+  featuredPost: [
+    {
     title: "The Key to Mastering Arabic Grammar: A Comprehensive Guide",
     author: "Abu Lubaba Al-Asalafy",
     date: "June 10, 2022",
     description:
       "Master the intricacies of Arabic grammar with this step-by-step guide designed for learners of all levels.",
-    image: blog2,
-  },
+    thumbnail: "/assets/blog1.png",
+    slug:'',
+    body:'',
+
+  }
+],
   allPosts: [
     {
       title: "5 Essential Tips to Improve Your Qur'an Recitation",
@@ -90,8 +104,32 @@ const dummyData: DummyData = {
   },
 };
 
-const Blog: React.FC = () => {
+const Blog = ({ posts, featuredPosts }: { posts: PostData[], featuredPosts: FeaturedPost[] }) => {
   const [data, setData] = useState<any>(null);
+  const [post, setPost] = useState<any>(null);
+  const [featuredPost, setFeaturedPost] = useState<any>(null);
+
+
+  
+  // State to track how many posts are visible
+  const [visiblePosts, setVisiblePosts] = useState(POSTS_TO_SHOW);
+  const [showAll, setShowAll] = useState(false);
+
+  // Function to handle the "View All" or "Show Less" action
+  const handleViewAll = () => {
+    if (showAll) {
+      // If all posts are currently shown, collapse the view
+      setVisiblePosts(POSTS_TO_SHOW);
+      setShowAll(false);
+    } else {
+      // If not all posts are shown, show all posts
+      setVisiblePosts(posts.length);
+      setShowAll(true);
+    }
+  }
+
+  console.log(post)
+  console.log(featuredPost)
 
   useEffect(() => {
     // Simulate fetching data from CMS
@@ -99,17 +137,26 @@ const Blog: React.FC = () => {
       setData(dummyData);
     }, 1000);
   }, []);
-
-  const createSlug = (title: string) => {
-    return title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
+  useEffect(() => {
+    // Simulate fetching data from CMS
+    setTimeout(() => {
+      setPost(posts);
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    // Simulate fetching data from CMS
+    setTimeout(() => {
+      setFeaturedPost(featuredPosts);
+    }, 1000);
+  }, []);
 
   if (!data) {
     return <Loader />;
   }
+  if (!post) {
+    return <Loader />;
+  }
+  
 
   return (
     <main>
@@ -142,70 +189,65 @@ const Blog: React.FC = () => {
         {/* Featured Post Section */}
         <section className=" mx-auto px-4 py-8 container">
           <h2 className="text-xl font-bold mb-4">Featured Post</h2>
+          {featuredPosts.map((featuredPost: any, index: number) => (
           <div className=" rounded-lg overflow-hidden shadow-lg">
             <Image
-              src={data.featuredPost.image}
-              alt={data.featuredPost.title}
+              src={featuredPost.thumbnail}
+              alt={featuredPost.title}
               className="w-full h-54 object-cover"
             />
             <div className="p-6 py-8">
-              <p className=" text-xs mb-4">
-                By{" "}
-                <span className="text-amber-900 font-bold">
-                  {data.featuredPost.author}
-                </span>{" "}
-                | {data.featuredPost.date}
-              </p>
               <h3 className="text-lg font-bold mb-2">
-                {data.featuredPost.title}
+                {featuredPost.title}
               </h3>
               <p className="text-gray-600 mb-2">
-                {data.featuredPost.description}
+                {featuredPost.description}
               </p>
-              <Link href={`/blog/${createSlug(data.featuredPost.title)}`}>
+              <Link href={`/blog/${post.slug}`}>
                 <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
                   Read More
                 </button>
               </Link>
             </div>
           </div>
+          ))}
         </section>
 
-        {/* All Posts Section */}
+        {/* All Post Section */}
         <section className="mx-auto px-4 py-8 container">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">All Posts</h2>
-            <a href="#" className="text-yellow-500">
-              View All
-            </a>
-          </div>
-          <div className="grid grid-cols-1 gap-6">
-            {data.allPosts.map((post: any, index: number) => (
-              <div
-                key={index}
-                className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
-              >
-                <p className="text-xs text-gray-600 mb-2">
-                  By{" "}
-                  <span className="text-amber-900 font-bold">
-                    {post.author}{" "}
-                  </span>{" "}
-                  | <span>{post.date}</span>
-                </p>
-                <h3 className="text-sm font-bold mb-2">{post.title}</h3>
+  <div className="flex justify-between items-center mb-4">
+    <h2 className="text-xl font-bold">All Posts</h2>
+    <button onClick={handleViewAll} className="text-yellow-500">
+      {showAll ? "Show Less" : "View All"}
+    </button>
+  </div>
 
-                <p className="text-sm text-gray-500">{post.description}</p>
+  {/* Scrollable section when all posts are shown */}
+  <div
+    className={`grid grid-cols-1 gap-6 transition-all duration-300 ${
+      showAll ? "max-h-[500px] overflow-y-auto" : ""
+    }`}
+  >
+    {posts.slice(0, visiblePosts).map((post: any, index: number) => (
+      <div
+        key={index}
+        className="hover:bg-yellow-50 cursor-pointer p-6 rounded-lg shadow-lg"
+      >
+        <p className="text-xs text-gray-600 mb-2">
+          By{" "}
+          <span className="text-amber-900 font-bold">{post.author}</span> |{" "}
+          <span>{formatDate(post.date)}</span>
+        </p>
+        <h3 className="text-sm font-bold mb-2">{post.title}</h3>
+        <p className="text-sm text-gray-500">{post.description}</p>
+        <Link href={`/blog/${post.slug}`} className="text-yellow-500">
+          Read More
+        </Link>
+      </div>
+    ))}
+  </div>
+</section>
 
-                <Link
-                  href={`/blog/${createSlug(post.title)}`}
-                  className="text-yellow-500"
-                >
-                  Read More
-                </Link>
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
 
       <div className="bg-yellow-50">

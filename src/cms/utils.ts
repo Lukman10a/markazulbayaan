@@ -1,22 +1,13 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { PostData } from "../lib/types";
+import { PostData, FeaturedPost } from "../lib/types";
 
-// example if using typescript: this is based on the post schema we created in the config.yml
+// Define the directories for posts and featured posts
+const postsDirectory = path.join(process.cwd(), "public/_posts");
+const featuredPostsDirectory = path.join(process.cwd(), "public/_featured");
 
-export interface LocalPostData {
-  slug: string;
-  title: string;
-  description: string;
-  date: string; // Use Date type if you want to work with Date objects
-  thumbnail?: string; // Optional
-  author: string;
-  body: string; // The actual content of the post
-}
-
-const postsDirectory = path.join(process.cwd(), "content/posts");
-
+// Function to get sorted regular posts data
 export function getSortedPostsData(): PostData[] {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData: PostData[] = fileNames.map((fileName) => {
@@ -35,6 +26,7 @@ export function getSortedPostsData(): PostData[] {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+// Function to get all post IDs for dynamic routing
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => ({
@@ -44,6 +36,7 @@ export function getAllPostIds() {
   }));
 }
 
+// Function to get individual post data
 export function getPostData(slug: string): PostData {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -52,7 +45,58 @@ export function getPostData(slug: string): PostData {
   return {
     slug,
     ...matterResult.data,
-    date: matterResult.data.date instanceof Date ? new Date(matterResult.data.date).toISOString() : matterResult.data.date,
+    date:
+      matterResult.data.date instanceof Date
+        ? new Date(matterResult.data.date).toISOString()
+        : matterResult.data.date,
     body: matterResult.content,
   } as PostData;
+}
+
+// *** New functions for featured posts ***
+
+// Function to get sorted featured posts data
+export function getSortedFeaturedPostsData(): FeaturedPost[] {
+  const fileNames = fs.readdirSync(featuredPostsDirectory);
+  const allFeaturedPostsData: FeaturedPost[] = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(featuredPostsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+
+    return {
+      slug,
+      ...data,
+      date: data.date instanceof Date ? data.date.toISOString() : data.date,
+    } as FeaturedPost;
+  });
+
+  return allFeaturedPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+// Function to get all featured post IDs for dynamic routing
+export function getAllFeaturedPostIds() {
+  const fileNames = fs.readdirSync(featuredPostsDirectory);
+  return fileNames.map((fileName) => ({
+    params: {
+      slug: fileName.replace(/\.md$/, ""), // Removing .md extension
+    },
+  }));
+}
+
+// Function to get individual featured post data
+export function getFeaturedPostData(slug: string): FeaturedPost {
+  const fullPath = path.join(featuredPostsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const matterResult = matter(fileContents);
+
+  return {
+    slug,
+    ...matterResult.data,
+    date:
+      matterResult.data.date instanceof Date
+        ? new Date(matterResult.data.date).toISOString()
+        : matterResult.data.date,
+    body: matterResult.content,
+  } as FeaturedPost;
 }
