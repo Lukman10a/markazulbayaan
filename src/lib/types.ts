@@ -51,12 +51,9 @@ export interface Testimonial {
 
 export interface DummyData {
   hero: Hero;
-  featuredPost: FeaturedPost[];
-  allPosts: BlogPost[];
   aboutUs: AboutUs;
   ourMission: OurMission;
   whyWeStarted: WhyWeStarted;
-  // testimonials: Testimonial[];
 }
 
 // types.ts
@@ -65,7 +62,7 @@ export interface PostData {
   title: string;
   description: string;
   date: string; // Use Date type if you want to work with Date objects
-  thumbnail?: string; // Optional
+  thumbnail: string | StaticImageData; // Optional
   author: string;
   body: string; // The actual content of the post
 }
@@ -74,7 +71,7 @@ export interface FeaturedPost {
   title: string;
   description: string;
   date: string; // Use Date type if you want to work with Date objects
-  thumbnail?: string; // Optional
+  thumbnail?: string | StaticImageData; // Optional
   author: string;
   body: string; // The actual content of the post
 }
