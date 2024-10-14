@@ -126,12 +126,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, featuredPost }) => {
       </header>
 
       {/* Blog Content */}
-      <section className="prose max-w-full mb-8">
+      <section className="container prose mx-auto mb-8">
         <Markdown remarkPlugins={[remarkGfm]}>{currentPost.body}</Markdown>
       </section>
 
       {/* other blogs */}
-      <OtherBlogs />
+      {/* <OtherBlogs /> */}
     </article>
   );
 };
