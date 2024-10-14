@@ -88,7 +88,7 @@ const Blog = ({
           <h1 className="text-2xl md:text-5xl font-bold mb-4 capitalize">
             {posts[0].title}
           </h1>
-          {/* <p className="mb-4 text-sm md:text-lg">{posts[0].description}</p> */}
+          <p className="mb-4 text-sm md:text-lg">{posts[0]?.description}</p>
           <p className="text-xs md:text-sm mb-4">
             By <span className="text-yellow-500">{posts[0].author} </span> |{" "}
             {formatDate(posts[0].date)}
@@ -101,7 +101,7 @@ const Blog = ({
         </div>
       </section>
 
-      <div className="px-4 py-8 container mx-auto">
+      <div className="py-8 container mx-auto px-6">
         {/* Featured Post Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Featured Post</h2>
@@ -134,7 +134,7 @@ const Blog = ({
         </section>
 
         {/* All Posts Section */}
-        <section className="container mx-auto">
+        <section className="container mx-auto ">
           <h2 className="text-2xl font-bold mb-6">All Posts</h2>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
             {currentPosts.map((post: PostData, index: number) => (
