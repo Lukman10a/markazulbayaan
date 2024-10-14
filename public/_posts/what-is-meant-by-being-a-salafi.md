@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: What is meant by being a salafi
+title: What is meant by being a salafi?
 description: Being a salafi means adhering to the quran and the sunnah according
   to the way of the salafs (the three best generations).
 date: 2024-10-10

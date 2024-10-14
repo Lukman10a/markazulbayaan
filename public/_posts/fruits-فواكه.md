@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Fruits (فواكه)
-description: New words
+description: Expand your Arabic vocabulary with practical examples of how to use fruit names in everyday sentences. This post features six example sentences in both English and Arabic, showcasing fruits like coconut, orange, lemon, dates, papaya, and grapes. Whether you're learning Arabic or just looking to practice your language skills, these sentences provide a simple yet effective way to improve your understanding and usage of common fruits (فواكه) in daily conversation. Dive in and enhance your Arabic language journey with these tasty examples!
 date: 2024-10-12
 thumbnail: /images/uploads/1000094498.jpg
 author: "Markazul Bayaan Benefits"

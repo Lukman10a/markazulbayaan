@@ -80,7 +80,7 @@ const Blog = ({
         className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8"
         style={{ backgroundImage: `url(${posts[0].thumbnail})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 md:py-24">
           <p className="py-4 text-xs md:text-sm">
             POSTED ON <span className="font-bold">MARKAZUL - BAYAN</span>
@@ -88,7 +88,9 @@ const Blog = ({
           <h1 className="text-2xl md:text-5xl font-bold mb-4 capitalize">
             {posts[0].title}
           </h1>
-          <p className="mb-4 text-sm md:text-lg">{posts[0]?.description}</p>
+          <p className="mb-4 text-sm md:text-lg text-gray-300 line-clamp-3">
+            {posts[0]?.description}
+          </p>
           <p className="text-xs md:text-sm mb-4">
             By <span className="text-yellow-500">{posts[0].author} </span> |{" "}
             {formatDate(posts[0].date)}
