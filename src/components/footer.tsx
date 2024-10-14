@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
         {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}
         <div className="flex gap-4 md:justify-center">
           <a
-            href="https://google.com"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
