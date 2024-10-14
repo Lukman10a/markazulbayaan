@@ -16,8 +16,6 @@ export const getStaticProps = async () => {
     ...post,
   }));
 
-  console.log({ allPostsData, allFeaturedPostData });
-
   return {
     props: {
       posts: allPostsData || [],
