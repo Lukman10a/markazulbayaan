@@ -22,19 +22,19 @@ export default function StatSection() {
           <StatItem
             icon={quran}
             alt="Quran Icon"
-            number="1000+"
+            number="100+"
             text="Quranic Lessons Delivered"
           />
           <StatItem
             icon={volume}
             alt="Tajweed Icon"
-            number="50,000+"
+            number="500+"
             text="Hours of Learning"
           />
           <StatItem
             icon={moon}
             alt="Community Icon"
-            number="29m+"
+            number="1m+"
             text="Active Learners"
           />
         </div>

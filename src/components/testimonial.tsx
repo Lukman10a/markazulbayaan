@@ -50,11 +50,10 @@ export function Testimonials() {
         <Carousel
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 5000,
             }),
           ]}
-          className="flex-1 w-full lg:w-auto"
-        >
+          className="flex-1 w-full lg:w-auto">
           <CarouselContent>
             {testimonialsData.map(
               (
@@ -63,8 +62,7 @@ export function Testimonials() {
               ) => (
                 <CarouselItem
                   key={index}
-                  className="max-w-full lg:max-w-md mx-auto"
-                >
+                  className="max-w-full lg:max-w-md mx-auto">
                   <Card className="p-6">
                     <CardContent>
                       <p className="text-sm md:text-base lg:text-lg mb-4">
