@@ -14,8 +14,9 @@ export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   const allFeaturedPostData = getSortedFeaturedPostsData().map((post) => ({
     ...post,
-    date: post.date || null,
   }));
+
+  console.log({ allPostsData, allFeaturedPostData });
 
   return {
     props: {
@@ -150,7 +151,7 @@ const Blog = ({
                   />
                 </div>
                 <div className="p-6 grid grid-rows-[auto_1fr_auto] gap-2">
-                  <p>
+                  <p className="text-sm">
                     By<span className="text-[#760808]"> {post.author}</span> |{" "}
                     <span>{formatDate(post.date)}</span>
                   </p>

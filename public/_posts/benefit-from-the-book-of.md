@@ -1,10 +1,13 @@
 ---
 layout: blog
 title: Benefit from the book عوائق الطلب of Shaikh Abdus-Salām Barjas Āl-AbdilKareem A
-description: Looking to memorize the Qur'an? Follow these proven techniques for
-  quick and effective memorization.
+description: The book focuses on the barriers and obstacles in the path of
+  seeking knowledge. The author (May Allah have mercy upon him) presents these
+  barriers as impediments to be avoided and warns against them, while also
+  drawing upon the wisdom of past scholars to provide detailed guidance on how
+  to avoid these impediments for every sincere seeker of knowledge.
 date: 2024-09-26
-thumbnail: /images/uploads/matn-mukhtasar-al-adhkār_0000.jpg
+thumbnail: /images/uploads/عوائق20الطلب.webp
 author: Abū Kawthar Lukmān Bn Abdir-Raūf As-Salafī
 ---
 

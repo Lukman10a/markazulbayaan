@@ -19,7 +19,7 @@ export function getSortedPostsData(): PostData[] {
     return {
       slug,
       ...data,
-      date: data.date instanceof Date ? data.date.toISOString() : data.date,
+      date: data.date instanceof Date ? data.date.toISOString() : null,
     } as PostData;
   });
 
@@ -48,7 +48,7 @@ export function getPostData(slug: string): PostData {
     date:
       matterResult.data.date instanceof Date
         ? new Date(matterResult.data.date).toISOString()
-        : matterResult.data.date,
+        : null,
     body: matterResult.content,
   } as PostData;
 }
@@ -67,7 +67,7 @@ export function getSortedFeaturedPostsData(): FeaturedPost[] {
     return {
       slug,
       ...data,
-      date: data.date instanceof Date ? data.date.toISOString() : data.date,
+      date: data.date instanceof Date ? data.date.toISOString() : null,
     } as FeaturedPost;
   });
 
@@ -96,7 +96,7 @@ export function getFeaturedPostData(slug: string): FeaturedPost {
     date:
       matterResult.data.date instanceof Date
         ? new Date(matterResult.data.date).toISOString()
-        : matterResult.data.date,
+        : null,
     body: matterResult.content,
   } as FeaturedPost;
 }

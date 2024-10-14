@@ -1,8 +1,9 @@
 ---
 layout: blog
 title: The Importance of Understanding Arabic
-description: Looking to memorize the Qur'an? Follow these proven techniques for
-  quick and effective memorization.
+description: The Arabic language holds immense significance for Muslims
+  worldwide. It is the language of the Qur'ān, the Book revealed to Prophet
+  Muhammad (peace and blessings be upon him).
 date: 2024-09-26
 thumbnail: /images/uploads/matn-mukhtasar-al-adhkār_0000.jpg
 author: Abū Kawthar Lukmān Bn Abdir-Raūf As-Salafī

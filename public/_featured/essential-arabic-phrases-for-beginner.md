@@ -1,5 +1,5 @@
 ---
 layout: featured
-title: Essential Arabic Phrases for Beginner
-post: essential-arabic-phrases-for-beginner
+title: Benefit from the book عوائق الطلب of Shaikh Abdus-Salām Barjas Āl-AbdilKareem A
+post: benefit-from-the-book-of
 ---

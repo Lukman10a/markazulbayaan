@@ -336,6 +336,25 @@ export default function Contact() {
               </Button>
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Nurture Your Kid’s Eemān (بإذن الله) 📖</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">
+                Our interactive online classes, led by experienced teachers,
+                provide your kid(s) with a strong foundation in Qur’an, Basic
+                Aqeedah, Arabic Conversation, and Reading & Writing.
+              </p>
+              <p className="font-semibold">Tutor: Multiple</p>
+              <p>Register for any of the courses today</p>
+              <Button asChild className="mt-4">
+                <Link href="http://wa.link/j2fsqe">
+                  Contact for Kids Sessions
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
