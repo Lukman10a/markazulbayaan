@@ -108,11 +108,13 @@ const Blog = ({
             {featuredPosts.map((featuredPost: FeaturedPost, index: number) => (
               <article
                 key={index}
-                className="rounded-lg overflow-hidden border border-amber-500 grid grid-rows-[auto_1fr_auto] p-3 justify-center"
+                className="rounded-lg overflow-hidden border border-amber-500 grid grid-rows-[auto_1fr_auto] p-3"
               >
                 <DefaultThumbnail
                   title={featuredPost.title}
                   imageUrl={featuredPost?.thumbnail}
+                  className="w-full"
+                  width={undefined}
                 />
                 <h3 className="text-lg font-bold my-2">{featuredPost.title}</h3>
                 <div className="">
