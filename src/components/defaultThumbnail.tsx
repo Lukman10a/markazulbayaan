@@ -1,11 +1,13 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import { cn } from "@/lib/utils";
 
 interface ThumbnailProps {
   title: string;
   imageUrl?: string | StaticImageData;
   width?: number;
   height?: number;
+  className?: string;
 }
 
 const DefaultThumbnail: React.FC<ThumbnailProps> = ({
@@ -13,6 +15,7 @@ const DefaultThumbnail: React.FC<ThumbnailProps> = ({
   imageUrl,
   width = 300,
   height = 200,
+  className,
 }) => {
   if (imageUrl) {
     return (
@@ -21,7 +24,7 @@ const DefaultThumbnail: React.FC<ThumbnailProps> = ({
         alt={title}
         width={width}
         height={height}
-        className="rounded-lg object-cover"
+        className={cn("rounded-lg object-cover", className)}
       />
     );
   }
@@ -43,8 +46,10 @@ const DefaultThumbnail: React.FC<ThumbnailProps> = ({
 
   return (
     <div
-      className="relative rounded-lg overflow-hidden"
-      style={{ width: `${width}px`, height: `${height}px` }}
+      className={cn("relative rounded-lg overflow-hidden w-full", className)}
+      style={{
+        height: height ? `${height}px` : undefined,
+      }}
     >
       <div
         className="absolute inset-0"

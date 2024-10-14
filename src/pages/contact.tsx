@@ -1,9 +1,19 @@
 import { useToast } from "@/components/ui/use-toast";
-import React, { FormEvent, Fragment, useEffect, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdWifiCalling3, MdMessage } from "react-icons/md";
 import emailjs from "@emailjs/browser";
-import Button from "@/components/button";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  BookOpen,
+  Users,
+  GraduationCap,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -149,135 +159,253 @@ export default function Contact() {
   };
 
   return (
-    <>
-      <section className="relative isolate text-white">
-        <div className="absolute inset-0 z-[-1] flex flex-col">
-          <div className="h-1/2 w-full overflow-hidden bg-[url(/assets/journey_bg.png)] bg-cover"></div>
-          <div className="h-1/2 bg-black"></div>
+    <main className="bg-gradient-to-b from-yellow-50 to-white">
+      {/* Hero Section */}
+      <section className="py-20 relative isolate px-4 bg-[url(/assets/bg.jpg)] bg-no-repeat bg-cover">
+        <div className="absolute inset-0 z-[-1] ">
+          <div className="h-full w-full bg-opacity-30 bg-black"></div>
         </div>
-        <div className="flex justify-between gap-7 px-16 py-10 md:flex-wrap md:px-8 md:py-8">
-          <div className="flex flex-col justify-between gap-7 md:justify-normal">
-            <div className="space-y-4">
-              <Button
-                asLink
-                href="/contact"
-                text={"Contact Us"}
-                className="rounded-full bg-[#006CFE] p-2 font-normal text-white"
-              />
-              <h1 className="mb-7 text-8xl font-medium 2md:w-full 2md:text-5xl">
-                Let’s hear from you
-              </h1>
-              <p className="mt-7">
-                Contact us and we will get back to you right away!
-              </p>
-            </div>
-
-            <div>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3">
-                  <FaLocationDot color="#006CFE" />
-                  <span>
-                    Unit C22 Imex Business Park Kings Road Tyseley Birmingham 
-                    B11 2AL
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <MdWifiCalling3 color="#006CFE" /> <span>+441213459225</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <MdMessage color="#006CFE" />
-                  <span>info@consology.co.uk</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="rounded-lg bg-white p-5 text-black shadow-lg md:w-full">
-            <h3 className="mb-5 text-2xl font-medium">
-              Fill out the form and we will be in touch!
-            </h3>
-            <form ref={formRef} onSubmit={sendEmail}>
-              <div className="space-y-4">
-                <label htmlFor="from_name" className="mb-4 block">
-                  <p className="mb-2 text-sm font-semibold">Name</p>
-                  <input
-                    type="text"
-                    name="from_name"
-                    value={formData.from_name}
-                    onChange={handleInputChange}
-                    onBlur={handleBlur}
-                    className="w-full rounded-lg border border-gray-400 p-3"
-                  />
-                  {validationErrors.from_name && (
-                    <p className="text-sm text-red-500">
-                      {validationErrors.from_name}
-                    </p>
-                  )}
-                </label>
-                <label htmlFor="from_email" className="mb-4 block">
-                  <p className="mb-2 text-sm font-semibold">Email</p>
-                  <input
-                    type="email"
-                    name="from_email"
-                    value={formData.from_email}
-                    onChange={handleInputChange}
-                    onBlur={handleBlur}
-                    className="w-full rounded-lg border border-gray-400 p-3"
-                  />
-                  {validationErrors.from_email && (
-                    <p className="text-sm text-red-500">
-                      {validationErrors.from_email}
-                    </p>
-                  )}
-                </label>
-                <label htmlFor="phone_number" className="mb-4 block">
-                  <p className="mb-2 text-sm font-semibold">Phone Number</p>
-                  <input
-                    type="tel"
-                    name="phone_number"
-                    value={formData.phone_number}
-                    onChange={handleInputChange}
-                    onBlur={handleBlur}
-                    className="w-full rounded-lg border border-gray-400 p-3"
-                  />
-                  {validationErrors.phone_number && (
-                    <p className="text-sm text-red-500">
-                      {validationErrors.phone_number}
-                    </p>
-                  )}
-                </label>
-                <label htmlFor="message" className="mb-4 block">
-                  <p className="mb-2 text-sm font-semibold">
-                    How can we help you
-                  </p>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    onBlur={handleBlur}
-                    cols={30}
-                    rows={10}
-                    className="w-full rounded-lg border border-gray-400 p-3"
-                  ></textarea>
-                  {validationErrors.message && (
-                    <p className="text-sm text-red-500">
-                      {validationErrors.message}
-                    </p>
-                  )}
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="mt-5 w-full rounded-lg bg-black p-2 font-normal text-white disabled:cursor-not-allowed disabled:bg-gray-400"
-                disabled={isLoading || !isFormValid}
-              >
-                {isLoading ? "Sending..." : "Send"}
-              </button>
-              {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-            </form>
+        <div className="container mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-6">
+            Contact Markazul-Bayan
+          </h1>
+          <p className="text-xl text-white  mb-8 max-w-2xl mx-auto">
+            Reach out to us for any inquiries about our courses, instructors, or
+            to start your journey in Islamic learning.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700">
+              Get Started
+            </Button>
+            <Button size="lg" className="bg-white text-black">
+              Learn More
+            </Button>
           </div>
         </div>
       </section>
-    </>
+
+      <section className="flex items-start justify-between gap-7 px-16 py-10">
+        <Card>
+          <CardHeader>
+            <CardTitle>Contact Information</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <MapPin className="text-emerald-600" />
+              <p>123 Islamic Center Street, City, Country</p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Phone className="text-emerald-600" />
+              <p>+1 (234) 567-8900</p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Mail className="text-emerald-600" />
+              <p>info@markazul-bayan.com</p>
+            </div>
+            <div className="mt-6">
+              <h3 className="font-semibold mb-2">Office Hours</h3>
+              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+              <p>Saturday: 10:00 AM - 2:00 PM</p>
+              <p>Sunday: Closed</p>
+            </div>
+          </CardContent>
+        </Card>
+        <div className="rounded-lg bg-white p-5 text-black shadow-lg">
+          <h3 className="mb-5 text-2xl font-medium">
+            Fill out the form and we will be in touch!
+          </h3>
+          <form ref={formRef} onSubmit={sendEmail}>
+            <div className="space-y-4">
+              <label htmlFor="from_name" className="mb-4 block">
+                <p className="mb-2 text-sm font-semibold">Name</p>
+                <input
+                  type="text"
+                  name="from_name"
+                  value={formData.from_name}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className="w-full rounded-lg border border-gray-400 p-3"
+                />
+                {validationErrors.from_name && (
+                  <p className="text-sm text-red-500">
+                    {validationErrors.from_name}
+                  </p>
+                )}
+              </label>
+              <label htmlFor="from_email" className="mb-4 block">
+                <p className="mb-2 text-sm font-semibold">Email</p>
+                <input
+                  type="email"
+                  name="from_email"
+                  value={formData.from_email}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className="w-full rounded-lg border border-gray-400 p-3"
+                />
+                {validationErrors.from_email && (
+                  <p className="text-sm text-red-500">
+                    {validationErrors.from_email}
+                  </p>
+                )}
+              </label>
+              <label htmlFor="phone_number" className="mb-4 block">
+                <p className="mb-2 text-sm font-semibold">Phone Number</p>
+                <input
+                  type="tel"
+                  name="phone_number"
+                  value={formData.phone_number}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className="w-full rounded-lg border border-gray-400 p-3"
+                />
+                {validationErrors.phone_number && (
+                  <p className="text-sm text-red-500">
+                    {validationErrors.phone_number}
+                  </p>
+                )}
+              </label>
+              <label htmlFor="message" className="mb-4 block">
+                <p className="mb-2 text-sm font-semibold">
+                  How can we help you
+                </p>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  cols={30}
+                  rows={10}
+                  className="w-full rounded-lg border border-gray-400 p-3"
+                ></textarea>
+                {validationErrors.message && (
+                  <p className="text-sm text-red-500">
+                    {validationErrors.message}
+                  </p>
+                )}
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="mt-5 w-full rounded-lg bg-black p-2 font-normal text-white disabled:cursor-not-allowed disabled:bg-gray-400"
+              disabled={isLoading || !isFormValid}
+            >
+              {isLoading ? "Sending..." : "Send"}
+            </button>
+            {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+          </form>
+        </div>
+      </section>
+      {/* Instructors Section */}
+      <section className="container mx-auto mt-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Our Instructors</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>One on One Convenient Classes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">
+                Take Qur&apos;ān, Tawheed, Arabiyyah, Fiqh at your convenience
+                no matter how tight your schedule is.
+              </p>
+              <p className="font-semibold">Tutor: Abu Anwar</p>
+              <p>Female Tutors available</p>
+              <Button asChild className="mt-4">
+                <Link href="https://wa.link/gwee51">
+                  Contact for Qur&apos;an Made Easy
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Qur&apos;an Recitation and Memorization</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">
+                Do you want to learn and develop love for the Qur&apos;an? Join
+                other students who have aced their recitation and memorization
+                through our one-on-one Qur&apos;an sessions.
+              </p>
+              <p className="font-semibold">Tutor: Abu Haleemah</p>
+              <p>Your specific needs guide our teachings.</p>
+              <Button asChild className="mt-4">
+                <Link href="https://bit.ly/Quran-MarkazulBayan">
+                  Contact for Qur&apos;an Sessions
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Arabic Learning Section */}
+      <section className="container mx-auto mt-16  px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Arabic Learning</h2>
+        <Card>
+          <CardHeader>
+            <CardTitle>Master the Arabic Language</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">
+              Unlock the beauty of the Qur&apos;an and deepen your understanding
+              of Islamic texts through our comprehensive Arabic language
+              courses.
+            </p>
+            <ul className="list-disc list-inside space-y-2 mb-4">
+              <li>Learn Arabic grammar and vocabulary</li>
+              <li>Practice conversation with native speakers</li>
+              <li>Understand Qur&apos;anic Arabic</li>
+              <li>Flexible learning options to fit your schedule</li>
+            </ul>
+            <Button>Enroll in Arabic Courses</Button>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Features Section */}
+      <section className="container mx-auto mt-16 mb-4 px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          Why Choose Markazul-Bayan?
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <FeatureCard
+            icon={<BookOpen className="h-10 w-10 text-yellow-600" />}
+            title="Comprehensive Curriculum"
+            description="From Arabic language to Quranic studies, our courses cover all aspects of Islamic education."
+          />
+          <FeatureCard
+            icon={<Users className="h-10 w-10 text-yellow-600" />}
+            title="Expert Instructors"
+            description="Learn from qualified scholars and educators with years of experience in Islamic studies."
+          />
+          <FeatureCard
+            icon={<GraduationCap className="h-10 w-10 text-yellow-600" />}
+            title="Flexible Learning"
+            description="Study at your own pace with our online courses, accessible anytime, anywhere."
+          />
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: any;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Card>
+      <CardContent className="pt-6">
+        <div className="mb-4">{icon}</div>
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
+      </CardContent>
+    </Card>
   );
 }
