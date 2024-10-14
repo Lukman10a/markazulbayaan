@@ -144,6 +144,7 @@ export default function Contact() {
         }
       } catch (error: any) {
         console.error("Error sending email:", error);
+        console.log(error);
         toast({
           variant: "destructive",
           className: "w-fit",
@@ -192,15 +193,15 @@ export default function Contact() {
           <CardContent className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="text-emerald-600" />
-              <p>123 Islamic Center Street, City, Country</p>
+              <p>Olunlade, Ilorin, Nigeria</p>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="text-emerald-600" />
-              <p>+1 (234) 567-8900</p>
+              <p>+234 8089287065</p>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="text-emerald-600" />
-              <p>info@markazul-bayan.com</p>
+              <p>markazulbayaan9@gmail.com</p>
             </div>
             <div className="mt-6">
               <h3 className="font-semibold mb-2">Office Hours</h3>
