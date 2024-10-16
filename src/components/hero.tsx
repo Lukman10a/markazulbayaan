@@ -18,8 +18,7 @@ export const Hero = () => {
             }}
             className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  "
           >
-            The Pursuit of Knowledge: A Duty <br />
-            for Every Muslim
+            The Pursuit of Knowledge: A Duty for Every Muslim
           </h1>
           <p className="text-[3vmin] xl:text-[3vmin] sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[80%]">
             At Markazul Bayaan, we guide you on a transformative journey to
