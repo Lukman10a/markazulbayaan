@@ -5,6 +5,8 @@ import { LiaQuranSolid } from "react-icons/lia";
 import { FaBook } from "react-icons/fa6";
 import { BsHandIndex } from "react-icons/bs";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { BsArrowRight } from "react-icons/bs"; // Importing the arrow icon
 
 export default function CoursePage() {
   const courses = [
@@ -62,6 +64,26 @@ export default function CoursePage() {
     },
   };
 
+  // Animation variants for the button
+  const buttonVariants = {
+    hover: {
+      scale: 1.1, // Slight scale-up on hover
+      backgroundColor: "#FFD700", // Change background color on hover
+      transition: { duration: 0.3 },
+    },
+    tap: {
+      scale: 0.95, // Scale down on tap to simulate press effect
+    },
+  };
+
+  // Animation for the arrow
+  const arrowVariants = {
+    hover: {
+      x: 10, // Move arrow to the right on hover
+      transition: { type: "spring", stiffness: 300 },
+    },
+  };
+
   return (
     <section className="py-16 bg-yellow-50 my-10">
       <div className="container mx-auto px-4">
@@ -72,7 +94,7 @@ export default function CoursePage() {
           {courses.map((course, index) => (
             <motion.div
               key={index}
-              className="bg-background p-6 rounded-lg shadow-md text-center hover:shadow-xl hover:bg-black hover:text-white"
+              className="bg-background p-6 rounded-lg shadow-md text-center hover:shadow-xl hover:bg-yellow-100 hover:text-black"
               variants={cardVariants}
               initial="hidden"
               animate="visible"
@@ -89,6 +111,25 @@ export default function CoursePage() {
               <p>{course.description}</p>
             </motion.div>
           ))}
+        </div>
+        <div className="flex justify-center pt-10">
+          <Link href="https://bit.ly/Learn-at-markazbayan">
+            <motion.div
+              className="px-8 py-4 text-white font-semibold bg-yellow-900 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              Enroll Now
+              <motion.div
+                className="ml-2" // Adds spacing between text and arrow
+                variants={arrowVariants}
+                whileHover="hover" // Activate arrow animation on hover
+              >
+                <BsArrowRight />
+              </motion.div>
+            </motion.div>
+          </Link>
         </div>
       </div>
     </section>

@@ -4,7 +4,12 @@ const faqs = [
   {
     question: "What courses does Markazul-Bayan offer?",
     answer:
-      "Markazul-Bayan offers courses in Arabic language, Quranic studies, and Islamic monotheism, designed to cater to different proficiency levels.",
+      "Markazul-Bayan offers courses in Islamic monotheism (Tawhid) Arabic language, Quranic studies, Fiqh, Tafsir, Reading and Writing, etc designed to cater to different proficiency levels.",
+  },
+  {
+    question: "Are there classes for kids?",
+    answer:
+      "Markazul-Bayan offers courses for kids like: reading and writing, basic arabic conversations, adhkaar, etc",
   },
   {
     question: "How do I enroll in a course?",

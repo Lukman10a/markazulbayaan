@@ -12,11 +12,11 @@ export const Hero = () => {
           <h1
             style={{
               color: "transparent",
-              textShadow: "0px 4px 1px #F8E7C5",
+              textShadow: "0px 2px 1px #F8E7C5",
               backgroundClip: "text",
               backgroundColor: "#565656",
             }}
-            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  "
+            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] w-[90%]"
           >
             The Pursuit of Knowledge: A Duty for Every Muslim
           </h1>
