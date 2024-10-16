@@ -26,6 +26,7 @@
     "emailjs-com": "^3.2.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
+    "framer-motion": "^11.11.9",
     "js-yaml": "^4.1.0",
     "lucide-react": "^0.424.0",
     "netlify-identity-widget": "^1.9.2",

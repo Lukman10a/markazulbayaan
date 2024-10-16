@@ -40,6 +40,18 @@ const Footer: React.FC = () => {
             <Link href="/blog" className="hover:text-gray-400 self-start mb-2">
               Blog
             </Link>
+            <Link
+              href="/reviews"
+              className="hover:text-gray-400 self-start mb-2"
+            >
+              Review
+            </Link>
+            <Link
+              href="/course"
+              className="hover:text-gray-400 self-start mb-2"
+            >
+              Courses
+            </Link>
           </nav>
         </div>
         {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}

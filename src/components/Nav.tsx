@@ -105,6 +105,17 @@ const Navbar: React.FC = () => {
               Reviews
             </Link>
           </li>
+          <li className="hover:text-gray-900 font-semibold">
+            <Link
+              href="/course"
+              onClick={() => handleDesktopLinkClick("/course")}
+              className={` ${
+                activeDesktopLink === "/course" ? " text-yellow-500" : ""
+              }`}
+            >
+              Courses
+            </Link>
+          </li>
         </ul>
 
         {/* Language Dropdown */}
@@ -263,6 +274,19 @@ const Navbar: React.FC = () => {
                 }`}
               >
                 Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/course"
+                onClick={() => handleMobileLinkClick("/course")}
+                className={`block p-2 rounded ${
+                  activeMobileLink === "/course"
+                    ? "bg-yellow-500 text-white"
+                    : ""
+                }`}
+              >
+                Courses
               </Link>
             </li>
           </ul>
