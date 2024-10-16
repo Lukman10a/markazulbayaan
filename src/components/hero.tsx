@@ -5,27 +5,10 @@ import Button from "./button";
 import Link from "next/link";
 
 export const Hero = () => {
-  const handleClick = () => {
-    console.log("Contact form submitted");
-  };
   return (
-    <div className="m-[3vmin] max-h-[600px] h-[100vmin] ">
-      <div className="relative">
-        <Image
-          src={heroImg}
-          alt="hero_bg"
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "bottom-right",
-            height: "100vmin",
-            maxHeight: "600px",
-            width: "100%",
-            objectFit: "cover",
-            borderRadius: "20px",
-          }}
-        />
-
-        <div className="px-[5vw] text-white absolute top-[4vmin]  lg:top-[7vmax]">
+    <>
+      <section className="m-3 h-fit bg-[url(/assets/hero_bg.png)] bg-cover rounded-2xl overflow-hidden py-10">
+        <div className="px-[5vw] text-white top-[10vmin] lg:top-[7vmax]">
           <h1
             style={{
               color: "transparent",
@@ -33,12 +16,11 @@ export const Hero = () => {
               backgroundClip: "text",
               backgroundColor: "#565656",
             }}
-            className="text-[8vmin]  md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  "
+            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  "
           >
-            The Pursuit of Knowledge: A Duty <br />
-            for Every Muslim
+            The Pursuit of Knowledge: A Duty for Every Muslim
           </h1>
-          <p className="text-[3vmin] xl:text-[3vmin]  sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[80%]">
+          <p className="text-[3vmin] xl:text-[3vmin] sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[80%]">
             At Markazul Bayaan, we guide you on a transformative journey to
             deepen your understanding of the Arabic language, explore the rich
             teachings of the Qur&apos;an and Sunnah, and immerse yourself in the
@@ -49,11 +31,11 @@ export const Hero = () => {
           </p>
           <div className="my-[2.5vmin]">
             <Link href="/contact">
-              <Button text="Contact us" onClick={handleClick} />
+              <Button text="Contact us" />
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
