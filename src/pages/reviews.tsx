@@ -14,8 +14,13 @@ export default function Component() {
       <section className="bg-center object-cover bg-cover text-primary-foreground py-36 mb-8 bg-[url('../../public/assets/blog3.png')]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Markazul-Bayan</h2>
-          <p className="text-xl mb-8 text-yellow-500">
-            Seeking knowledge is a duty of all Muslims
+          <p className="text-xl mb-8 text-yellow-500 p-4 px-10">
+            At Markazul Bayaan, students from around the globe gather to deepen
+            their understanding of Islam, guided by expert teachers and a rich
+            curriculum. Our community is built on a shared passion for learning
+            and spiritual growth. Below, you can read what some of our students
+            have to say about their experiences and the impact our school has
+            had on their journey.{" "}
           </p>
         </div>
       </section>
@@ -66,25 +71,25 @@ export default function Component() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-yellow-500">
           What Our Students Say
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {[
             {
-              name: "Abu Isa Ibn Daud",
-              location: "Kano, Nigeria",
+              name: "Bro Abdur-Rahmaan ",
+              location: "UK",
               content:
-                "I appreciate the structured roadmap provided for beginners. It helped me develop a solid foundation in Qur'an recitation and writing skills.",
+                "Ustadh Lukman bn Abdir-Rauf breaks down difficult Arabic grammar and vocabulary into manageable parts, making it accessible for students of all levels. With clear explanations and an engaging teaching style, he has greatly improved my understanding of the language. This approach ensures that students grasp the basics thoroughly, leading to a deeper and more lasting understanding of Arabic. I highly recommend Ustadh Lukman bn Abdir-Rauf to anyone seeking a comprehensive and lasting mastery of the language.",
             },
             {
-              name: "Abu Khadija Al-Fulani",
-              location: "Zaria, Nigeria",
+              name: "Umm Firdaus Belgium",
+              location: " Belgium",
               content:
-                "Markazul-Bayan's approach to teaching the Arabic language is exceptional. I've learned so much in such a short time, and the teachers are incredibly supportive.",
+                "I am very satisfied with your accessibility, willingness to help, and flexibility. You go above and beyond to assist, offering a wide range of services: Arabic, Aqeedah, Quran, and more all very helpful. You listen attentively to feedback and work together to find solutions. Overall, I am very pleased with this experience. I would definitely recommend signing your kids up for these courses",
             },
             {
-              name: "Abu Jamal Al-Athary",
-              location: "Olunlade, Ilorin Nigeria",
+              name: "Umm Sumayyah",
+              location: "UK",
               content:
-                "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
+                "Alhamdulillah I've really benefitted from the class. I started off not having knowledge of mostly the basics, but Alhamdulillah with what we've covered especially in fiqh has really helped. And Alhamdulillah now I've also même prized over 30 hadiths and also have the understanding. What I really like about the class is how short the classes are and not lengthy so we are able to process the information.",
             },
           ].map((testimonial, index) => (
             <Card key={index} className="bg-[#2e2101ec] text-white">
