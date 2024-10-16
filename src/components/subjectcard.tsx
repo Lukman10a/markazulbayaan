@@ -14,28 +14,29 @@ import arabic from "/public/assets/arabic.svg";
 const SUBJECTS = [
   {
     id: 1,
+    icon: arabic,
+    title: "Arabic",
+    description:
+      "Gain fluency in the Arabic language, the key to understanding Islamic texts.",
+  },
+  {
+    id: 2,
     icon: quran,
     title: "Quran",
     description: "Master Quranic recitation, memorization, and Tafseer.",
   },
   {
-    id: 2,
+    id: 3,
     icon: hadith,
     title: "Hadith",
-    description: "Learn the sayings of the Prophet Muhammad (PBUH).",
-  },
-  {
-    id: 3,
-    icon: fiqh,
-    title: "Fiqh",
-    description: "Understand Islamic jurisprudence and law.",
+    description:
+      "Learn the sayings of the Prophet Muhammad (may the peace and blessing of Allah be upon him).",
   },
   {
     id: 4,
-    icon: arabic,
-    title: "Arabic",
-    description:
-      "Gain fluency in the Arabic language, the key to understanding Islamic texts.",
+    icon: fiqh,
+    title: "Fiqh",
+    description: "Understand Islamic jurisprudence and law.",
   },
 ];
 
