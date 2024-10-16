@@ -147,6 +147,17 @@ const Navbar: React.FC = () => {
                 Reviews
               </Link>
             </li>
+            <li>
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className={`block p-2 rounded ${
+                  isActiveLink("/contact") ? "bg-yellow-500 text-white" : ""
+                }`}
+              >
+                Contact us
+              </Link>
+            </li>
           </ul>
         </div>
       )}
