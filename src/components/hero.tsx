@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import heroImg from "../../public/assets/hero_bg.png";
 import Button from "./button";
+import Link from "next/link";
 
 export const Hero = () => {
   const handleClick = () => {
@@ -43,7 +44,9 @@ export const Hero = () => {
             tapestry of Islamic monotheism at Markazul-Bayan.
           </p>
           <div className="my-[2.5vmin]">
-            <Button text="Contact us" onClick={handleClick} />
+            <Link href="/contact">
+              <Button text="Contact us" onClick={handleClick} />
+            </Link>
           </div>
         </div>
       </div>
