@@ -28,6 +28,24 @@ export const testimonialsData = [
     comment:
       "Alhamdulillah I've really benefitted from the class. I started off not having knowledge of mostly the basics, but Alhamdulillah with what we've covered especially in fiqh has really helped. And Alhamdulillah now I've also même prized over 30 hadiths and also have the understanding. What I really like about the class is how short the classes are and not lengthy so we are able to process the information.",
   },
+  {
+    name: "Umm AbiBakr",
+    location: "Ghana",
+    comment:
+      "As salaamu alaykum WaRahmatuLlah WaBarakatuh Markazul Bayaan is one of the best Quranic institute I have ever come across. Their teachers have patience which makes learning easy. And they teach in a way which make memorization easy. The class is fix to suit your schedule . I purchased for Qur’an course but I’m been taught a book in addition and I get to ask any questions about Islam. And it has deepen my Islamic knowledge. I recommend everyone whether a beginner or an advanced student to enroll in any of their courses. And you will appreciate it. In shaa Allah.",
+  },
+  {
+    name: "Sis Taqiyyah",
+    location: "Ghana",
+    comment:
+      "As Salamualeikum, I recommend Markazul Bayaan to anyone seeking a comprehensive and engaging Islamic education.This Quran class has deepened my understanding, recitation and spiritual growth.It indeed benefit beginners seeking foundational knowledge",
+  },
+  {
+    name: "Sis Bint",
+    location: "Nigeria",
+    comment:
+      "This is an honest review, ĪnshaAllah. The 6 weeks Arabic course has been so beneficial, Alhamdulilah. From the videos to the class materials and the necessary reminders. The highlight of the class for me is the fact that, one way or the other the class actually helped in being consistent with my other ibaadat. May Allah bless the organizers and grant us, the students more understanding of the deen. ",
+  },
 ];
 
 export function Testimonials() {

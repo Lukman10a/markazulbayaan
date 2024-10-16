@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links: Stacked on mobile, aligned horizontally on larger screens */}
-          <nav className="flex flex-col gap-[2.2vmax] md:gap-[3vmax] md:flex-row pb-12">
+          <nav className="flex  gap-[2.2vmax] md:gap-[3vmax] md:flex-row pb-12">
             <Link href="/" className="hover:text-gray-400 self-start mb-2">
               Home
             </Link>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           </nav>
         </div>
         {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}
-        <div className="flex gap-4 md:justify-center">
+        <div className="flex gap-4 md:justify-center ">
           <a
             href="/contact"
             target="_blank"

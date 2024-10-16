@@ -1,6 +1,5 @@
-import { BookOpen, Heart } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import React from "react";
-import { FaQuran } from "react-icons/fa";
 import { LiaQuranSolid } from "react-icons/lia";
 import { FaBook } from "react-icons/fa6";
 import { BsHandIndex } from "react-icons/bs";
@@ -11,12 +10,14 @@ import { BsArrowRight } from "react-icons/bs"; // Importing the arrow icon
 export default function CoursePage() {
   const courses = [
     {
+      slug: "/arabic",
       title: "Arabic Language",
       description:
         "Comprehensive Arabic courses for all levels, from beginners to advanced learners.",
       icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     },
     {
+      slug: "/quran",
       title: "Quranic Studies",
       description:
         "In-depth Quranic courses focusing on recitation, memorization, and understanding.",
@@ -25,22 +26,26 @@ export default function CoursePage() {
       ),
     },
     {
+      slug: "/tawhid",
       title: "Tawhid (Islamic Monotheism)",
       description:
         "Courses on Islamic theology and monotheism to strengthen your faith and understanding.",
       icon: <BsHandIndex className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     },
     {
+      slug: "/tajwid",
       title: "Tajwid",
       description: "Master the rules of Tajwid for perfect Quranic recitation.",
       icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     },
     {
+      slug: "/fiqh",
       title: "Fiqh",
       description: "Learn the Islamic jurisprudence that governs daily life.",
       icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     },
     {
+      slug: "/tafsir",
       title: "Tafsir",
       description: "Understand the meanings and interpretations of the Quran.",
       icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
@@ -101,14 +106,24 @@ export default function CoursePage() {
               custom={index} // Pass index to stagger animations
               whileHover="hover"
             >
-              <motion.div
-                whileHover={{ rotate: 10 }} // Rotate icon slightly on hover
-                className="icon"
+              <Link
+                href={{
+                  pathname: `/course/${course.slug}`,
+                  query: {
+                    title: course.title,
+                    description: course.description,
+                  },
+                }}
               >
-                {course.icon}
-              </motion.div>
-              <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
-              <p>{course.description}</p>
+                <motion.div
+                  whileHover={{ rotate: 10 }} // Rotate icon slightly on hover
+                  className="icon"
+                >
+                  {course.icon}
+                </motion.div>
+                <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
+                <p>{course.description}</p>
+              </Link>
             </motion.div>
           ))}
         </div>
