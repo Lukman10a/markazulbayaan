@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
                 href="/course"
                 onClick={() => setMenuOpen(false)}
                 className={`block p-2 rounded ${
-                  isActiveLink("/reviews") ? "bg-yellow-500 text-white" : ""
+                  isActiveLink("/course") ? "bg-yellow-500 text-white" : ""
                 }`}
               >
                 Courses

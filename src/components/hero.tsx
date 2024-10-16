@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
-import heroImg from "../../public/assets/hero_bg.png";
+import blog3 from "../../public/assets/blog3.png";
 import Button from "./button";
 import Link from "next/link";
 
 export const Hero = () => {
   return (
     <>
-      <section className="m-3 h-fit bg-[url(/assets/hero_bg.png)] bg-cover rounded-2xl overflow-hidden py-10">
+      <section className="bg-[url(/assets/blog3.png)] bg-cover overflow-hidden py-10">
         <div className="px-[5vw] text-white top-[10vmin] lg:top-[7vmax]">
           <h1
             style={{
@@ -16,7 +16,7 @@ export const Hero = () => {
               backgroundClip: "text",
               backgroundColor: "#565656",
             }}
-            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] w-[90%]"
+            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] w-[90%]"
           >
             The Pursuit of Knowledge: A Duty for Every Muslim
           </h1>
