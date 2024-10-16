@@ -162,26 +162,26 @@ export default function Contact() {
   return (
     <main className="bg-gradient-to-b from-yellow-50 to-white">
       {/* Hero Section */}
-      <section className="py-20 relative isolate px-4 bg-[url(/assets/bg.jpg)] bg-no-repeat bg-cover">
-        <div className="absolute inset-0 z-[-1] ">
+      <section className="py-20 relative isolate px-4 bg-[url(/assets/bg.jpg)] bg-no-repeat bg-cover bg-center">
+        <div className="absolute inset-0 z-[-1]">
           <div className="h-full w-full bg-opacity-30 bg-black"></div>
         </div>
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-6">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-600 mb-6">
             Contact Markazul-Bayan
           </h1>
-          <p className="text-xl text-white  mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto">
             Reach out to us for any inquiries about our courses, instructors, or
             to start your journey in Islamic learning.
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="https://bit.ly/Learn-at-markazbayan">
-              <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700">
+              <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 w-full sm:w-auto">
                 Get Started
               </Button>
             </Link>
             <Link href="/about">
-              <Button size="lg" className="bg-black text-white">
+              <Button size="lg" className="bg-black text-white w-full sm:w-auto">
                 Learn More
               </Button>
             </Link>
@@ -189,8 +189,9 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="flex items-start justify-between gap-7 px-16 py-10">
-        <Card>
+
+      <section className="flex flex-col md:flex-row items-start justify-between gap-7 px-4 sm:px-10 py-10">
+        <Card className="w-full md:w-1/3">
           <CardHeader>
             <CardTitle>Contact Information</CardTitle>
           </CardHeader>
@@ -215,8 +216,9 @@ export default function Contact() {
             </div>
           </CardContent>
         </Card>
-        <div className="rounded-lg bg-white p-5 text-black shadow-lg">
-          <h3 className="mb-5 text-2xl font-medium">
+        
+        <div className="w-full md:w-2/3 rounded-lg bg-white p-5 text-black shadow-lg">
+          <h3 className="mb-5 text-xl sm:text-2xl font-medium">
             Fill out the form and we will be in touch!
           </h3>
           <form ref={formRef} onSubmit={sendEmail}>
@@ -302,8 +304,8 @@ export default function Contact() {
       </section>
       {/* Instructors Section */}
       <section className="container mx-auto mt-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Our Instructors</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Our Instructors</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
               <CardTitle>One on One Convenient Classes</CardTitle>
@@ -389,10 +391,8 @@ export default function Contact() {
 
       {/* Features Section */}
       <section className="container mx-auto mt-16 mb-4 px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          Why Choose Markazul-Bayan?
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Why Choose Markazul-Bayan?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           <FeatureCard
             icon={<BookOpen className="h-10 w-10 text-yellow-600" />}
             title="Comprehensive Curriculum"
