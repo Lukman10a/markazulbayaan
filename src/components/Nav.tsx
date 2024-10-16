@@ -5,7 +5,7 @@ import { Menu } from "@headlessui/react"; // Optional for dropdown functionality
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link"; // Using Link component for navigation
-import markaz from "../../public/assets/markaz.png";
+import mbayan from "../../public/assets/mbayan.png";
 import uk from "../../public/assets/ukflag.png";
 import saudi from "../../public/assets/saudiflag.png";
 import dropdown from "../../public/assets/dropdown.png";
@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center ">
           <Link href="/">
             <Image
-              src={markaz}
+              src={mbayan}
               alt="Logo"
               className="mr-4 w-auto h-[58px] text-red-300"
               width={500}
