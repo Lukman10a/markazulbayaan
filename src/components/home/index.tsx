@@ -13,6 +13,7 @@ import Faq from "../Faq";
 import { SubjectCard } from "../subjectcard";
 import CommunitySection from "./CommunitySection";
 import StatSection from "./StatSection";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -31,7 +32,9 @@ export default function HomePage() {
               or an advanced learner striving for mastery, our expert educators
               are dedicated to guiding you every step of the way.
             </p>
-            <Button text="Start Now" />
+            <Link href="/contact">
+              <Button text="Start Now" />
+            </Link>
           </div>
           <Image
             src={heroImage}

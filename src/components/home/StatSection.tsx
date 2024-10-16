@@ -12,9 +12,19 @@ export default function StatSection() {
             A Platform to Learn the Qur&apos;an & Sunnah
           </h3>
           <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto">
-            Gain mastery in Quranic recitation (Tajweed) and immerse yourself in
-            the teachings of Prophet Muhammad (PBUH), with a focus on the Sunnah
-            and Islamic practices.
+            Master the recitation of the{" "}
+            <span className="font-bold">Qur'an (with Tajweed) </span>and immerse
+            yourself in the teachings of Prophet Muhammad (peace and blessing of
+            Allah be upon him) through the Sunnah. Additionally, our curriculum
+            offers in-depth learning of{" "}
+            <span className="font-bold">Hadith</span>,
+            <span className="font-bold">
+              {" "}
+              Arabic language (reading and writing)
+            </span>
+            , <span className="font-bold">Fiqh</span>,{" "}
+            <span className="font-bold">Tafsir</span>, and other essential
+            Islamic sciences.
           </p>
         </div>
 
@@ -28,14 +38,14 @@ export default function StatSection() {
           <StatItem
             icon={volume}
             alt="Tajweed Icon"
-            number="500+"
+            number="100+"
             text="Hours of Learning"
           />
           <StatItem
             icon={moon}
             alt="Community Icon"
-            number="1m+"
-            text="Active Learners"
+            number="500+"
+            text="Students have benefited"
           />
         </div>
       </div>

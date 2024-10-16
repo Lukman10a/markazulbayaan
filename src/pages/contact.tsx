@@ -175,12 +175,16 @@ export default function Contact() {
             to start your journey in Islamic learning.
           </p>
           <div className="flex justify-center space-x-4">
-            <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700">
-              Get Started
-            </Button>
-            <Button size="lg" className="bg-black text-white">
-              Learn More
-            </Button>
+            <Link href="https://bit.ly/Learn-at-markazbayan">
+              <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700">
+                Get Started
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button size="lg" className="bg-black text-white">
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

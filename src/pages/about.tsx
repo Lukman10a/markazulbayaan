@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { BookOpen, GraduationCap, Heart } from "lucide-react";
+import Link from "next/link";
 import { FaQuran } from "react-icons/fa";
 
 export default function AboutUs() {
@@ -81,9 +82,11 @@ export default function AboutUs() {
               Islamic monotheism, Markazul-Bayan is here to guide you on your
               quest for wisdom, insight, and enlightenment.
             </p>
-            <Button size="lg" className="bg-yellow-900">
-              Enroll Now
-            </Button>
+            <Link href="https://bit.ly/Learn-at-markazbayan">
+              <Button size="lg" className="bg-yellow-900">
+                Enroll Now
+              </Button>
+            </Link>
           </div>
         </section>
       </main>
