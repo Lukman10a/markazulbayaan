@@ -43,7 +43,8 @@ const Navbar: React.FC = () => {
         {/* Hamburger Icon for Mobile */}
         <button
           className="md:hidden text-yellow-500 focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}>
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <FaBars className="text-2xl" />
         </button>
 
@@ -55,7 +56,8 @@ const Navbar: React.FC = () => {
               onClick={() => handleDesktopLinkClick("/")}
               className={` ${
                 activeDesktopLink === "/" ? " text-yellow-500" : ""
-              }`}>
+              }`}
+            >
               Home
             </Link>
           </li>
@@ -65,7 +67,8 @@ const Navbar: React.FC = () => {
               onClick={() => handleDesktopLinkClick("/about")}
               className={` ${
                 activeDesktopLink === "/about" ? " text-yellow-500" : ""
-              }`}>
+              }`}
+            >
               About
             </Link>
           </li>
@@ -75,7 +78,8 @@ const Navbar: React.FC = () => {
               onClick={() => handleDesktopLinkClick("/#faq")}
               className={` ${
                 activeDesktopLink === "/#faq" ? " text-yellow-500" : ""
-              }`}>
+              }`}
+            >
               FAQ
             </Link>
           </li>
@@ -85,8 +89,20 @@ const Navbar: React.FC = () => {
               onClick={() => handleDesktopLinkClick("/blog")}
               className={` ${
                 activeDesktopLink === "/blog" ? " text-yellow-500" : ""
-              }`}>
+              }`}
+            >
               Blog
+            </Link>
+          </li>
+          <li className="hover:text-gray-900 font-semibold">
+            <Link
+              href="/reviews"
+              onClick={() => handleDesktopLinkClick("/reviews")}
+              className={` ${
+                activeDesktopLink === "/reviews" ? " text-yellow-500" : ""
+              }`}
+            >
+              Reviews
             </Link>
           </li>
         </ul>
@@ -123,7 +139,8 @@ const Navbar: React.FC = () => {
                     onClick={() => setLanguage("English")}
                     className={`flex items-center px-4 py-2 text-sm text-gray-700 w-full hover:bg-gray-100 ${
                       active && "bg-gray-100"
-                    }`}>
+                    }`}
+                  >
                     <Image
                       src={uk}
                       alt="English"
@@ -150,7 +167,8 @@ const Navbar: React.FC = () => {
                     onClick={() => setLanguage("Arabic")}
                     className={`flex items-center px-4 py-2 text-sm text-gray-700 w-full hover:bg-gray-100 ${
                       active && "bg-gray-100"
-                    }`}>
+                    }`}
+                  >
                     <Image
                       src={saudi}
                       alt="Arabic"
@@ -178,7 +196,8 @@ const Navbar: React.FC = () => {
         {/* Contact Button for Desktop */}
         <Link
           href="/contact"
-          className="hidden md:inline-block bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600">
+          className="hidden md:inline-block bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600"
+        >
           Contact us
         </Link>
       </div>
@@ -193,7 +212,8 @@ const Navbar: React.FC = () => {
                 onClick={() => handleMobileLinkClick("/")}
                 className={`block p-2 rounded ${
                   activeMobileLink === "/" ? "bg-yellow-500 text-white" : ""
-                }`}>
+                }`}
+              >
                 Home
               </Link>
             </li>
@@ -205,7 +225,8 @@ const Navbar: React.FC = () => {
                   activeMobileLink === "/about"
                     ? "bg-yellow-500 text-white"
                     : ""
-                }`}>
+                }`}
+              >
                 About
               </Link>
             </li>
@@ -215,7 +236,8 @@ const Navbar: React.FC = () => {
                 onClick={() => handleMobileLinkClick("/#faq")}
                 className={`block p-2 rounded ${
                   activeMobileLink === "/#faq" ? "bg-yellow-500 text-white" : ""
-                }`}>
+                }`}
+              >
                 FAQ
               </Link>
             </li>
@@ -225,8 +247,22 @@ const Navbar: React.FC = () => {
                 onClick={() => handleMobileLinkClick("/blog")}
                 className={`block p-2 rounded ${
                   activeMobileLink === "/blog" ? "bg-yellow-500 text-white" : ""
-                }`}>
+                }`}
+              >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/reviews"
+                onClick={() => handleMobileLinkClick("/reviews")}
+                className={`block p-2 rounded ${
+                  activeMobileLink === "/reviews"
+                    ? "bg-yellow-500 text-white"
+                    : ""
+                }`}
+              >
+                Reviews
               </Link>
             </li>
           </ul>
@@ -237,7 +273,8 @@ const Navbar: React.FC = () => {
               className="flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg"
               onClick={() =>
                 setLanguage(language === "English" ? "Arabic" : "English")
-              }>
+              }
+            >
               <Image
                 src={`/${
                   language === "English"
