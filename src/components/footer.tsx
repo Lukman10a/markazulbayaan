@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
           </nav>
         </div>
         {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}
-        <div className="flex gap-4 md:justify-center ">
+        <div className="flex justify-center gap-4 md:justify-center ">
           <a
             href="/contact"
             target="_blank"
