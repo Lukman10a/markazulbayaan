@@ -44,7 +44,7 @@ export interface WhyWeStarted {
 }
 
 export interface Testimonial {
-  quote: string;
+  comment: string;
   name: string;
   location: string;
 }

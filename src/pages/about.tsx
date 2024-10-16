@@ -1,3 +1,4 @@
+import Testimonials from "@/components/testimonial";
 import { Button } from "@/components/ui/button";
 import { BookOpen, GraduationCap, Heart } from "lucide-react";
 import Link from "next/link";
@@ -82,13 +83,12 @@ export default function AboutUs() {
               Islamic monotheism, Markazul-Bayan is here to guide you on your
               quest for wisdom, insight, and enlightenment.
             </p>
-            <Link href="https://bit.ly/Learn-at-markazbayan">
-              <Button size="lg" className="bg-yellow-900">
-                Enroll Now
-              </Button>
-            </Link>
+            <Button asChild size="lg" className="bg-yellow-900">
+              <Link href="https://bit.ly/Learn-at-markazbayan">Enroll Now</Link>
+            </Button>
           </div>
         </section>
+        <Testimonials />
       </main>
     </>
   );

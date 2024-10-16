@@ -3,32 +3,30 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Testimonial } from "@/lib/types";
 import Autoplay from "embla-carousel-autoplay";
 
-const testimonialsData = [
+export const testimonialsData = [
   {
-    quote:
-      "The lessons on Arabic grammar were clear and easy to follow. I now feel much more confident in my recitation and understanding of the Qur'an.",
-    name: "Abu Jamal Al-Athary",
-    location: "Olunlade, Ilorin Nigeria",
+    name: "Bro Abdur-Rahmaan ",
+    location: "UK",
+    comment:
+      "Ustadh Lukman bn Abdir-Rauf breaks down difficult Arabic grammar and vocabulary into manageable parts, making it accessible for students of all levels. With clear explanations and an engaging teaching style, he has greatly improved my understanding of the language. This approach ensures that students grasp the basics thoroughly, leading to a deeper and more lasting understanding of Arabic. I highly recommend Ustadh Lukman bn Abdir-Rauf to anyone seeking a comprehensive and lasting mastery of the language.",
   },
   {
-    quote:
-      "Markazul-Bayan's approach to teaching the Arabic language is exceptional. I've learned so much in such a short time, and the teachers are incredibly supportive.",
-    name: "Abu Khadija Al-Fulani",
-    location: "Zaria, Nigeria",
+    name: "Umm Firdaus Belgium",
+    location: "Belgium",
+    comment:
+      "I am very satisfied with your accessibility, willingness to help, and flexibility. You go above and beyond to assist, offering a wide range of services: Arabic, Aqeedah, Quran, and more all very helpful. You listen attentively to feedback and work together to find solutions. Overall, I am very pleased with this experience. I would definitely recommend signing your kids up for these courses",
   },
   {
-    quote:
-      "I appreciate the structured roadmap provided for beginners. It helped me develop a solid foundation in Qur'an recitation and writing skills.",
-    name: "Abu Isa Ibn Daud",
-    location: "Kano, Nigeria",
+    name: "Umm Sumayyah",
+    location: "UK",
+    comment:
+      "Alhamdulillah I've really benefitted from the class. I started off not having knowledge of mostly the basics, but Alhamdulillah with what we've covered especially in fiqh has really helped. And Alhamdulillah now I've also même prized over 30 hadiths and also have the understanding. What I really like about the class is how short the classes are and not lengthy so we are able to process the information.",
   },
 ];
 
@@ -53,43 +51,47 @@ export function Testimonials() {
               delay: 5000,
             }),
           ]}
-          className="flex-1 w-full lg:w-auto">
+          className="flex-1 w-full lg:w-auto"
+        >
           <CarouselContent>
-            {testimonialsData.map(
-              (
-                testimonial: Testimonial,
-                index: React.Key | null | undefined
-              ) => (
-                <CarouselItem
-                  key={index}
-                  className="max-w-full lg:max-w-md mx-auto">
-                  <Card className="p-6">
-                    <CardContent>
-                      <p className="text-sm md:text-base lg:text-lg mb-4">
-                        &ldquo;{testimonial.quote}&rdquo;
-                      </p>
-                      <div className="flex items-center">
-                        <Image
-                          src={"/assets/profile.png"}
-                          alt="profile image"
-                          width={50}
-                          height={50}
-                          className="rounded-full"
-                        />
-                        <div className="ml-4">
-                          <p className="text-xs md:text-base">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-xs md:text-sm">
-                            {testimonial.location}
-                          </p>
+            {testimonialsData
+              .slice(0, 3)
+              .map(
+                (
+                  testimonial: Testimonial,
+                  index: React.Key | null | undefined
+                ) => (
+                  <CarouselItem
+                    key={index}
+                    className="max-w-full lg:max-w-md mx-auto"
+                  >
+                    <Card className="p-6">
+                      <CardContent>
+                        <p className="text-sm md:text-base  mb-4">
+                          &ldquo;{testimonial.comment}&rdquo;
+                        </p>
+                        <div className="flex items-center">
+                          <Image
+                            src={"/assets/profile.png"}
+                            alt="profile image"
+                            width={50}
+                            height={50}
+                            className="rounded-full"
+                          />
+                          <div className="ml-4">
+                            <p className="text-xs md:text-base">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-xs md:text-sm">
+                              {testimonial.location}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              )
-            )}
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                )
+              )}
           </CarouselContent>
           {/*TODO: ADD/UNCOMMENT later when ready to fix */}
           {/* <div>

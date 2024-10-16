@@ -20,13 +20,12 @@ export default function HomePage() {
     <>
       <Hero />
       <StatSection />
-
-      <section className="p-10 lg:px-[6vw]  bg-custom-gradient ">
-        <section className="md:flex items-center md:py-[7vmax] rounded-3xlmd:gap-10">
+      <section className="p-10 lg:px-[6vw]  bg-custom-gradient">
+        <section className="md:flex items-center md:py-[7vmax] rounded-3xl md:gap-10">
           <div className="flex-grow space-y-10 mb-10  md:w-1/2 h-full">
-            <h1 className="font-bold text-[4vmax] text-[#CD9418] leading-none">
+            <h3 className="font-bold text-[4vmax] text-[#CD9418] leading-none">
               Discover the Essence of learning the Deen
-            </h1>
+            </h3>
             <p className="font-medium text-[3vmin] md:text-lg leading-relaxed">
               Whether you&apos;re a beginner seeking to grasp the fundamentals
               or an advanced learner striving for mastery, our expert educators

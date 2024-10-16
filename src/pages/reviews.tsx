@@ -5,8 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Book, GraduationCap, Users, Star, MessageCircle } from "lucide-react";
+import { Book, GraduationCap, Users, MessageCircle } from "lucide-react";
 import Button from "../components/button";
+import { testimonialsData } from "@/components/testimonial";
 
 export default function Component() {
   return (
@@ -72,26 +73,7 @@ export default function Component() {
           What Our Students Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {[
-            {
-              name: "Bro Abdur-Rahmaan ",
-              location: "UK",
-              content:
-                "Ustadh Lukman bn Abdir-Rauf breaks down difficult Arabic grammar and vocabulary into manageable parts, making it accessible for students of all levels. With clear explanations and an engaging teaching style, he has greatly improved my understanding of the language. This approach ensures that students grasp the basics thoroughly, leading to a deeper and more lasting understanding of Arabic. I highly recommend Ustadh Lukman bn Abdir-Rauf to anyone seeking a comprehensive and lasting mastery of the language.",
-            },
-            {
-              name: "Umm Firdaus Belgium",
-              location: " Belgium",
-              content:
-                "I am very satisfied with your accessibility, willingness to help, and flexibility. You go above and beyond to assist, offering a wide range of services: Arabic, Aqeedah, Quran, and more all very helpful. You listen attentively to feedback and work together to find solutions. Overall, I am very pleased with this experience. I would definitely recommend signing your kids up for these courses",
-            },
-            {
-              name: "Umm Sumayyah",
-              location: "UK",
-              content:
-                "Alhamdulillah I've really benefitted from the class. I started off not having knowledge of mostly the basics, but Alhamdulillah with what we've covered especially in fiqh has really helped. And Alhamdulillah now I've also même prized over 30 hadiths and also have the understanding. What I really like about the class is how short the classes are and not lengthy so we are able to process the information.",
-            },
-          ].map((testimonial, index) => (
+          {testimonialsData.map((testimonial, index) => (
             <Card key={index} className="bg-[#2e2101ec] text-white">
               <CardHeader className=" text-white">
                 <CardTitle className=" text-white">
@@ -102,7 +84,7 @@ export default function Component() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-white">{testimonial.content}</p>
+                <p className="text-white">{testimonial.comment}</p>
               </CardContent>
             </Card>
           ))}
@@ -116,7 +98,12 @@ export default function Component() {
         <p className="text-xl text-muted-foreground mb-6">
           Join thousands of students worldwide in pursuing sacred knowledge
         </p>
-        <Button text="Enroll now" />
+
+        <Button
+          asLink
+          href="https://bit.ly/Learn-at-markazbayan"
+          text="Enroll now"
+        />
       </section>
     </div>
   );
