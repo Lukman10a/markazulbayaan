@@ -13,10 +13,10 @@ export default function StatSection() {
           </h3>
           <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto">
             Master the recitation of the{" "}
-            <span className="font-bold">Qur'an (with Tajweed) </span>and immerse
-            yourself in the teachings of Prophet Muhammad (peace and blessing of
-            Allah be upon him) through the Sunnah. Additionally, our curriculum
-            offers in-depth learning of{" "}
+            <span className="font-bold">Qur&apos;an (with Tajweed) </span>and
+            immerse yourself in the teachings of Prophet Muhammad (peace and
+            blessing of Allah be upon him) through the Sunnah. Additionally, our
+            curriculum offers in-depth learning of{" "}
             <span className="font-bold">Hadith</span>,
             <span className="font-bold">
               {" "}

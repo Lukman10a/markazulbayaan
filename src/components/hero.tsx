@@ -41,11 +41,11 @@ export const Hero = () => {
           <p className="text-[3vmin] xl:text-[3vmin]  sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[80%]">
             At Markazul Bayaan, we guide you on a transformative journey to
             deepen your understanding of the Arabic language, explore the rich
-            teachings of the Qur'an and Sunnah, and immerse yourself in the core
-            principles of Islamic monotheism. Whether you're perfecting your
-            Tajweed, studying Hadith, or learning the essentials of Fiqh, our
-            platform offers a comprehensive Islamic education that enriches both
-            mind and soul.
+            teachings of the Qur&apos;an and Sunnah, and immerse yourself in the
+            core principles of Islamic monotheism. Whether you&apos;re
+            perfecting your Tajweed, studying Hadith, or learning the essentials
+            of Fiqh, our platform offers a comprehensive Islamic education that
+            enriches both mind and soul.
           </p>
           <div className="my-[2.5vmin]">
             <Link href="/contact">
