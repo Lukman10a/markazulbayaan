@@ -178,7 +178,7 @@ export default function Contact() {
             <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700">
               Get Started
             </Button>
-            <Button size="lg" className="bg-white text-black">
+            <Button size="lg" className="bg-black text-white">
               Learn More
             </Button>
           </div>
