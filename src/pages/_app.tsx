@@ -20,6 +20,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Markazul Bayaan</title>
+        <meta
+          name="description"
+          content="Your Gateway to Islamic Knowledge. The Pursuit of Knowledge: A Duty
+for Every Muslim"
+        />
         <link
           rel="icon"
           type="image/png"
