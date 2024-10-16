@@ -25,7 +25,7 @@ export const Hero = () => {
           }}
         />
 
-        <div className="px-[5vw] text-white absolute top-[10vmin]  lg:top-[7vmax] ">
+        <div className="px-[5vw] text-white absolute top-[4vmin]  lg:top-[7vmax]">
           <h1
             style={{
               color: "transparent",
