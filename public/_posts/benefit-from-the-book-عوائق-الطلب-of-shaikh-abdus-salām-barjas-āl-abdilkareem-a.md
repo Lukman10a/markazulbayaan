@@ -7,7 +7,7 @@ description: The book focuses on the barriers and obstacles in the path of
   drawing upon the wisdom of past scholars to provide detailed guidance on how
   to avoid these impediments for every sincere seeker of knowledge.
 date: 2024-09-26
-thumbnail: /images/uploads/عوائق20الطلب.webp
+thumbnail: /images/uploads/عوائق20الطلب.webp
 author: Abū Kawthar Lukmān Bn Abdir-Raūf As-Salafī
 ---
 
