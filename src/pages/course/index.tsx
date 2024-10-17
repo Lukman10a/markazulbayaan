@@ -5,7 +5,7 @@ import { FaBook } from "react-icons/fa6";
 import { BsHandIndex } from "react-icons/bs";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight } from "react-icons/bs"; // Importing the arrow icon
+import { BsArrowRight } from "react-icons/bs";
 import Button from "@/components/button";
 
 export const courses = [
@@ -16,11 +16,11 @@ export const courses = [
     description:
       "Comprehensive Arabic courses for all levels, from beginners to advanced learners.",
     icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
+    duration: "3 months",
+    students: 5,
+    price: "$100 monthly",
     instructor: "Abu Kawthar Lukman",
-    level: "Advanced",
+    level: "Beginner",
     syllabus: [
       "Introduction to Arabic alphabet and pronunciation",
       "Basic Arabic grammar and sentence structure",
@@ -38,14 +38,14 @@ export const courses = [
   {
     id: 2,
     slug: "quran",
-    title: "Quranic Studies",
-    level: "All Levels",
+    title: "Beginner Quranic Studies (Juz Amma)",
+    level: "Beginner",
     description:
       "In-depth Quranic courses focusing on recitation, memorization, and understanding.",
     icon: <LiaQuranSolid className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
+    duration: "6 months",
+    students: 10,
+    price: "$120",
     instructor: "Abu Kawthar Lukman",
     syllabus: [
       "Introduction to Quranic recitation techniques",
@@ -65,14 +65,16 @@ export const courses = [
     id: 3,
     slug: "tawhid",
     title: "Tawhid (Islamic Monotheism)",
+    level: "All levels",
     description:
       "Courses on Islamic theology and monotheism to strengthen your faith and understanding.",
     icon: <BsHandIndex className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
+    duration: "4 months",
+    students: 5,
+    price: "$100 monthly",
     instructor: "Abu Kawthar Lukman",
     syllabus: [
+      "Studying books and treatises of Tawhid with scholarly explanations",
       "Understanding the concept of Tawhid",
       "Shirk and its various forms",
       "Attributes of Allah (Asma wa Sifat)",
@@ -88,62 +90,13 @@ export const courses = [
   },
   {
     id: 4,
-    slug: "tajwid",
-    title: "Tajwid",
-    description: "Master the rules of Tajwid for perfect Quranic recitation.",
-    icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
-    instructor: "Dr. Ahmed Khalil",
-    syllabus: [
-      "Introduction to Tajwid rules",
-      "Articulation points of Arabic letters",
-      "Rules of elongation (Madd)",
-      "Rules of stopping and starting (Waqf and Ibtida)",
-      "Practice and recitation of selected Surahs",
-    ],
-    objectives: [
-      "Recite the Quran with proper pronunciation and intonation",
-      "Understand and apply the rules of Tajwid",
-      "Improve overall Quranic recitation skills",
-      "Gain confidence in leading prayers and reciting in public",
-    ],
-  },
-  {
-    id: 5,
-    slug: "fiqh",
-    title: "Fiqh",
-    description: "Learn the Islamic jurisprudence that governs daily life.",
-    icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
-    instructor: "Abu Kawthar Lukman",
-    syllabus: [
-      "Foundations of Islamic jurisprudence",
-      "Study of major schools of Islamic law",
-      "Fiqh of worship (Ibadah)",
-      "Fiqh of transactions (Muamalat)",
-      "Contemporary Fiqh issues and fatwa methodology",
-    ],
-    objectives: [
-      "Understand the principles and methodologies of Islamic jurisprudence",
-      "Compare and contrast different schools of Islamic law",
-      "Apply Fiqh principles to contemporary issues",
-      "Develop skills in deriving Islamic rulings from primary sources",
-    ],
-    level: "Advanced",
-  },
-  {
-    id: 6,
     slug: "tafsir",
     title: "Tafsir",
     description: "Understand the meanings and interpretations of the Quran.",
     icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
-    duration: "8 weeks",
-    students: 120,
-    price: "$199",
+    duration: "6 months",
+    students: 5,
+    price: "$70 monthly",
     instructor: "Abu Kawthar Lukman",
     syllabus: [
       "Introduction to Tafsir and its importance",
@@ -157,6 +110,57 @@ export const courses = [
       "Analyze and interpret key Quranic passages",
       "Familiarize with major Tafsir works and methodologies",
       "Apply Tafsir to contemporary issues and contexts",
+    ],
+  },
+  {
+    id: 5,
+    slug: "fiqh",
+    title: "Fiqh",
+    level: "Beginner",
+    description: "Learn the Islamic jurisprudence that governs daily life.",
+    icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
+    duration: "8 weeks",
+    students: 15,
+    price: "$70 monthly",
+    instructor: "Abu Kawthar Lukman",
+    syllabus: [
+      "Foundations of Islamic jurisprudence",
+      "Study of major schools of Islamic law",
+      "Fiqh of worship (Ibadah)",
+      "Fiqh of transactions (Muamalat)",
+      "Contemporary Fiqh issues",
+    ],
+    objectives: [
+      "Understand the principles and methodologies of Islamic jurisprudence",
+      "Compare and contrast different schools of Islamic law",
+      "Apply Fiqh principles to contemporary issues",
+      "Develop skills in deriving Islamic rulings from primary sources",
+    ],
+  },
+  {
+    id: 6,
+    slug: "tajwid",
+    title: "Tajwid",
+    level: "Beginner",
+    description: "Master the rules of Tajwid for perfect Quranic recitation.",
+    icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
+    duration: "4 months",
+    students: 120,
+    price: "$50 monthly",
+    instructor: "Abu Kawthar Lukman",
+    syllabus: [
+      "Introduction to Tajwid rules",
+      "Articulation points of Arabic letters",
+      "Rules of the silent nuun and tanwin",
+      "Rules of elongation (Madd)",
+      "Rules of stopping and starting (Waqf and Ibtida)",
+      "Practice and recitation of selected Surahs",
+    ],
+    objectives: [
+      "Recite the Quran with proper pronunciation and intonation",
+      "Understand and apply the rules of Tajwid",
+      "Improve overall Quranic recitation skills",
+      "Gain confidence in leading prayers and reciting in public",
     ],
   },
 ];
@@ -249,6 +253,7 @@ export default function CoursePage() {
                       description: course.description,
                     },
                   }}
+                  as={`/course/${course.slug}`}
                 >
                   <motion.div
                     whileHover={{ rotate: 10 }} // Rotate icon slightly on hover
