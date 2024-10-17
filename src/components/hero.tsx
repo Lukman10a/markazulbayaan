@@ -1,13 +1,11 @@
-import Image from "next/image";
 import React from "react";
-import blog3 from "../../public/assets/blog3.png";
 import Button from "./button";
 import Link from "next/link";
 
 export const Hero = () => {
   return (
     <>
-      <section className="bg-[url(/assets/blog3.png)] bg-cover overflow-hidden py-10">
+      <section className="bg-[url(/assets/blog3.png)] bg-center object-cover bg-cover overflow-hidden py-10">
         <div className="px-[5vw] text-white top-[10vmin] lg:top-[7vmax]">
           <h1
             style={{
