@@ -4,7 +4,7 @@ title: Introduction to Arabic Alphabets
 description: Learn the basics of the Arabic alphabet, including the letters and
   their sounds.
 date: 2024-09-23
-thumbnail: /images/uploads/matn-mukhtasar-al-adhkār_0000.jpg
+thumbnail: /images/uploads/arabic-letter.png
 author: Abū Kawthar Lukmān Bn Abdir-Raūf As-Salafī
 ---
 
