@@ -46,6 +46,18 @@ export const testimonialsData = [
     comment:
       "This is an honest review, ĪnshaAllah. The 6 weeks Arabic course has been so beneficial, Alhamdulilah. From the videos to the class materials and the necessary reminders. The highlight of the class for me is the fact that, one way or the other the class actually helped in being consistent with my other ibaadat. May Allah bless the organizers and grant us, the students more understanding of the deen. ",
   },
+  {
+    name: "Sis Iqra Kareem",
+    location: "India",
+    comment:
+      "I took Islamic studies, Arabic speaking, and Quran classes for my daughter. The teacher was patient and dedicated. I really saw an improvement in my daughter's memorization in less than a month. May Allah bless everyone associated with the organization. Jazak Allah Khair! ",
+  },
+  {
+    name: "Umm Abdillah Leyla",
+    location: "",
+    comment:
+      "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
+  },
 ];
 
 export function Testimonials() {
