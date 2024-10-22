@@ -54,7 +54,7 @@ export const testimonialsData = [
   },
   {
     name: "Umm Abdillah Leyla",
-    location: "",
+    location: "Sweeden",
     comment:
       "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
   },
