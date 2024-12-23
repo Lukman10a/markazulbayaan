@@ -37,14 +37,14 @@ const Navbar: React.FC = () => {
 
         {/* Nav Links for Desktop */}
         <ul className="hidden md:flex space-x-12 text-gray-700">
-          <li className="hover:text-gray-900 font-semibold">
+          {/* <li className="hover:text-gray-900 font-semibold">
             <Link
               href="/"
               className={isActiveLink("/") ? "text-yellow-500" : ""}
             >
               Home
             </Link>
-          </li>
+          </li> */}
           <li className="hover:text-gray-900 font-semibold">
             <Link
               href="/about"

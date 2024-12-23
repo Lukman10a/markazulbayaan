@@ -34,9 +34,9 @@ const Footer: React.FC = () => {
 
           {/* Navigation Links: Stacked on mobile, aligned horizontally on larger screens */}
           <nav className="flex flex-wrap gap-[2.2vmax] md:gap-[3vmax] md:flex-row pb-12">
-            <Link href="/" className="hover:text-gray-400 self-start mb-2">
+            {/* <Link href="/" className="hover:text-gray-400 self-start mb-2">
               Home
-            </Link>
+            </Link> */}
             <Link href="/about" className="hover:text-gray-400 self-start mb-2">
               About us
             </Link>

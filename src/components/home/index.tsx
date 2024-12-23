@@ -14,6 +14,7 @@ import { SubjectCard } from "../subjectcard";
 import CommunitySection from "./CommunitySection";
 import StatSection from "./StatSection";
 import Link from "next/link";
+import { InView } from "../ui/animated/in-view";
 
 export default function HomePage() {
   return (
@@ -22,26 +23,65 @@ export default function HomePage() {
       <StatSection />
       <section className="p-10 lg:px-[6vw]  bg-custom-gradient">
         <section className="md:flex items-center md:py-[7vmax] rounded-3xl md:gap-10">
-          <div className="flex-grow space-y-10 mb-10  md:w-1/2 h-full">
-            <h3 className="font-bold text-[4vmax] text-[#CD9418] leading-none">
-              Discover the Essence of learning the Deen
-            </h3>
-            <p className="font-medium text-[3vmin] md:text-lg leading-relaxed">
-              Whether you&apos;re a beginner seeking to grasp the fundamentals
-              or an advanced learner striving for mastery, our expert educators
-              are dedicated to guiding you every step of the way.
-            </p>
-            <Link href="/contact">
-              <Button text="Start Now" />
-            </Link>
+          <div className="flex-grow overflow-hidden space-y-10 mb-10  md:w-1/2 h-full">
+            <InView
+              variants={{
+                hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
+                visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+              }}
+              viewOptions={{ margin: "0px 0px -200px 0px" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <h3 className="font-bold text-[4vmax] text-[#CD9418] leading-none">
+                Discover the Essence of learning the Deen
+              </h3>
+            </InView>
+            <InView
+              variants={{
+                hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
+                visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+              }}
+              viewOptions={{ margin: "0px 0px -200px 0px" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <p className="font-medium text-[3vmin] md:text-lg leading-relaxed">
+                Whether you&apos;re a beginner seeking to grasp the fundamentals
+                or an advanced learner striving for mastery, our expert
+                educators are dedicated to guiding you every step of the way.
+              </p>
+            </InView>
+            <InView
+              variants={{
+                hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
+                visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+              }}
+              viewOptions={{ margin: "0px 0px -200px 0px" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <Link href="/contact">
+                <Button text="Start Now" />
+              </Link>
+            </InView>
           </div>
-          <Image
-            src={heroImage}
-            alt="hero"
-            className=" md:w-1/2 rounded-[10px] overflow-hidden "
-          />
+          <InView
+            variants={{
+              hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
+              visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+            }}
+            viewOptions={{ margin: "0px 0px -200px 0px" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <div>
+              <Image
+                src={heroImage}
+                alt="hero"
+                className="rounded-lg overflow-hidden "
+              />
+            </div>
+          </InView>
         </section>
       </section>
+
       <section className="space-y-2 px-10 lg:px-[6vw]">
         <h1 className="font-bold text-[4vmax] lg:text-[3vmax] text-[#CD9418]">
           What we offer
@@ -52,9 +92,11 @@ export default function HomePage() {
           sessions, fostering an environment conducive to holistic learning.
         </p>
       </section>
+
       <div className="px-10 lg:px-[6vw] bg-gradient-to-t from-gray-50 via-gray-100 to-white">
         <SubjectCard />
       </div>
+
       <div className=" max-h-[600px] h-[100vmin] w-[100%] flex justify-center items-center ">
         <div className="relative px-[10vw] md:px-[5vw] py-[8vmin] bg-[url('../../public/assets/journey_bg.png')] sm:bg-[url('../../public/assets/journey_bg2.png')] bg-top object-cover bg-cover w-[95%] md:w-[85%] lg:w-[80%] h-full rounded-[20px] md:rounded-[50px]">
           <h1 className="text-[8vmin] text-white md:text-[8vmin] lg:text-[9vmin] font-bold mb-[3.5vmin] leading-tight tracking-tight w-[90%]  ">
@@ -67,12 +109,16 @@ export default function HomePage() {
             Our esteemed institution offers a comprehensive curriculum designed
             to nurture a deep understanding of Islamic principles and values.
           </p>
-          <div className="my-[2.5vmin] md:absolute bottom-[20px] right-[50px]">
-            <Button text="Start now" />
-          </div>
+          <Link href={"https://bit.ly/Learn-at-markazbayan"}>
+            <div className="my-[2.5vmin] md:absolute bottom-[20px] right-[50px]">
+              <Button text="Start now" />
+            </div>
+          </Link>
         </div>
       </div>
+
       <Testimonials />
+
       <div className="flex flex-col md:flex-row justify-between items-center md:space-x-6 p-8 max-w-[80vw] mx-auto gap-10">
         {/* Left Side: Text Section */}
         <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 space-y-6 ">
@@ -152,6 +198,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
       <CommunitySection />
       <Faq />
     </>

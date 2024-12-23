@@ -1,7 +1,5 @@
 import { useToast } from "@/components/ui/use-toast";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
-import { FaLocationDot } from "react-icons/fa6";
-import { MdWifiCalling3, MdMessage } from "react-icons/md";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -176,19 +174,24 @@ export default function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="https://bit.ly/Learn-at-markazbayan">
-              <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="bg-yellow-600 hover:bg-yellow-700 w-full sm:w-auto"
+              >
                 Get Started
               </Button>
             </Link>
             <Link href="/about">
-              <Button size="lg" className="bg-black text-white w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="bg-black text-white w-full sm:w-auto"
+              >
                 Learn More
               </Button>
             </Link>
           </div>
         </div>
       </section>
-
 
       <section className="flex flex-col md:flex-row items-start justify-between gap-7 px-4 sm:px-10 py-10">
         <Card className="w-full md:w-1/3">
@@ -216,7 +219,7 @@ export default function Contact() {
             </div>
           </CardContent>
         </Card>
-        
+
         <div className="w-full md:w-2/3 rounded-lg bg-white p-5 text-black shadow-lg">
           <h3 className="mb-5 text-xl sm:text-2xl font-medium">
             Fill out the form and we will be in touch!
@@ -304,7 +307,9 @@ export default function Contact() {
       </section>
       {/* Instructors Section */}
       <section className="container mx-auto mt-16 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Our Instructors</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+          Our Instructors
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
@@ -362,6 +367,28 @@ export default function Contact() {
               </Button>
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Study Arabic and Quran</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">
+                We take Arabic and Quran classes with an easy, but effective
+                syllabus. Insha Allaah.
+              </p>
+              <p className="font-semibold">
+                Tutor: Abul Abbaas AbdulKabir Ibn Ibrahim At-Taawusiy.
+              </p>
+              <p>Register for any of the courses today</p>
+              <Button asChild className="mt-4">
+                <Link href="https://Bit.ly/3XiKL9d">
+                  Contact for Kids Sessions
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+          {/* Facilitator: You can also reach us via email:
+          arabicmadeeasy1@gmail.com */}
         </div>
       </section>
 
@@ -384,14 +411,18 @@ export default function Contact() {
               <li>Understand Qur&apos;anic Arabic</li>
               <li>Flexible learning options to fit your schedule</li>
             </ul>
-            <Button>Enroll in Arabic Courses</Button>
+            <Link href={"https://bit.ly/Learn-at-markazbayan"}>
+              <Button>Enroll in Arabic Courses</Button>
+            </Link>
           </CardContent>
         </Card>
       </section>
 
       {/* Features Section */}
       <section className="container mx-auto mt-16 mb-4 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Why Choose Markazul-Bayan?</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+          Why Choose Markazul-Bayan?
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           <FeatureCard
             icon={<BookOpen className="h-10 w-10 text-yellow-600" />}
