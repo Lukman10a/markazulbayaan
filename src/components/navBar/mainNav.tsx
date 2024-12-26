@@ -112,7 +112,7 @@ export function MainNav() {
             <SheetTrigger asChild>
               <Button
                 variant="outline"
-                className=" border-yellow-500 md:hidden"
+                className="border-black md:hidden bg-transparent"
               >
                 <Menu className="h-8 w-8" />
                 <span className="sr-only">Toggle menu</span>

@@ -61,7 +61,7 @@ export default function Discover() {
             <Image
               src={heroImage}
               alt="hero"
-              className="rounded-lg overflow-hidden "
+              className="rounded-lg overflow-hidden"
             />
           </div>
         </InView>
