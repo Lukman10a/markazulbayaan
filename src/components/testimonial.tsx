@@ -56,7 +56,13 @@ export const testimonialsData = [
     name: "Umm Abdillah Leyla",
     location: "Sweeden",
     comment:
-      "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
+      "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
+  },
+  {
+    name: "Aisha Lawak",
+    location: "Egypt",
+    comment:
+      "Asalaam Alaykum warahmatullah wa barakatuh. Alhamdullilah, I just completed the intensive course and Baarakallahu feeh, it was very good. The class videos were always posted on time with full explanations along with the book on screen, the course material was well thought of and gave detailed explanations of the principles taught in the book. The instructors also answered any questions I had. A massive bonus is that classes are segregated. Overall, a well-planned and structured course that achieved its objectives.",
   },
 ];
 
