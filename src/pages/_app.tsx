@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
-import Navbar from "@/components/Nav";
+// import Navbar from "@/components/Nav";
+import { MainNav } from "@/components/navBar/mainNav";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
@@ -79,7 +80,11 @@ export default function App({ Component, pageProps }: AppProps) {
       </Script>
 
       <div className={montserrat.className}>
-        {!isAdminPage && <Navbar />} {/* Conditionally render Navbar */}
+        {!isAdminPage && (
+          //  <Navbar />
+          <MainNav />
+        )}
+        {/* Conditionally render Navbar */}
         <main>
           <Component {...pageProps} />
         </main>
