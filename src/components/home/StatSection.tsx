@@ -5,10 +5,10 @@ import moon from "/public/assets/moon.svg";
 
 export default function StatSection() {
   return (
-    <section className="px-4 md:px-10 py-8 md:py-16">
+    <section className="px-4 md:px-10 py-8 md:py-16 bg-slate-100">
       <div className="mx-auto container">
         <div className="text-center space-y-6">
-          <h3 className="text-[#760808] text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h3 className=" text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             A Platform to Learn the Qur&apos;an & Sunnah
           </h3>
           <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto">

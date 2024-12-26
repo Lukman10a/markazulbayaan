@@ -5,8 +5,9 @@ import { InView } from "./ui/animated/in-view";
 
 export const Hero = () => {
   return (
-    <section className="bg-[url(/assets/blog3.png)] bg-center object-cover bg-cover overflow-hidden py-10">
-      <div className="px-[5vw] text-white top-[10vmin] lg:top-[7vmax]">
+    // <section className="bg-[url(/assets/blog3.png)] bg-center object-cover bg-cover overflow-hidden py-10">
+    <section className="bg-home-gradient  pt-20 bg-center object-cover bg-cover overflow-hidden py-10">
+      <div className="px-[5vw] top-[10vmin] lg:top-[7vmax]">
         <InView
           variants={{
             hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
@@ -16,12 +17,11 @@ export const Hero = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <h1
-            style={{
-              color: "transparent",
-              textShadow: "0px 2px 1px #F8E7C5",
-              backgroundClip: "text",
-              backgroundColor: "#565656",
-            }}
+            // style={
+            //   {
+            //     // color: "#0D1363",
+            //   }
+            // }
             className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] w-[90%]"
           >
             The Pursuit of Knowledge: A Duty for Every Muslim

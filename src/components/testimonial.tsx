@@ -77,7 +77,7 @@ export function Testimonials() {
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8">
             What people say about <br />
-            <span className="text-orange-500">MARKAZUL-BAYAN</span>
+            <span className=" text-[#f2b400]">MARKAZUL-BAYAN</span>
           </h2>
         </section>
         {/* Carousel for testimonials */}

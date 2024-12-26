@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClasses = cn(
-    "font-semibold bg-yellow-500 hover:bg-yellow-400 hover:text-black py-2 px-6 my-4 rounded-md",
+    "font-semibold bg-yellow-500 hover:bg-[#0D1363] hover:text-white py-2 px-6 my-4 rounded-md",
     className
   );
 

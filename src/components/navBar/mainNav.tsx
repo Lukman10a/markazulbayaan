@@ -70,7 +70,7 @@ export function MainNav() {
 
   return (
     <nav className="relative z-50 font-mono" id="scrollable">
-      <nav className="supports-[backdrop-filter]:bg-main-gradient/60 fixed top-0 w-full border-b bg-main-gradient px-7 backdrop-blur-lg">
+      <nav className="supports-[backdrop-filter]:bg-main-yellow/60 fixed top-0 w-full border-b bg-main-gradient px-7 backdrop-blur-lg">
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-6">
@@ -145,9 +145,10 @@ export function MainNav() {
               <ScrollArea className="no-scrollbar mt-6 h-[calc(100vh-8rem)]">
                 <Accordion type="single" collapsible>
                   {navItems.map((item, index) => (
-                    <AccordionItem value={`item-${index}`} key={item.title}>
-                      <AccordionTrigger>{item.title}</AccordionTrigger>
-                      {/* <AccordionContent className="no-scrollbar">
+                    <Link href={item.href || "/"} key={index}>
+                      <AccordionItem value={`item-${index}`} key={item.title}>
+                        <AccordionTrigger>{item.title}</AccordionTrigger>
+                        {/* <AccordionContent className="no-scrollbar">
                         {item.items.map((section) => (
                           <div key={section.category} className="mb-4">
                             <Link href={section?.href || "#"}>
@@ -165,14 +166,15 @@ export function MainNav() {
                                   href={subitem.href}
                                   className="block text-sm hover:text-primary"
                                 >
-                                  {subitem.title}
+                                {subitem.title}
                                 </Link>
                               ))}
                             </div>
                           </div>
                         ))}
                       </AccordionContent> */}
-                    </AccordionItem>
+                      </AccordionItem>
+                    </Link>
                   ))}
                 </Accordion>
               </ScrollArea>

@@ -30,12 +30,14 @@ const config: Config = {
       backgroundImage: {
         "main-gradient":
           "linear-gradient(to right, rgba(8,19,72,0.1), rgba(255,149,87,0.1))",
+        "new-gradient":
+          "linear-gradient(to right, rgba(8, 19, 72, 0.8), rgba(242, 180, 0, 0.8));",
         "home-gradient":
-          "linear-gradient(-89.631deg, #173D7A 0%, #99B5D0 44%, #FFFFFF 100%);",
+          "linear-gradient(-89.631deg, #f2b400 0%, #FFFFFF 100%);",
         "main-gradient-blue":
-          "linear-gradient(to right, rgba(80, 206, 245, 0.2), rgba(255, 149, 87, 0.2))",
-        "main-old":
-          "linear-gradient(to top right, rgba(50, 150, 245, 0.5), rgba(255, 120, 57, 0.5))",
+          "background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(253, 230, 167, 1), rgba(246, 180, 23, 1));",
+        "main-yellow":
+          "linear-gradient(to top right, rgba(255, 255, 255, 1), rgba(255, 120, 57, 0.5))",
         "nav-gradient-old":
           "linear-gradient(to right,rgba(8,19,72,.8), rgba(255, 149, 87, .8))",
         "nav-gradient":
@@ -49,6 +51,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient":
           "linear-gradient(0deg, #FFFFFF 69.71%, #FFF8E8 122.01%)",
+
+        // #0D1363
+        // #CD9418
       },
       boxShadow: {
         "custom-text": "0px 4px 3.7px 0px #00000066 inset",

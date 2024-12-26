@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[rgb(46,33,1)] text-white py-16">
+    <footer className="bg-[#0D1330] text-white py-16">
       <div className=" mx-auto px-[8vw]">
         {/* Flexbox container that switches layout from column (mobile) to row (desktop) */}
         <div className="flex flex-col space-y-6 md:flex-row  md:justify-between mb-6 border-b-2 border-[#8080803a]">
