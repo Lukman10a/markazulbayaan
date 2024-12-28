@@ -42,7 +42,7 @@ export const Hero = () => {
             core principles of Islamic monotheism. Whether you&apos;re
             perfecting your Tajweed, studying Hadith, or learning the essentials
             of Fiqh, our platform offers a comprehensive Islamic education that
-            enriches both mind and soul.
+            enriches
           </p>
         </InView>
         <div className="my-[2.5vmin]">
