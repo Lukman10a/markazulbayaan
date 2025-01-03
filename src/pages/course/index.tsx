@@ -205,14 +205,14 @@ export default function CoursePage() {
 
   return (
     <Fragment>
-      <section className="bg-[url(/assets/Image.png)] bg-center object-cover text-center bg-cover overflow-hidden py-10">
-        <div className="px-[5vw] text-white top-[10vmin] lg:top-[7vmax]">
+      <section className="bg-[url(/assets/course_bg.jpg)] bg-center object-cover text-center bg-cover overflow-hidden py-10">
+        <div className="px-[5vw] py-20 text-white top-[10vmin] lg:top-[7vmax]">
           <h1
             style={{
-              color: "transparent",
-              textShadow: "0px 2px 1px #F8E7C5",
+              // color: "transparent",
+              // textShadow: "0px 2px 1px #F8E7C5",
               backgroundClip: "text",
-              backgroundColor: "#565656",
+              backgroundColor: "black",
             }}
             className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] "
           >

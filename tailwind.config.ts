@@ -32,8 +32,7 @@ const config: Config = {
           "linear-gradient(to right, rgba(8,19,72,0.1), rgba(255,149,87,0.1))",
         "new-gradient":
           "linear-gradient(to right, rgba(8, 19, 72, 0.8), rgba(242, 180, 0, 0.8));",
-        "home-gradient":
-          "linear-gradient(-89.631deg, #f2b400 0%, #FFFFFF 100%);",
+        "home-gradient": "linear-gradient(-89.631deg, #f2b400 0%, #ffff 100%);",
         "main-gradient-blue":
           "background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(253, 230, 167, 1), rgba(246, 180, 23, 1));",
         "main-yellow":

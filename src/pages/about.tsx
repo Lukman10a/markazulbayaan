@@ -8,7 +8,7 @@ export default function AboutUs() {
   return (
     <>
       <main className="flex-grow">
-        <section className="bg-center object-cover bg-cover text-primary-foreground py-20 bg-[url('../../public/assets/blog3.png')]">
+        <section className="bg-center object-cover bg-cover text-primary-foreground py-32 bg-[url('../../public/assets/blog3.png')]">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-4">
               Welcome to Markazul-Bayan
@@ -36,7 +36,7 @@ export default function AboutUs() {
           </div>
         </section>
 
-        <section className="py-16 bg-yellow-50">
+        <section className="py-16 bg-yellow-200">
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-semibold mb-12 text-center">
               What We Offer
@@ -83,7 +83,7 @@ export default function AboutUs() {
               Islamic monotheism, Markazul-Bayan is here to guide you on your
               quest for wisdom, insight, and enlightenment.
             </p>
-            <Button asChild size="lg" className="bg-yellow-900">
+            <Button asChild size="lg" className="">
               <Link href="https://bit.ly/Learn-at-markazbayan">Enroll Now</Link>
             </Button>
           </div>
