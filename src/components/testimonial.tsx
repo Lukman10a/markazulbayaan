@@ -68,7 +68,7 @@ export const testimonialsData = [
 
 export function Testimonials() {
   return (
-    <section className="py-10 bg-yellow-50 -mt-[25px] mb-[20px]">
+    <section className="py-10  -mt-[25px] mb-[20px]">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-8">
         {/* Text Section */}
         <section className="px-4 py-8 flex-1 text-center lg:text-left">
