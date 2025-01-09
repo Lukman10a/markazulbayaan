@@ -5,9 +5,9 @@ import { InView } from "./ui/animated/in-view";
 
 export const Hero = () => {
   return (
-    // <section className="bg-[url(/assets/blog3.png)] bg-center object-cover bg-cover overflow-hidden py-10">
-    <section className="bg-home-gradient  pt-20 bg-center object-cover bg-cover overflow-hidden py-10">
-      <div className="px-[5vw] top-[10vmin] lg:top-[7vmax] text-black">
+    <section className="bg-[url(/assets/home_hero.png)] bg-center object-cover bg-cover overflow-hidden py-10">
+      {/* <section className="bg-home-gradient  pt-20 bg-center object-cover bg-cover overflow-hidden py-10"> */}
+      <div className="px-[5vw] top-[10vmin] lg:top-[7vmax] text-white">
         <InView
           variants={{
             hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
