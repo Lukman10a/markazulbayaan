@@ -70,7 +70,7 @@ export default function TestimonialCarousel() {
             <CarouselItem key={index}>
               <div className="text-center px-6 sm:px-12 md:px-24">
                 <blockquote className="text-lg sm:text-xl italic text-gray-700 mb-6">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
                 <div className="space-y-1">
                   <div className="font-medium text-gray-900">
