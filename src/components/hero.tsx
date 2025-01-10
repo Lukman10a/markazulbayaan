@@ -5,9 +5,8 @@ import { InView } from "./ui/animated/in-view";
 
 export const Hero = () => {
   return (
-    <section className="bg-[url(/assets/home_hero.png)] bg-center object-cover bg-cover overflow-hidden py-10">
-      {/* <section className="bg-home-gradient  pt-20 bg-center object-cover bg-cover overflow-hidden py-10"> */}
-      <div className="px-[5vw] top-[10vmin] lg:top-[7vmax] text-white">
+    <section className="bg-[url(/assets/home_hero.png)] bg-center object-cover bg-cover overflow-hidden">
+      <div className="text-white">
         <InView
           variants={{
             hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
@@ -16,15 +15,8 @@ export const Hero = () => {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <h1
-            // style={
-            //   {
-            //     // color: "#0D1363",
-            //   }
-            // }
-            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] w-[90%]"
-          >
-            The Pursuit of Knowledge: A Duty for Every Muslim
+          <h1 className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] w-[90%]">
+            Welcome to Markazul-Bayan
           </h1>
         </InView>
         <InView
@@ -36,13 +28,8 @@ export const Hero = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <p className="text-[3vmin] xl:text-[3vmin] sm:text-[2vmin] font-medium leading-normal w-[90%] xl:w-[80%]">
-            At Markazul Bayaan, we guide you on a transformative journey to
-            deepen your understanding of the Arabic language, explore the rich
-            teachings of the Qur&apos;an and Sunnah, and immerse yourself in the
-            core principles of Islamic monotheism. Whether you&apos;re
-            perfecting your Tajweed, studying Hadith, or learning the essentials
-            of Fiqh, our platform offers a comprehensive Islamic education that
-            enriches both mind and soul.
+            Your Premier Destination for Arabic, Quranic Studies, and Islamic
+            Monotheism
           </p>
         </InView>
         <div className="my-[2.5vmin]">

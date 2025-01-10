@@ -6,20 +6,22 @@ import { Hero } from "../hero";
 // import CommunitySection from "./CommunitySection";
 // import StatSection from "./StatSection";
 // import Discover from "./discover";
-// import Offer from "./offer";
+import Embark from "./embark";
+import TestimonialCarousel from "./newTestimonial";
 // import Learn from "./learn";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <Embark />
+      <TestimonialCarousel />
+      {/* <Testimonials /> */}
       {/* <StatSection />
-      <Discover />
-      <Offer />
-      <Testimonials />
+      <Discover /> 
       <Learn />
       <CommunitySection />
-      <Faq /> */}
+      <Faq />  */}
     </>
   );
 }
