@@ -15,11 +15,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      {/* <Embark />
+      <Embark />
       <TestimonialCarousel />
       <Learn />
       <WhyChoose />
-      <Faq /> */}
+      <Faq />
     </>
   );
 }
