@@ -103,10 +103,10 @@ export default function TestimonialCarousel() {
                   &quot;{testimonial.comment}&quot;
                 </blockquote>
                 <div className="space-y-1">
-                  <div className="font-medium text-gray-900">
+                  <div className="font-medium text-xl text-gray-900">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-lg text-gray-500">
                     {testimonial.location}
                   </div>
                 </div>

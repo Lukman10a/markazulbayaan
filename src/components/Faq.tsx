@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./button";
 
 const faqs = [
   {
@@ -45,16 +46,15 @@ const FAQ: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: FAQ Description */}
         <div>
-          <h2 className="text-yellow-600 text-3xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4">
             Frequently asked Questions
           </h2>
           <p className="text-gray-600 text-[3vmin] md:text-[2.3vmin] mb-6">
-            Whether you aspire to become a proficient Arabic speaker, deepen
-            your understanding of the Quran, or strengthen your connection to
-            Islamic monotheism, Markazul-Bayan is your premier destination. Let
-            us accompany you on your quest for wisdom, insight, and
-            enlightenment. Begin your journey with us today.
+            Everything you need to know about{" "}
+            <span className="text-[#DFB203]">Markazul Bayan.</span>
+            Find answers to the most common questions below.
           </p>
+          <Button text="Start Now" />
         </div>
 
         {/* Right Side: FAQ Accordion */}
