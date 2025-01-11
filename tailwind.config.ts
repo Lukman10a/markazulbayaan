@@ -8,23 +8,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    "2xl": {
-      max: "1400px",
-    },
-    xl: {
-      max: "1279px",
-    },
-    lg: {
-      max: "1023px",
-    },
-    "2md": {
-      max: "950px",
-    },
-    md: {
-      max: "767px",
-    },
-    sm: {
-      max: "639px",
+    screens: {
+      sm: "640px", // Apply styles for screens >= 640px
+      md: "768px", // Apply styles for screens >= 768px
+      "2md": "950px", // Custom breakpoint for screens >= 950px
+      lg: "1024px", // Apply styles for screens >= 1024px
+      xl: "1280px", // Apply styles for screens >= 1280px
+      "2xl": "1400px", // Apply styles for screens >= 1400px
     },
     extend: {
       backgroundImage: {
@@ -50,9 +40,6 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient":
           "linear-gradient(0deg, #FFFFFF 69.71%, #FFF8E8 122.01%)",
-
-        // #0D1363
-        // #CD9418
       },
       boxShadow: {
         "custom-text": "0px 4px 3.7px 0px #00000066 inset",

@@ -2,51 +2,89 @@ import Image from "next/image";
 import quran from "/public/assets/quran.svg";
 import volume from "/public/assets/volume.svg";
 import moon from "/public/assets/moon.svg";
+import image1 from "/public/assets/statquran.jpg";
+import image2 from "/public/assets/statimage2.png";
+import image3 from "/public/assets/statimage3.png";
 
 export default function StatSection() {
   return (
-    <section className="px-4 md:px-10 py-8 md:py-16 bg-slate-100">
-      <div className="mx-auto container">
-        <div className="text-center space-y-6">
-          <h3 className=" text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            A Platform to Learn the Qur&apos;an & Sunnah
-          </h3>
-          <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto">
-            Master the recitation of the{" "}
-            <span className="font-bold">Qur&apos;an (with Tajweed) </span>and
-            immerse yourself in the teachings of Prophet Muhammad (peace and
-            blessing of Allah be upon him) through the Sunnah. Additionally, our
-            curriculum offers in-depth learning of{" "}
-            <span className="font-bold">Hadith</span>,
-            <span className="font-bold">
-              {" "}
-              Arabic language (reading and writing)
-            </span>
-            , <span className="font-bold">Fiqh</span>,{" "}
-            <span className="font-bold">Tafsir</span>, and other essential
-            Islamic sciences.
+    <section className=" bg-slate-100 p-10 ">
+      <div className="w-9/10 max-w-[1200px] border mx-auto grid grid-cols-3 gap-6">
+        <div className="border h-auto min-h-[150px]">
+          <p className="text-4xl font-medium">
+            A Platform to Learn the Quran & Sunnah
           </p>
         </div>
+        <div className="border col-span-2 ">
+          <p className="text-sm w-[70%] ml-auto">
+            Master the recitation of the Quran (with Tajweed) and immerse
+            yourself in the teachings of Prophet Muhammad (peace and blessing of
+            Allah be upon him) through the Sunnah. Additionally, our curriculum
+            offers in-depth learning of Hadith, Arabic language (reading and
+            writing), Fiqh, Tafsir, and other essential Islamic sciences.
+          </p>
+        </div>
+        <div className="row-span-2 col-span-1 border relative rounded-lg overflow-hidden">
+          <Image
+            src={image1}
+            alt="image"
+            width={500}
+            height={500}
+            className="w-full h-full object-cover"
+          />
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-16">
-          <StatItem
-            icon={quran}
-            alt="Quran Icon"
-            number="100+"
-            text="Quranic Lessons Delivered"
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+          <div className="absolute bottom-4 text-right w-full flex flex-col items-center justify-center rounded-lg overflow-hidden">
+            <div className="text-[#DFB203] text-6xl w-[90%] border-b border-[#DFB203] pb-4">
+              100+
+            </div>
+
+            <div className="text-[#DFB203] my-2 w-[90%] text-right">
+              Quranic Lessons Delivered
+            </div>
+          </div>
+        </div>
+
+        <div className="row-span-1 col-span-1 border relative bg-[#B1BAC0] rounded-lg overflow-hidden">
+          <div className="absolute bottom-4 text-right w-full flex flex-col items-center justify-center">
+            <div className="text-black text-6xl w-[90%] border-b border-black pb-4">
+              500+
+            </div>
+
+            <div className="text-black my-2 w-[90%] text-right">
+              Students have benefited
+            </div>
+          </div>
+        </div>
+
+        <div className="row-span-1 col-span-1 border relative rounded-lg overflow-hidden">
+          <Image
+            src={image2}
+            alt="image"
+            layout="fill"
+            className="object-cover"
           />
-          <StatItem
-            icon={volume}
-            alt="Tajweed Icon"
-            number="100+"
-            text="Hours of Learning"
+        </div>
+
+        <div className="row-span-1 col-span-1 border relative rounded-lg overflow-hidden">
+          <Image
+            src={image3}
+            alt="image"
+            layout="fill"
+            className="object-cover"
           />
-          <StatItem
-            icon={moon}
-            alt="Community Icon"
-            number="500+"
-            text="Students have benefited"
-          />
+        </div>
+        <div className="row-span-1 col-span-1 border relative bg-[#f5e7b1] rounded-lg overflow-hidden">
+          <div className="absolute bottom-4 text-right w-full flex flex-col items-center justify-center">
+            <div className="text-black text-6xl w-[90%] border-b border-black pb-4">
+              100+
+            </div>
+
+            <div className="text-black my-2 w-[90%] text-right">
+              Hours of Learning
+            </div>
+          </div>
         </div>
       </div>
     </section>
