@@ -8,14 +8,15 @@ import image3 from "/public/assets/statimage3.png";
 
 export default function StatSection() {
   return (
-    <section className=" bg-slate-100 p-10 ">
-      <div className="w-9/10 max-w-[1200px] border mx-auto grid grid-cols-3 gap-6">
-        <div className="border h-auto min-h-[150px]">
+    <section className=" bg-slate-100 py-32 ">
+      <div className="w-9/10 max-w-[1200px] mx-auto grid grid-cols-3 gap-6">
+        <div className=" h-auto min-h-[130px]">
           <p className="text-4xl font-medium">
             A Platform to Learn the Quran & Sunnah
           </p>
         </div>
-        <div className="border col-span-2 ">
+
+        <div className="col-span-2 ">
           <p className="text-sm w-[70%] ml-auto">
             Master the recitation of the Quran (with Tajweed) and immerse
             yourself in the teachings of Prophet Muhammad (peace and blessing of
@@ -24,7 +25,8 @@ export default function StatSection() {
             writing), Fiqh, Tafsir, and other essential Islamic sciences.
           </p>
         </div>
-        <div className="row-span-2 col-span-1 border relative rounded-lg overflow-hidden">
+
+        <div className="row-span-2 col-span-1 relative rounded-lg overflow-hidden">
           <Image
             src={image1}
             alt="image"
@@ -46,7 +48,7 @@ export default function StatSection() {
           </div>
         </div>
 
-        <div className="row-span-1 col-span-1 border relative bg-[#B1BAC0] rounded-lg overflow-hidden">
+        <div className="row-span-1 col-span-1 relative bg-[#B1BAC0] rounded-lg overflow-hidden">
           <div className="absolute bottom-4 text-right w-full flex flex-col items-center justify-center">
             <div className="text-black text-6xl w-[90%] border-b border-black pb-4">
               500+
@@ -58,7 +60,7 @@ export default function StatSection() {
           </div>
         </div>
 
-        <div className="row-span-1 col-span-1 border relative rounded-lg overflow-hidden">
+        <div className="row-span-1 col-span-1 relative rounded-lg overflow-hidden">
           <Image
             src={image2}
             alt="image"
@@ -67,7 +69,7 @@ export default function StatSection() {
           />
         </div>
 
-        <div className="row-span-1 col-span-1 border relative rounded-lg overflow-hidden">
+        <div className="row-span-1 col-span-1 relative rounded-lg overflow-hidden">
           <Image
             src={image3}
             alt="image"
@@ -75,7 +77,7 @@ export default function StatSection() {
             className="object-cover"
           />
         </div>
-        <div className="row-span-1 col-span-1 border relative bg-[#f5e7b1] rounded-lg overflow-hidden">
+        <div className="row-span-1 col-span-1 relative bg-[#f5e7b1] rounded-lg overflow-hidden">
           <div className="absolute bottom-4 text-right w-full flex flex-col items-center justify-center">
             <div className="text-black text-6xl w-[90%] border-b border-black pb-4">
               100+
