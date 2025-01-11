@@ -17,9 +17,10 @@ export default function HomePage() {
       <Hero />
       <Embark />
       <TestimonialCarousel />
+      {/* 
       <Learn />
       <WhyChoose />
-      <Faq />
+      <Faq /> */}
     </>
   );
 }

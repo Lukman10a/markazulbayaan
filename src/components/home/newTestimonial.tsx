@@ -87,7 +87,7 @@ export default function TestimonialCarousel() {
   }, [api]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-12">
+    <div className="w-full max-w-5xl mx-auto p-6 py-16">
       <Carousel
         setApi={setApi}
         className="relative"
@@ -98,8 +98,8 @@ export default function TestimonialCarousel() {
         <CarouselContent>
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index}>
-              <div className="text-center px-6 sm:px-12 md:px-24">
-                <blockquote className="text-lg sm:text-xl italic text-gray-700 mb-6">
+              <div className="text-center px-6 sm:px-8 md:px-24">
+                <blockquote className="text-lg sm:text-xl font-serif italic text-[#354D5C] mb-6">
                   &quot;{testimonial.comment}&quot;
                 </blockquote>
                 <div className="space-y-1">
@@ -115,7 +115,7 @@ export default function TestimonialCarousel() {
           ))}
         </CarouselContent>
 
-        <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+        <CarouselPrevious className="absolute left-1 top-1/2 -translate-y-1/2" />
         <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
       </Carousel>
 

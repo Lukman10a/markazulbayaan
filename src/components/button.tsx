@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClasses = cn(
-    "font-semibold bg-[#E3B503] py-2 px-6 my-4 rounded-3xl",
+    "font-semibold bg-[#E3B503] text-black py-2 px-6 my-4 rounded-3xl",
     className
   );
 

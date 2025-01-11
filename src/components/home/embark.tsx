@@ -6,14 +6,14 @@ import Link from "next/link";
 
 export default function Embark() {
   return (
-    <div className="bg-[url(/assets/embark.png)] flex justify-center items-center text-center flex-col p-20 space-y-10">
-      <h1 className="text-white text-8xl md:text-4xl sm:text-3xl">
+    <div className="text-white bg-[url(/assets/embark.png)] flex justify-center items-center text-center flex-col p-20 md:p-10 sm:p-6 space-y-10 sm:py-20">
+      <h1 className=" text-8xl md:text-5xl sm:text-4xl font-serif">
         Embark on
         <br /> Your Journey
         <br /> Today
       </h1>
-      <p className="font-semibold text-xl text-white">
-        Step into a sanctuary of learning where tradition meets modernity. Our{" "}
+      <p className="sm:text-sm">
+        Step into a sanctuary of learning where tradition meets modernity. Our
         <br />
         esteemed institution offers a comprehensive curriculum designed to
         nurture <br /> a deep understanding of Islamic principles and values.

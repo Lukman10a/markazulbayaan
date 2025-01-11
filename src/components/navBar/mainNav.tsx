@@ -70,7 +70,7 @@ export function MainNav() {
 
   return (
     <nav className="relative z-50 font-mono" id="scrollable">
-      <nav className="supports-[backdrop-filter]:bg-main-yellow/60 fixed top-0 w-full border-b bg-main-gradient px-7 backdrop-blur-lg">
+      <nav className="supports-[backdrop-filter]:bg-main-yellow/60 fixed top-0 w-full border-b bg-main-gradient px-7 backdrop-blur-sm">
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-6">
@@ -87,18 +87,18 @@ export function MainNav() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex gap-6">
+          <div className="sm:hidden flex gap-6">
             {navItems.map((item, index) => (
               <Link href={item.href || "/"} key={index}>
                 <Button
                   variant="ghost"
                   className={cn(
-                    `text-sm font-medium transition-colors hover:text-primary ${
+                    `text-lg font-medium transition-colors hover:text-primary ${
                       activeItem === item.title
                         ? "text-yellow-900"
-                        : "text-black"
+                        : "text-white"
                     }`,
-                    isActive(item?.href as string) && "text-yellow-600"
+                    isActive(item?.href as string) && "text-[#E3B503]"
                   )}
                 >
                   {item.title}
@@ -112,9 +112,9 @@ export function MainNav() {
             <SheetTrigger asChild>
               <Button
                 variant="outline"
-                className="border-black md:hidden bg-transparent"
+                className="border-white sm:block hidden bg-transparent"
               >
-                <Menu className="h-8 w-8" />
+                <Menu className="h-6 w-6 text-white" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
@@ -126,7 +126,7 @@ export function MainNav() {
                 <SheetTitle>
                   <Link
                     href="/"
-                    className="flex items-center space-x-2 font-mono"
+                    className="flex items-center space-x-2 font-mono "
                   >
                     <Image
                       src={"/assets/mbayan.png"}
