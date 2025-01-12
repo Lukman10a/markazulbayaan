@@ -3,14 +3,23 @@ import Footer from "@/components/footer";
 import { MainNav } from "@/components/navBar/mainNav";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Montserrat } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Script from "next/script"; // Import Next.js Script
 
-const montserrat = Montserrat({
+export const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  weight: "400",
+  variable: "--font-inter",
+});
+
+export const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+  variable: "--font-instrument-serif",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -79,7 +88,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </Script>
 
-      <div className={montserrat.className}>
+      <div className={`${inter.variable} ${instrumentSerif.variable}`}>
         {!isAdminPage && (
           //  <Navbar />
           <MainNav />

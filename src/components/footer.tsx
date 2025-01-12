@@ -7,94 +7,84 @@ import {
   FaWhatsapp,
   FaTelegram,
 } from "react-icons/fa";
-import markaz from "../../public/assets/markaz.png";
+// import markaz from "../../public/assets/markaz.png";
+import logo from "../../public/svg/logo.svg";
 import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0D1330] text-white py-16">
-      <div className=" mx-auto px-[8vw]">
-        {/* Flexbox container that switches layout from column (mobile) to row (desktop) */}
-        <div className="flex flex-col space-y-6 md:flex-row  md:justify-between mb-6 border-b-2 border-[#8080803a]">
-          {/* Logo and Tagline: Centered on mobile, aligned left on larger screens */}
-          <div className="flex flex-col md:text-left md:items-start mb-6 md:mb-12 ">
+    <footer className="bg-[url(/assets/footer.png)] bg-center bg-cover text-white py-16">
+      <div className="mx-auto px-[8vw]">
+        <div className="flex items-center flex-wrap gap-5 justify-between mb-12 py-10 border-b-2">
+          <div className="flex">
             <div className="flex items-center">
               <Image
-                src={markaz}
+                src={logo}
                 alt="Logo"
                 className=" mr-4 w-auto h-[58px] mb-4"
                 width={500}
                 height={400}
               />{" "}
             </div>
-            <p className="text-sm w-[70%] font-semibold">
-              Welcome to Markazul-Bayan: Your Gateway to Islamic Knowledge
-            </p>
           </div>
 
-          {/* Navigation Links: Stacked on mobile, aligned horizontally on larger screens */}
-          <nav className="flex flex-wrap gap-[2.2vmax] md:gap-[3vmax] md:flex-row pb-12">
-            {/* <Link href="/" className="hover:text-gray-400 self-start mb-2">
-              Home
-            </Link> */}
-            <Link href="/about" className="hover:text-gray-400 self-start mb-2">
+          <nav className="flex gap-5">
+            <Link href="/about" className="hover:text-gray-400">
               About us
             </Link>
-            <Link href="/faq" className="hover:text-gray-400 self-start mb-2">
+            <Link href="/faq" className="hover:text-gray-400">
               FAQ
             </Link>
-            <Link href="/blog" className="hover:text-gray-400 self-start mb-2">
+            <Link href="/blog" className="hover:text-gray-400">
               Blog
             </Link>
-            <Link
-              href="/reviews"
-              className="hover:text-gray-400 self-start mb-2"
-            >
+            <Link href="/reviews" className="hover:text-gray-400">
               Review
             </Link>
-            <Link
-              href="/course"
-              className="hover:text-gray-400 self-start mb-2"
-            >
+            <Link href="/course" className="hover:text-gray-400">
               Courses
             </Link>
           </nav>
-        </div>
-        {/* Social Media Icons: Centered on mobile, spaced horizontally on larger screens */}
-        <div className="flex justify-center gap-4 md:justify-center ">
-          <a
-            href="/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
-          >
-            <FaGoogle size={20} />
-          </a>
-          <a
-            href="https://whatsapp.com/channel/0029VarQvHiLY6d000oWu82O"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
-          >
-            <FaWhatsapp size={20} />
-          </a>
 
-          <a
-            href="https://www.instagram.com/markazulbayaanbenefits?igsh=YzljYTk1ODg3Zg=="
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
-          >
-            <FaInstagram size={20} />
-          </a>
-          <a
-            href="https://t.me/bayanbenefits"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
-          >
-            <FaTelegram size={20} />
-          </a>
+          <div className="flex gap-4">
+            <a
+              href="/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+            >
+              <FaGoogle size={20} />
+            </a>
+            <a
+              href="https://whatsapp.com/channel/0029VarQvHiLY6d000oWu82O"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+            >
+              <FaWhatsapp size={20} />
+            </a>
+
+            <a
+              href="https://www.instagram.com/markazulbayaanbenefits?igsh=YzljYTk1ODg3Zg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a
+              href="https://t.me/bayanbenefits"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
+            >
+              <FaTelegram size={20} />
+            </a>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <p>© 2025 Markazul Bayan. All rights reserved.</p>
         </div>
       </div>
     </footer>

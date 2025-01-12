@@ -8,23 +8,25 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    "2xl": {
-      max: "1400px",
-    },
-    xl: {
-      max: "1279px",
-    },
-    lg: {
-      max: "1023px",
-    },
-    "2md": {
-      max: "950px",
-    },
-    md: {
-      max: "767px",
-    },
-    sm: {
-      max: "639px",
+    screens: {
+      "2xl": {
+        max: "1400px",
+      },
+      xl: {
+        max: "1279px",
+      },
+      lg: {
+        max: "1023px",
+      },
+      "2md": {
+        max: "950px",
+      },
+      md: {
+        max: "767px",
+      },
+      sm: {
+        max: "639px",
+      },
     },
     extend: {
       backgroundImage: {
@@ -50,9 +52,6 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient":
           "linear-gradient(0deg, #FFFFFF 69.71%, #FFF8E8 122.01%)",
-
-        // #0D1363
-        // #CD9418
       },
       boxShadow: {
         "custom-text": "0px 4px 3.7px 0px #00000066 inset",
@@ -62,7 +61,6 @@ const config: Config = {
         DEFAULT: "0 2px 4px var(--tw-shadow-color)",
         lg: "0 8px 16px var(--tw-shadow-color)",
       },
-
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -136,6 +134,10 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        serif: ["var(--font-instrument-serif)"],
       },
     },
   },
