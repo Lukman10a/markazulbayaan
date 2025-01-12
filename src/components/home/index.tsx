@@ -10,11 +10,13 @@ import Embark from "./embark";
 import TestimonialCarousel from "./newTestimonial";
 import Learn from "./learn";
 import WhyChoose from "./whyChoose";
+import StatSection from "./StatSection";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <StatSection />
       <Embark />
       <TestimonialCarousel />
       <Learn />
