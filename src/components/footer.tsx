@@ -24,24 +24,24 @@ const Footer: React.FC = () => {
                 className=" mr-4 w-auto h-[58px] mb-4"
                 width={500}
                 height={400}
-              />{" "}
+              />
             </div>
           </div>
 
           <nav className="flex gap-5">
-            <Link href="/about" className="hover:text-gray-400">
+            <Link href="/about" className="hover:text-gray-400 sm:text-sm">
               About us
             </Link>
-            <Link href="/faq" className="hover:text-gray-400">
+            <Link href="/faq" className="hover:text-gray-400 sm:text-sm">
               FAQ
             </Link>
-            <Link href="/blog" className="hover:text-gray-400">
+            <Link href="/blog" className="hover:text-gray-400 sm:text-sm">
               Blog
             </Link>
-            <Link href="/reviews" className="hover:text-gray-400">
+            <Link href="/reviews" className="hover:text-gray-400 sm:text-sm">
               Review
             </Link>
-            <Link href="/course" className="hover:text-gray-400">
+            <Link href="/course" className="hover:text-gray-400 sm:text-sm">
               Courses
             </Link>
           </nav>
