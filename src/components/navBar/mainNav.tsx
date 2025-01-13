@@ -69,8 +69,8 @@ export function MainNav() {
   }, [router.events]);
 
   return (
-    <nav className="relative z-50 font-mono" id="scrollable">
-      <nav className="supports-[backdrop-filter]:bg-main-yellow/60 fixed top-0 w-full border-b bg-main-gradient px-7 backdrop-blur-sm">
+    <nav className="relative z-50 font-inter" id="scrollable">
+      <nav className="supports-[backdrop-filter]:bg-main-yellow/60 fixed top-0 w-full bg-main-gradient px-7 backdrop-blur-sm">
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-6">

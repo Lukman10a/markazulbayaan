@@ -81,7 +81,7 @@ export const CommunitySection = () => {
           viewport={{ once: true }}
           variants={headerVariants}
         >
-          <h2 className="text-[6.5vmin] text-white font-semibold mb-2">
+          <h2 className="text-[6.5vmin] text-white font-serif mb-2">
             Why Choose Markazul-Bayan?
           </h2>
           <p className="text-white text-xl font-normal mb-2">

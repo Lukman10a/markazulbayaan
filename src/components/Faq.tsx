@@ -42,16 +42,16 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="mx-auto my-10 px-4 lg:px-36">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="faq" className="mx-auto container my-10 px-10 lg:px-36">
+      <div className="grid mdgrid-cols-1 grid-cols-2 gap-8">
         {/* Left Side: FAQ Description */}
         <div>
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-[54px] font-serif  mb-4">
             Frequently asked Questions
           </h2>
-          <p className="text-gray-600 text-[3vmin] md:text-[2.3vmin] mb-6">
+          <p className="text-gray-600  mb-6">
             Everything you need to know about{" "}
-            <span className="text-[#DFB203]">Markazul Bayan.</span>
+            <span className="text-[#DFB203]">Markazul Bayan. </span>
             Find answers to the most common questions below.
           </p>
           <Button text="Start Now" />
@@ -63,7 +63,7 @@ const FAQ: React.FC = () => {
             <div key={index} className="border-b border-gray-300 pb-4">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full text-left text-gray-700 text-lg font-medium focus:outline-none"
+                className="flex justify-between items-center w-full text-left text-gray-700 text-3xl font-serif focus:outline-none"
               >
                 <span>{faq.question}</span>
                 <span className="text-2xl">

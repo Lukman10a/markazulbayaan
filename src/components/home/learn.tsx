@@ -20,34 +20,34 @@ export default function Learn() {
   ];
 
   return (
-    <div className="flex flex-col py-20 md:flex-row justify-between items-center md:space-x-6 p-8 max-w-[80vw] mx-auto gap-10">
-      <div className="rounded-lg overflow-hidden shadow-lg mb-5">
+    <section className="flex md:flex-col py-20 justify-between items-center md:space-x-6 p-8 max-w-[80vw] mx-auto gap-10">
+      <div className="rounded-lg overflow-hidden shadow-lg mb-5 h-full">
         <Image
           src={learn}
           alt="Islamic Knowledge Image"
           width={500}
           height={400}
-          className="w-full h-auto"
+          // className="w-full h-full"
         />
       </div>
 
-      <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 space-y-4 ">
+      <div className="md:w-1/2 mb-8 md:mb-0 space-y-4">
         <p className="border rounded-full w-fit px-6 py-2 mb-6">
           Deepen Your Islamic Knowledge
         </p>
-        <h1 className="text-4xl font-bold mb-4 leading-tight">
+        <h3 className="text-5xl font mb-4 font-serif leading-tight">
           Learn the Quran and Sunnah Online
-        </h1>
-        <p className="text-md text-gray-600 leading-relaxed font-medium">
+        </h3>
+        <p className="text-md text-gray-600 leading-relaxed">
           Whether you&lsquo;re a beginner or looking to enhance your existing
           knowledge, we offer a variety of resources to help you on your
           journey.
         </p>
         <div>
-          <p>Why Start Today?</p>
-          <div className="space-y-4 pt-4">
+          <p className="font-serif text-[#8B99A1]">Why Start Today?</p>
+          <ul className="space-y-4 pt-4 ">
             {features.map((feature, index) => (
-              <div key={index} className="flex gap-4">
+              <li key={index} className="flex gap-4 text-[#556A76] font-normal">
                 <Image
                   src={feature.icon}
                   alt="Feature Icon"
@@ -55,12 +55,12 @@ export default function Learn() {
                   height={24}
                 />
                 <p>{feature.text}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
         <Button text="Start Now" />
       </div>
-    </div>
+    </section>
   );
 }

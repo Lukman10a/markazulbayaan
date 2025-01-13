@@ -24,7 +24,7 @@ export const Hero = () => {
             hidden: { opacity: 0, x: -90, filter: "blur(4px)" },
             visible: { opacity: 1, x: 0, filter: "blur(0px)" },
           }}
-          viewOptions={{ margin: "0px 0px -200px 0px" }}
+          viewOptions={{ margin: "0px 0px -200px 0px", once: true }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <p className="text-[#8B99A1] font-inter sm:text-sm">

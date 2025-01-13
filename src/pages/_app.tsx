@@ -88,13 +88,15 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </Script>
 
-      <div className={`${inter.variable} ${instrumentSerif.variable}`}>
+      <div
+        className={`${inter.variable} ${inter.className} ${instrumentSerif.variable}`}
+      >
         {!isAdminPage && (
           //  <Navbar />
           <MainNav />
         )}
         {/* Conditionally render Navbar */}
-        <main>
+        <main className="font-inter">
           <Component {...pageProps} />
         </main>
         {!isAdminPage && <Footer />} {/* Conditionally render Footer */}
