@@ -20,22 +20,22 @@ export default function Learn() {
   ];
 
   return (
-    <section className="flex md:flex-col py-20 justify-between items-center md:space-x-6 p-8 max-w-[80vw] mx-auto gap-10">
+    <section className="grid grid-cols-2 place-items-center sm:grid-cols-1 py-20 md:space-x-6 p-8 sm:p-2 max-w-[90vw] mx-auto gap-10">
       <div className="rounded-lg overflow-hidden shadow-lg mb-5 h-full">
         <Image
           src={learn}
           alt="Islamic Knowledge Image"
           width={500}
           height={400}
-          // className="w-full h-full"
+          className="w-full h-full"
         />
       </div>
 
-      <div className="md:w-1/2 mb-8 md:mb-0 space-y-4">
-        <p className="border rounded-full w-fit px-6 py-2 mb-6">
+      <div className="mb-8 space-y-6">
+        <p className="border rounded-full sm:font-bold sm:text-[14px] sm:w-full w-fit px-6 py-2 mb-6">
           Deepen Your Islamic Knowledge
         </p>
-        <h3 className="text-5xl font mb-4 font-serif leading-tight">
+        <h3 className="text-5xl sm:text-3xl font mb-4 font-serif leading-tight">
           Learn the Quran and Sunnah Online
         </h3>
         <p className="text-md text-gray-600 leading-relaxed">
