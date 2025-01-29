@@ -71,7 +71,7 @@ const FAQ: React.FC = () => {
                 </span>
               </button>
               {openIndex === index && (
-                <p className="mt-2 text-gray-600">{faq.answer}</p>
+                <p className="mt-2 text-gray-600 sm:text-xs">{faq.answer}</p>
               )}
             </div>
           ))}

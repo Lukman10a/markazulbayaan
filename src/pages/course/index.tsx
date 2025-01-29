@@ -234,7 +234,7 @@ export default function CoursePage() {
           <h3 className="text-3xl font-semibold mb-12 text-center">
             Available Courses
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8">
             {courses.map((course, index) => (
               <motion.div
                 key={index}

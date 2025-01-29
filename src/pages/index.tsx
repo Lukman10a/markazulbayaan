@@ -1,16 +1,11 @@
 import React from "react";
 import Faq from "@/components/Faq";
-import { Hero } from "@/components/hero";
 import Embark from "@/components/home/embark";
 import Learn from "@/components/home/learn";
 import TestimonialCarousel from "@/components/home/newTestimonial";
 import WhyChoose from "@/components/home/whyChoose";
 import OfferSection from "@/components/OfferSection";
-import HeroSection from "@/components/SecondHeroSection";
-
-// import CommunitySection from "./CommunitySection";
-// import StatSection from "./StatSection";
-// import Discover from "./discover";
+import { Hero } from "@/components/shared/hero";
 
 export default function HomePage() {
   const offers = [
@@ -47,10 +42,16 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero />
-      <HeroSection
-        title="Discover the Essence of learning the Deen"
-        description="Whether you're a beginner seeking to grasp the fundamentals or an advanced learner striving for mastery, our expert educators are dedicated to guiding you every step of the way."
+      <Hero
+        bgImage="/assets/home_hero.png"
+        heading={["The Pursuit of Knowledge:", "A Duty for Every Muslim"]}
+        description={[
+          "At Markazul Bayaan, we guide you on a transformative journey to deepen your understanding of",
+          "the Arabic language, explore the rich teachings of the Qur'an and Sunnah, and immerse yourself",
+          "in the core principles of Islamic monotheism.",
+        ]}
+        buttonText="Contact us"
+        buttonLink="/contact"
       />
       <OfferSection offers={offers} />
       <Embark />

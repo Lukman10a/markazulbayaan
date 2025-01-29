@@ -24,7 +24,7 @@ if (typeof window !== "undefined") {
 export const navItems: NavItem[] = [
   {
     title: "Courses",
-    href: "/course",
+    href: "/newCourse",
     // items: [
     //   {
     //     category: "Case Studies",
