@@ -2,16 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 
-const Button: React.FC = () => {
+// Define the prop types
+interface ButtonProps {
+  text: string;
+  className?: string;
+}
+
+const NewButton: React.FC<ButtonProps> = ({ text, className }) => {
   return (
-    <StyledButton>
-      Contact
+    <StyledButton className={className}>
+      {text}
       <FaArrowRight className="icon" />
     </StyledButton>
   );
 };
 
-const StyledButton = styled.button`
+// Make sure external class styles override internal styles
+const StyledButton = styled.button.attrs((props) => ({
+  className: props.className, // Pass down the className prop
+}))`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -82,4 +91,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export default Button;
+export default NewButton;

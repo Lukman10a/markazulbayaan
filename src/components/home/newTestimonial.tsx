@@ -99,11 +99,11 @@ export default function TestimonialCarousel() {
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index}>
               <div className="text-center px-6 sm:px-8 md:px-24">
-                <blockquote className="text-lg sm:text-xs font-serif italic text-[#354D5C] mb-6">
+                <blockquote className="text-lg sm:text-[15px] font-serif text-[#354D5C] mb-6">
                   &quot;{testimonial.comment}&quot;
                 </blockquote>
                 <div className="space-y-1">
-                  <div className="font-medium text-xl text-gray-900">
+                  <div className="font-medium text-xl sm:text-lg text-gray-900">
                     {testimonial.name}
                   </div>
                   <div className="text-lg text-gray-500">
@@ -115,8 +115,8 @@ export default function TestimonialCarousel() {
           ))}
         </CarouselContent>
 
-        <CarouselPrevious className="absolute left-1 top-1/2 -translate-y-1/2" />
-        <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
+        <CarouselPrevious className="absolute sm:left-1 top-1/2 -translate-y-1/2" />
+        <CarouselNext className="absolute sm:right-1 top-1/2 -translate-y-1/2" />
       </Carousel>
 
       <div className="flex justify-center gap-2 mt-8 sm:mt-0">

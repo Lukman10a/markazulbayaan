@@ -47,39 +47,37 @@ const Footer: React.FC = () => {
           </nav>
 
           <div className="flex gap-4">
-            <a
+            <Link
               href="/contact"
-              target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
             >
               <FaGoogle size={20} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://whatsapp.com/channel/0029VarQvHiLY6d000oWu82O"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
             >
               <FaWhatsapp size={20} />
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="https://www.instagram.com/markazulbayaanbenefits?igsh=YzljYTk1ODg3Zg=="
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
             >
               <FaInstagram size={20} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://t.me/bayanbenefits"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-400 p-4 bg-[#ffffff18] rounded-full"
             >
               <FaTelegram size={20} />
-            </a>
+            </Link>
           </div>
         </div>
 

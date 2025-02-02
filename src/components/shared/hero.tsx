@@ -21,12 +21,12 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   return (
     <section
-      className="bg-center object-cover bg-cover overflow-hidden h-[600px] flex p-10"
+      className="bg-center object-cover bg-cover h-[600px] flex p-10"
       style={{
         backgroundImage: `url('${bgImage}')`,
       }}
     >
-      <div className="text-white self-end space-y-4">
+      <div className="text-white self-end space-y-4 overflow-hidden">
         {/* Heading */}
         <InView
           variants={{
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({
         <div>
           <Link href={buttonLink}>
             {/* <Button text={buttonText} /> */}
-            <NewButton />
+            <NewButton text="Explore" />
           </Link>
         </div>
       </div>
