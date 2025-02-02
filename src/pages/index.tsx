@@ -6,6 +6,7 @@ import TestimonialCarousel from "@/components/home/newTestimonial";
 import WhyChoose from "@/components/home/whyChoose";
 import OfferSection from "@/components/OfferSection";
 import { Hero } from "@/components/shared/hero";
+import Platform from "@/components/home/platform";
 
 export default function HomePage() {
   const offers = [
@@ -53,6 +54,7 @@ export default function HomePage() {
         buttonText="Contact us"
         buttonLink="/contact"
       />
+      <Platform />
       <OfferSection offers={offers} />
       <Embark />
       <TestimonialCarousel />

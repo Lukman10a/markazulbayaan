@@ -172,7 +172,7 @@ export default function Contact() {
             Reach out to us for any inquiries about our courses, instructors, or
             to start your journey in Islamic learning.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex justify-center gap-4 sm:flex-col">
             <Link href="https://bit.ly/Learn-at-markazbayan">
               <Button
                 size="lg"
@@ -181,6 +181,7 @@ export default function Contact() {
                 Get Started
               </Button>
             </Link>
+
             <Link href="/about">
               <Button
                 size="lg"
@@ -193,8 +194,8 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-start justify-between gap-7 px-4 sm:px-10 py-10">
-        <Card className="w-full md:w-1/3">
+      <section className="flex sm:flex-col items-start justify-between gap-7 px-4 py-10">
+        <Card className="w-full ">
           <CardHeader>
             <CardTitle>Contact Information</CardTitle>
           </CardHeader>
@@ -220,7 +221,7 @@ export default function Contact() {
           </CardContent>
         </Card>
 
-        <div className="w-full md:w-2/3 rounded-lg bg-white p-5 text-black shadow-lg">
+        <div className="w-full  rounded-lg bg-white p-5 text-black shadow-lg">
           <h3 className="mb-5 text-xl sm:text-2xl font-medium">
             Fill out the form and we will be in touch!
           </h3>
@@ -310,7 +311,7 @@ export default function Contact() {
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
           Our Instructors
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-1 grid-cols-2 gap-8">
           <Card>
             <CardHeader>
               <CardTitle>One on One Convenient Classes</CardTitle>
@@ -423,7 +424,7 @@ export default function Contact() {
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
           Why Choose Markazul-Bayan?
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-8">
           <FeatureCard
             icon={<BookOpen className="h-10 w-10 text-yellow-600" />}
             title="Comprehensive Curriculum"

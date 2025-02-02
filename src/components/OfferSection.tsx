@@ -20,18 +20,20 @@ const OfferSection: React.FC<OfferSectionProps> = ({ offers }) => {
   return (
     <div className="py-16 px-4 md:px-8 lg:px-16 font-serif max-w-7xl mx-auto">
       <div className="flex justify-between sm:flex-col py-6  items-center overflow-hidden">
-        <InView
-          variants={{
-            hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
-            visible: { opacity: 1, x: 0, filter: "blur(0px)" },
-          }}
-          viewOptions={{ margin: "0px 0px -200px 0px" }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <h2 className="text-6xl sm:text-2xl font-medium text-center mb-8">
-            What we offer
-          </h2>
-        </InView>
+        <div className="sm:self-start">
+          <InView
+            variants={{
+              hidden: { opacity: 0, x: -100, filter: "blur(4px)" },
+              visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+            }}
+            viewOptions={{ margin: "0px 0px -200px 0px" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <h2 className="text-6xl sm:text-2xl font-medium text-center mb-8">
+              What we offer
+            </h2>
+          </InView>
+        </div>
         <InView
           variants={{
             hidden: { opacity: 0, x: 100, filter: "blur(4px)" },
