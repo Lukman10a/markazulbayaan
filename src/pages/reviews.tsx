@@ -15,13 +15,13 @@ export default function Component() {
       <section className="bg-center object-cover bg-cover text-primary-foreground py-36 mb-8 bg-[url('../../public/assets/blog3.png')]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Markazul-Bayan</h2>
-          <p className="text-xl mb-8 text-yellow-500 p-4 px-10">
+          <p className="text-xl mb-8 text-yellow-500 p-4 px-10 sm:px-4">
             At Markazul Bayaan, students from around the globe gather to deepen
             their understanding of Islam, guided by expert teachers and a rich
             curriculum. Our community is built on a shared passion for learning
             and spiritual growth. Below, you can read what some of our students
             have to say about their experiences and the impact our school has
-            had on their journey.{" "}
+            had on their journey.
           </p>
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function Component() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-yellow-500">
           Key Features
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6">
           {[
             {
               icon: Book,
@@ -72,7 +72,7 @@ export default function Component() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-yellow-500">
           What Our Students Say
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-1 grid-cols-2 gap-6">
           {testimonialsData.map((testimonial, index) => (
             <Card key={index} className="bg-[#2e2101ec] text-white">
               <CardHeader className=" text-white">
