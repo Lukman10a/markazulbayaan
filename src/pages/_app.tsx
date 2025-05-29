@@ -1,6 +1,7 @@
 import Footer from "@/components/footer";
 // import Navbar from "@/components/Nav";
 import { MainNav } from "@/components/navBar/mainNav";
+import { ThemeProvider } from "@/lib/theme-context";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter, Instrument_Serif } from "next/font/google";
@@ -27,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const isAdminPage = router.pathname.startsWith("/admin");
 
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <title>Markazul Bayaan</title>
         <meta
@@ -101,6 +102,6 @@ export default function App({ Component, pageProps }: AppProps) {
         </main>
         {!isAdminPage && <Footer />} {/* Conditionally render Footer */}
       </div>
-    </>
+    </ThemeProvider>
   );
 }

@@ -8,16 +8,10 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ChevronDown, BookOpen, Users, MessageCircle, Home } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown, Sparkles } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -27,16 +21,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
 
 import logo from "../../../public/assets/mbayan.png";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { ScrollArea } from "../ui/scrollArea";
 import { navItems } from "./data";
+import { useTheme } from "@/lib/theme-context";
 
 export function MainNav() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
   const [scrollY, setScrollY] = React.useState(0);
+  const { theme, toggleTheme } = useTheme();
 
   const isActive = (href: string) => pathname?.startsWith(href);
   const [activeItem, setActiveItem] = React.useState<string | null>(null);
@@ -81,63 +83,80 @@ export function MainNav() {
     visible: { 
       y: 0, 
       opacity: 1,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: -10 },
     visible: { 
       opacity: 1, 
-      x: 0,
-      transition: { duration: 0.3 }
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" }
     }
   };
 
   return (
-    <motion.nav 
-      className="relative z-50 font-inter" 
-      id="scrollable"
+    <motion.header 
+      className="fixed top-0 left-0 right-0 z-50" 
       initial="hidden"
       animate="visible"
       variants={navVariants}
     >
-      <motion.nav 
+      <nav 
         className={cn(
-          "fixed top-0 w-full transition-all duration-300 backdrop-blur-md border-b",
+          "transition-all duration-500 ease-in-out border-b backdrop-blur-lg",
           scrollY > 20 
-            ? "bg-white/95 shadow-lg border-gray-200" 
-            : "bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 border-transparent"
+            ? theme === 'dark'
+              ? "bg-gray-900/95 border-gray-800 shadow-2xl" 
+              : "bg-white/95 border-gray-200 shadow-2xl"
+            : theme === 'dark'
+              ? "bg-gray-900/60 border-gray-800/50"
+              : "bg-white/60 border-gray-200/50"
         )}
       >
-        <div className="container mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4">
-          <div className="flex h-16 xl:h-18 lg:h-16 md:h-14 sm:h-12 items-center justify-between">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4">
+          <div className="flex items-center justify-between h-16 xl:h-18 lg:h-16 md:h-14 sm:h-12">
+            
+            {/* Logo Section */}
             <motion.div 
-              className="flex items-center gap-6 lg:gap-4 md:gap-3"
+              className="flex items-center"
               variants={itemVariants}
             >
               <Link href="/" className="flex items-center space-x-3 lg:space-x-2 group">
                 <div className="relative">
-                  <Image
-                    src={logo}
-                    width={160}
-                    height={160}
-                    priority
-                    alt="Markazul Bayaan Logo"
-                    className="size-12 xl:size-14 lg:size-10 md:size-8 sm:size-6 object-contain transition-transform duration-300 group-hover:scale-110"
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                  >
+                    <Image
+                      src={logo}
+                      width={160}
+                      height={160}
+                      priority
+                      alt="Markazul Bayaan"
+                      className="size-10 xl:size-12 lg:size-10 md:size-8 sm:size-6 object-contain"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
                   />
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className={cn(
-                    "font-bold text-lg xl:text-xl lg:text-base md:text-sm transition-colors duration-300",
-                    scrollY > 20 ? "text-gray-900" : "text-white"
-                  )}>
+                  <motion.h1 
+                    className={cn(
+                      "font-bold text-lg xl:text-xl lg:text-base md:text-sm transition-colors duration-300",
+                      theme === 'dark' ? "text-white" : "text-gray-900"
+                    )}
+                    whileHover={{ scale: 1.05 }}
+                  >
                     Markazul Bayaan
-                  </h1>
+                  </motion.h1>
                   <p className={cn(
                     "text-xs xl:text-sm lg:text-xs md:text-xs transition-colors duration-300",
-                    scrollY > 20 ? "text-gray-600" : "text-yellow-100"
+                    theme === 'dark' ? "text-gray-400" : "text-gray-600"
                   )}>
                     Islamic Education Center
                   </p>
@@ -147,7 +166,7 @@ export function MainNav() {
 
             {/* Desktop Navigation */}
             <motion.div 
-              className="sm:hidden flex items-center gap-8 lg:gap-6 md:gap-4"
+              className="sm:hidden flex items-center space-x-1"
               variants={itemVariants}
             >
               {navItems.map((item, index) => (
@@ -157,69 +176,119 @@ export function MainNav() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Link href={item.href || "/"}>
-                    <Button
-                      variant="ghost"
+                    <motion.div
                       className={cn(
-                        "text-base xl:text-lg lg:text-sm md:text-xs font-medium transition-all duration-300 relative group hover:bg-transparent px-4 lg:px-3 md:px-2",
+                        "relative px-4 py-2 rounded-lg transition-all duration-300 group",
                         isActive(item?.href as string) 
-                          ? scrollY > 20 
-                            ? "text-yellow-600" 
-                            : "text-yellow-200"
-                          : scrollY > 20 
-                            ? "text-gray-700 hover:text-yellow-600" 
-                            : "text-white hover:text-yellow-200"
+                          ? theme === 'dark'
+                            ? "bg-yellow-500/20 text-yellow-400" 
+                            : "bg-yellow-50 text-yellow-600"
+                          : theme === 'dark'
+                            ? "text-gray-300 hover:text-white hover:bg-gray-800" 
+                            : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                       )}
+                      whileHover={{ scale: 1.05 }}
                     >
-                      {item.title}
-                      <span className={cn(
-                        "absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full",
-                        isActive(item?.href as string) ? "w-full" : ""
-                      )}></span>
-                    </Button>
+                      <span className="font-medium text-sm xl:text-base lg:text-sm relative z-10">
+                        {item.title}
+                      </span>
+                      {isActive(item?.href as string) && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 rounded-lg"
+                          layoutId="activeTab"
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
                   </Link>
                 </motion.div>
               ))}
+            </motion.div>
 
-              {/* CTA Button */}
+            {/* Right Side Actions */}
+            <motion.div 
+              className="flex items-center space-x-4 lg:space-x-3 md:space-x-2"
+              variants={itemVariants}
+            >
+              
+              {/* Theme Toggle */}
+              <motion.button
+                onClick={toggleTheme}
+                className={cn(
+                  "relative p-2 rounded-lg transition-all duration-300",
+                  theme === 'dark'
+                    ? "bg-gray-800 hover:bg-gray-700 text-yellow-400"
+                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                )}
+                whileHover={{ scale: 1.1, rotate: 180 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <AnimatePresence mode="wait">
+                  {theme === 'dark' ? (
+                    <motion.div
+                      key="sun"
+                      initial={{ opacity: 0, rotate: -180 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 180 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Sun className="h-4 w-4 lg:h-5 lg:w-5" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="moon"
+                      initial={{ opacity: 0, rotate: 180 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -180 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Moon className="h-4 w-4 lg:h-5 lg:w-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+
+              {/* CTA Button - Desktop */}
               <motion.div
+                className="sm:hidden lg:block"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Link href="https://bit.ly/Learn-at-markazbayan">
-                  <Button 
-                    className={cn(
-                      "font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-sm lg:text-xs px-6 lg:px-4 md:px-3 py-2 lg:py-1.5",
-                      scrollY > 20 
-                        ? "bg-yellow-500 hover:bg-yellow-600 text-white" 
-                        : "bg-white hover:bg-yellow-50 text-yellow-600 hover:text-yellow-700"
-                    )}
-                  >
-                    Enroll Now
-                  </Button>
+                  <motion.div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-yellow-500 to-amber-600 p-0.5 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="bg-gradient-to-r from-yellow-500 to-amber-600 rounded-lg px-6 py-2.5 text-white font-semibold text-sm flex items-center space-x-2">
+                      <Sparkles className="h-4 w-4" />
+                      <span>Enroll Now</span>
+                    </div>
+                    <motion.div
+                      className="absolute inset-0 bg-white/20 rounded-lg"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </motion.div>
                 </Link>
               </motion.div>
-            </motion.div>
 
-            {/* Mobile Menu Button */}
-            <motion.div
-              className="sm:block hidden"
-              variants={itemVariants}
-            >
-              <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-                <SheetTrigger asChild>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      variant="ghost"
-                      size="icon"
+              {/* Mobile Menu */}
+              <div className="hidden sm:block">
+                <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+                  <SheetTrigger asChild>
+                    <motion.button
                       className={cn(
-                        "transition-all duration-300 border",
-                        scrollY > 20 
-                          ? "bg-gray-100 hover:bg-gray-200 border-gray-300 text-gray-700"
-                          : "bg-white/20 hover:bg-white/30 border-white/30 text-white backdrop-blur-sm"
+                        "p-2 rounded-lg transition-all duration-300",
+                        theme === 'dark'
+                          ? "bg-gray-800 hover:bg-gray-700 text-white"
+                          : "bg-gray-100 hover:bg-gray-200 text-gray-700"
                       )}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                     >
                       <AnimatePresence mode="wait">
                         {isSheetOpen ? (
@@ -228,9 +297,9 @@ export function MainNav() {
                             initial={{ rotate: -90, opacity: 0 }}
                             animate={{ rotate: 0, opacity: 1 }}
                             exit={{ rotate: 90, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.3 }}
                           >
-                            <X className="h-5 w-5 lg:h-4 lg:w-4" />
+                            <X className="h-5 w-5" />
                           </motion.div>
                         ) : (
                           <motion.div
@@ -238,134 +307,115 @@ export function MainNav() {
                             initial={{ rotate: 90, opacity: 0 }}
                             animate={{ rotate: 0, opacity: 1 }}
                             exit={{ rotate: -90, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.3 }}
                           >
-                            <Menu className="h-5 w-5 lg:h-4 lg:w-4" />
+                            <Menu className="h-5 w-5" />
                           </motion.div>
                         )}
                       </AnimatePresence>
-                      <span className="sr-only">Toggle menu</span>
-                    </Button>
-                  </motion.div>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="max-w-[400px] md:max-w-[350px] sm:w-full bg-gradient-to-br from-white to-gray-50 border-l border-gray-200"
-                >
-                  <SheetHeader className="border-b border-gray-200 pb-6 lg:pb-4 md:pb-3 mb-6 lg:mb-4 md:mb-3">
-                    <SheetTitle className="flex items-center space-x-3 lg:space-x-2">
-                      <Image
-                        src={logo}
-                        width={40}
-                        height={40}
-                        alt="Markazul Bayaan Logo"
-                        className="size-10 lg:size-8 md:size-6 object-contain"
-                      />
-                      <div>
-                        <h2 className="text-lg lg:text-base md:text-sm font-bold text-gray-900">Markazul Bayaan</h2>
-                        <p className="text-xs lg:text-xs md:text-xs text-gray-600">Islamic Education Center</p>
-                      </div>
-                    </SheetTitle>
-                    <SheetDescription className="text-left text-sm lg:text-xs text-gray-600 leading-relaxed">
-                      Explore our comprehensive courses in Arabic language, Quranic studies, and Islamic theology to deepen your understanding of the religion.
-                    </SheetDescription>
-                  </SheetHeader>
+                    </motion.button>
+                  </SheetTrigger>
                   
-                  <ScrollArea className="h-[calc(100vh-12rem)] lg:h-[calc(100vh-10rem)]">
-                    <nav className="space-y-2 lg:space-y-1">
-                      {navItems.map((item, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Link href={item.href || "/"}>
-                            <motion.div
-                              className={cn(
-                                "flex items-center space-x-3 lg:space-x-2 p-4 lg:p-3 md:p-2 rounded-xl lg:rounded-lg transition-all duration-300 group",
-                                isActive(item?.href as string) 
-                                  ? "bg-yellow-100 border border-yellow-200 text-yellow-800" 
-                                  : "hover:bg-gray-100 text-gray-700"
-                              )}
-                              whileHover={{ scale: 1.02, x: 4 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              <div className={cn(
-                                "p-2 lg:p-1.5 md:p-1 rounded-lg lg:rounded transition-colors",
-                                isActive(item?.href as string) 
-                                  ? "bg-yellow-200 text-yellow-700" 
-                                  : "bg-gray-200 text-gray-600 group-hover:bg-yellow-200 group-hover:text-yellow-700"
-                              )}>
-                                {getNavIcon(item.title)}
-                              </div>
-                              <div className="flex-1">
-                                <h3 className="font-semibold text-base lg:text-sm md:text-xs">{item.title}</h3>
-                                <p className="text-xs lg:text-xs md:text-xs text-gray-500">
-                                  {getNavDescription(item.title)}
-                                </p>
-                              </div>
-                              <ChevronDown className="h-4 w-4 lg:h-3 lg:w-3 rotate-270 text-gray-400 group-hover:text-yellow-600" />
-                            </motion.div>
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </nav>
+                  <SheetContent
+                    side="right"
+                    className={cn(
+                      "w-full max-w-sm border-l",
+                      theme === 'dark'
+                        ? "bg-gray-900 border-gray-800"
+                        : "bg-white border-gray-200"
+                    )}
+                  >
+                    <SheetHeader className="text-left pb-6 border-b border-gray-200 dark:border-gray-800">
+                      <SheetTitle className="flex items-center space-x-3">
+                        <Image
+                          src={logo}
+                          width={40}
+                          height={40}
+                          alt="Markazul Bayaan"
+                          className="size-8 object-contain"
+                        />
+                        <div>
+                          <h2 className={cn(
+                            "text-lg font-bold",
+                            theme === 'dark' ? "text-white" : "text-gray-900"
+                          )}>
+                            Markazul Bayaan
+                          </h2>
+                          <p className={cn(
+                            "text-sm",
+                            theme === 'dark' ? "text-gray-400" : "text-gray-600"
+                          )}>
+                            Islamic Education Center
+                          </p>
+                        </div>
+                      </SheetTitle>
+                      <SheetDescription className={cn(
+                        "text-sm leading-relaxed",
+                        theme === 'dark' ? "text-gray-400" : "text-gray-600"
+                      )}>
+                        Comprehensive courses in Arabic language, Quranic studies, and Islamic theology.
+                      </SheetDescription>
+                    </SheetHeader>
+                    
+                    <ScrollArea className="my-6 h-[calc(100vh-16rem)]">
+                      <div className="space-y-2">
+                        {navItems.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <Link href={item.href || "/"}>
+                              <motion.div
+                                className={cn(
+                                  "flex items-center justify-between p-4 rounded-xl transition-all duration-300",
+                                  isActive(item?.href as string) 
+                                    ? theme === 'dark'
+                                      ? "bg-yellow-500/20 border border-yellow-500/30 text-yellow-400" 
+                                      : "bg-yellow-50 border border-yellow-200 text-yellow-600"
+                                    : theme === 'dark'
+                                      ? "hover:bg-gray-800 text-gray-300"
+                                      : "hover:bg-gray-100 text-gray-700"
+                                )}
+                                whileHover={{ x: 8, scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <span className="font-medium text-base">{item.title}</span>
+                                <ChevronDown className="h-4 w-4 -rotate-90" />
+                              </motion.div>
+                            </Link>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </ScrollArea>
 
                     {/* Mobile CTA */}
-                    <motion.div 
-                      className="mt-8 lg:mt-6 md:mt-4 p-4 lg:p-3 md:p-2 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl lg:rounded-lg text-white"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <h3 className="font-bold text-lg lg:text-base md:text-sm mb-2 lg:mb-1">Ready to Start Learning?</h3>
-                      <p className="text-sm lg:text-xs md:text-xs text-yellow-100 mb-4 lg:mb-3 md:mb-2">
-                        Join thousands of students in their Islamic education journey.
-                      </p>
+                    <div className="border-t border-gray-200 dark:border-gray-800 pt-6">
                       <Link href="https://bit.ly/Learn-at-markazbayan">
-                        <motion.button 
-                          className="w-full bg-white text-yellow-600 font-semibold py-3 lg:py-2.5 md:py-2 rounded-lg lg:rounded-xl transition-colors hover:bg-yellow-50 text-sm lg:text-xs"
+                        <motion.div 
+                          className="w-full bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl p-4 text-white text-center shadow-lg"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
-                          Enroll Now
-                        </motion.button>
+                          <div className="flex items-center justify-center space-x-2">
+                            <Sparkles className="h-5 w-5" />
+                            <span className="font-semibold text-lg">Start Learning Today</span>
+                          </div>
+                          <p className="text-sm text-yellow-100 mt-1">
+                            Join thousands of students worldwide
+                          </p>
+                        </motion.div>
                       </Link>
-                    </motion.div>
-                  </ScrollArea>
-                </SheetContent>
-              </Sheet>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
             </motion.div>
           </div>
         </div>
-      </motion.nav>
-    </motion.nav>
+      </nav>
+    </motion.header>
   );
 }
 
-// Helper function to get appropriate icons for navigation items
-function getNavIcon(title: string) {
-  const iconMap: { [key: string]: JSX.Element } = {
-    'Home': <Home className="h-4 w-4 lg:h-3 lg:w-3" />,
-    'Courses': <BookOpen className="h-4 w-4 lg:h-3 lg:w-3" />,
-    'About': <Users className="h-4 w-4 lg:h-3 lg:w-3" />,
-    'Blog': <MessageCircle className="h-4 w-4 lg:h-3 lg:w-3" />,
-    'Contact': <MessageCircle className="h-4 w-4 lg:h-3 lg:w-3" />,
-    'Reviews': <Users className="h-4 w-4 lg:h-3 lg:w-3" />,
-  };
-  return iconMap[title] || <BookOpen className="h-4 w-4 lg:h-3 lg:w-3" />;
-}
-
-// Helper function to get descriptions for navigation items
-function getNavDescription(title: string) {
-  const descMap: { [key: string]: string } = {
-    'Home': 'Return to homepage',
-    'Courses': 'Browse our courses',
-    'About': 'Learn about us',
-    'Blog': 'Read our articles',
-    'Contact': 'Get in touch',
-    'Reviews': 'Student testimonials',
-  };
-  return descMap[title] || 'Navigate to page';
-}
