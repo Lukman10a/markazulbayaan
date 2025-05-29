@@ -7,6 +7,8 @@ import { getSortedFeaturedPostsData, getSortedPostsData } from "@/cms/utils";
 import Pagination from "@/components/pagination";
 import DefaultThumbnail from "@/components/defaultThumbnail";
 import { formatDate } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Calendar, User, ArrowRight, Star, Clock } from "lucide-react";
 
 const POSTS_PER_PAGE = 6;
 
@@ -71,177 +73,324 @@ const Blog = ({
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  return (
-    <main className="">
-      {/* Hero Section */}
-      <section
-        className="relative w-full p-5 md:p-10 text-white mb-2 md:mb-8"
-        style={{ backgroundImage: `url(${posts[0].thumbnail})` }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 md:py-24">
-          <p className="py-4 text-xs md:text-sm">
-            POSTED ON <span className="font-bold">MARKAZUL - BAYAN</span>
-          </p>
-          <h1 className="text-2xl md:text-5xl font-bold mb-4 capitalize">
-            {posts[0].title}
-          </h1>
-          <p className="mb-4 text-sm md:text-lg text-gray-300 line-clamp-3">
-            {posts[0]?.description}
-          </p>
-          <p className="text-xs md:text-sm mb-4">
-            By <span className="text-yellow-500">{posts[0].author} </span> |{" "}
-            {formatDate(posts[0].date)}
-          </p>
-          <Link href={`/blog/${posts[0].slug}`} passHref>
-            <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-              Read More
-            </button>
-          </Link>
-        </div>
-      </section>
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-      <div className="py-8 container mx-auto px-6">
-        {/* Featured Post Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Featured Post</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-            {featuredPosts.map((featuredPost: FeaturedPost, index: number) => (
-              <article
-                key={index}
-                className="rounded-lg overflow-hidden border border-amber-500 grid grid-rows-[auto_1fr_auto] p-3"
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.5 }
+    },
+    hover: {
+      y: -8,
+      scale: 1.02,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <motion.section
+        className="relative w-full p-5 lg:p-8 md:p-6 sm:p-4 text-white mb-2 lg:mb-6 md:mb-4 min-h-[60vh] lg:min-h-[50vh] md:min-h-[40vh] flex items-center"
+        style={{ backgroundImage: `url(${posts[0]?.thumbnail})` }}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4 py-12 lg:py-16 md:py-12 sm:py-8">
+          <motion.p 
+            className="py-4 lg:py-3 md:py-2 text-xs lg:text-sm md:text-xs mb-4 lg:mb-3 md:mb-2 text-yellow-400 font-semibold tracking-wider"
+            variants={itemVariants}
+          >
+            POSTED ON <span className="font-bold">MARKAZUL - BAYAN</span>
+          </motion.p>
+          <motion.h1 
+            className="text-2xl lg:text-4xl md:text-3xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 capitalize leading-tight max-w-4xl"
+            variants={itemVariants}
+          >
+            {posts[0]?.title}
+          </motion.h1>
+          <motion.p 
+            className="mb-4 lg:mb-6 md:mb-4 text-sm lg:text-lg md:text-base text-gray-300 line-clamp-3 max-w-3xl leading-relaxed"
+            variants={itemVariants}
+          >
+            {posts[0]?.description}
+          </motion.p>
+          <motion.div 
+            className="flex items-center text-xs lg:text-sm md:text-xs mb-4 lg:mb-6 md:mb-4 space-x-4 lg:space-x-6"
+            variants={itemVariants}
+          >
+            <span className="flex items-center text-yellow-400">
+              <User className="w-4 h-4 lg:w-5 lg:h-5 mr-2 lg:mr-3" />
+              {posts[0]?.author}
+            </span>
+            <span className="flex items-center text-gray-300">
+              <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-2 lg:mr-3" />
+              {formatDate(posts[0]?.date)}
+            </span>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Link href={`/blog/${posts[0]?.slug}`} passHref>
+              <motion.button 
+                className="bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white px-6 lg:px-8 py-2 lg:py-3 md:py-2 rounded-lg lg:rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 lg:space-x-3"
+                whileHover={{ scale: 1.05, x: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <DefaultThumbnail
-                  title={featuredPost.title}
-                  imageUrl={featuredPost?.thumbnail}
-                  className="w-full"
-                  width={undefined}
-                />
-                <h3 className="text-lg font-bold my-2">{featuredPost.title}</h3>
-                <div className="">
-                  <p className="text-gray-600 mb-2">
+                <span className="lg:text-base md:text-sm">Read More</span>
+                <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <div className="py-8 lg:py-12 md:py-10 sm:py-6 container mx-auto px-6 xl:px-8 lg:px-10 md:px-6 sm:px-4">
+        {/* Featured Post Section */}
+        <motion.section 
+          className="mb-12 lg:mb-16 md:mb-12 sm:mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <motion.h2 
+            className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center text-gray-900"
+            variants={itemVariants}
+          >
+            Featured Posts
+          </motion.h2>
+          <div className="grid gap-6 lg:gap-8 md:gap-6 sm:gap-4 grid-cols-3 lg:grid-cols-2 md:grid-cols-1 auto-rows-fr">
+            {featuredPosts.map((featuredPost: FeaturedPost, index: number) => (
+              <motion.article
+                key={index}
+                className="rounded-lg lg:rounded-xl overflow-hidden border-2 border-amber-200 hover:border-amber-400 transition-all duration-300 bg-white shadow-lg hover:shadow-xl group"
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <div className="relative overflow-hidden">
+                  <DefaultThumbnail
+                    title={featuredPost.title}
+                    imageUrl={featuredPost?.thumbnail}
+                    className="w-full h-48 lg:h-52 md:h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={undefined}
+                  />
+                  <div className="absolute top-4 lg:top-6 right-4 lg:right-6 bg-amber-500 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-semibold">
+                    Featured
+                  </div>
+                </div>
+                <div className="p-3 lg:p-5 md:p-4">
+                  <h3 className="text-lg lg:text-xl md:text-lg font-bold my-2 lg:my-3 md:my-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight">
+                    {featuredPost.title}
+                  </h3>
+                  <p className="text-gray-600 mb-2 lg:mb-4 md:mb-3 text-sm lg:text-base md:text-sm leading-relaxed line-clamp-3">
                     {featuredPost.description}
                   </p>
                   <Link href={`/blog/${featuredPost.slug}`}>
-                    <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-                      Read More
-                    </button>
+                    <motion.button 
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 lg:px-8 py-2 lg:py-3 md:py-2 rounded-lg lg:rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 lg:space-x-3 text-sm lg:text-base"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+                    </motion.button>
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* All Posts Section */}
-        <section className="container mx-auto ">
-          <h2 className="text-2xl font-bold mb-6">All Posts</h2>
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+        <motion.section 
+          className="container mx-auto mb-12 lg:mb-16 md:mb-12 sm:mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <motion.h2 
+            className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center text-gray-900"
+            variants={itemVariants}
+          >
+            All Posts
+          </motion.h2>
+          <div className="grid gap-6 lg:gap-8 md:gap-6 sm:gap-4 grid-cols-3 lg:grid-cols-2 md:grid-cols-1 auto-rows-fr">
             {currentPosts.map((post: PostData, index: number) => (
-              <article
+              <motion.article
                 key={index}
-                className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 grid grid-rows-[auto_1fr_auto]"
+                className="bg-white rounded-lg lg:rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100"
+                variants={cardVariants}
+                whileHover="hover"
               >
-                <div className="relative h-48">
+                <div className="relative h-48 lg:h-52 md:h-44 overflow-hidden">
                   <Image
                     src={post.thumbnail || "/placeholder.svg"}
                     alt={post.title}
                     layout="fill"
                     objectFit="cover"
+                    className="transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-6 grid grid-rows-[auto_1fr_auto] gap-2">
-                  <p className="text-sm">
-                    By<span className="text-[#760808]"> {post.author}</span> |{" "}
-                    <span>{formatDate(post.date)}</span>
-                  </p>
+                <div className="p-6 lg:p-8 md:p-6 sm:p-4 grid grid-rows-[auto_1fr_auto] gap-2 lg:gap-3 h-full">
+                  <div className="flex items-center text-sm lg:text-base md:text-sm text-gray-600 space-x-4 lg:space-x-6 mb-2 lg:mb-3">
+                    <span className="flex items-center text-amber-600 font-medium">
+                      <User className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
+                      {post.author}
+                    </span>
+                    <span className="flex items-center">
+                      <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
+                      {formatDate(post.date)}
+                    </span>
+                  </div>
 
                   <div>
-                    <h3 className="text-xl font-bold capitalize mb-2">
+                    <h3 className="text-xl lg:text-2xl md:text-xl font-bold capitalize mb-2 lg:mb-3 md:mb-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight">
                       {post.title}
                     </h3>
-                    <p className="text-gray-600 line-clamp-3">
+                    <p className="text-gray-600 lg:text-base md:text-sm line-clamp-3 leading-relaxed">
                       {post.description}
                     </p>
                   </div>
                   <Link href={`/blog/${post.slug}`} passHref>
-                    <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition mt-auto">
-                      Read More
-                    </button>
+                    <motion.button 
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 lg:px-6 py-2 lg:py-3 md:py-2 rounded-lg lg:rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 mt-auto flex items-center justify-center space-x-2 lg:space-x-3 text-sm lg:text-base"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+                    </motion.button>
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
-          <Pagination
-            postsPerPage={POSTS_PER_PAGE}
-            totalPosts={posts.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </section>
+          <div className="mt-8 lg:mt-12 md:mt-10 sm:mt-6">
+            <Pagination
+              postsPerPage={POSTS_PER_PAGE}
+              totalPosts={posts.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </div>
+        </motion.section>
       </div>
 
       {/* About Us and Our Mission Section */}
-      <section className="bg-yellow-50 py-12 ">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-sm font-semibold mb-2">About Us</h2>
-              <p className="text-2xl font-bold mb-4">
+      <motion.section 
+        className="bg-gradient-to-r from-yellow-50 to-amber-50 py-12 lg:py-16 md:py-12 sm:py-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <div className="container mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 lg:gap-10 md:gap-8 sm:gap-6">
+            <motion.div variants={itemVariants}>
+              <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">About Us</h2>
+              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
                 {dummyData.aboutUs.title}
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed">
                 {dummyData.aboutUs.description}
               </p>
               <Link href="/about" passHref>
-                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-                  {dummyData.aboutUs.buttonText}
-                </button>
+                <motion.button 
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 lg:px-8 py-2 lg:py-3 md:py-2 rounded-lg lg:rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 lg:space-x-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="lg:text-base md:text-sm">{dummyData.aboutUs.buttonText}</span>
+                  <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+                </motion.button>
               </Link>
-            </div>
-            <div>
-              <h2 className="text-sm font-semibold mb-2">Our Mission</h2>
-              <p className="text-2xl font-bold mb-4">
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">Our Mission</h2>
+              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
                 {dummyData.ourMission.title}
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 lg:text-lg md:text-base leading-relaxed">
                 {dummyData.ourMission.description}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Why We Started Section */}
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="relative">
-            <div className="relative w-full md:w-2/3 h-96 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src={dummyData.whyWeStarted.image}
-                alt="Why We Started"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 md:w-1/2 mt-8 md:mt-0">
-              <h2 className="text-2xl font-bold mb-4">Why We Started</h2>
-              <p className="text-xl text-gray-700 mb-4">
+      <motion.section 
+        className="py-12 lg:py-16 md:py-12 sm:py-8 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <div className="container mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 lg:gap-10 md:gap-8 sm:gap-6 items-center">
+            <motion.div variants={itemVariants}>
+              <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">Why We Started</h2>
+              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
                 {dummyData.whyWeStarted.title}
               </p>
-              <p className="mb-6">{dummyData.whyWeStarted.description}</p>
+              <p className="text-gray-600 mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed">
+                {dummyData.whyWeStarted.description}
+              </p>
               <Link href="/about" passHref>
-                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-                  {dummyData.whyWeStarted.buttonText}
-                </button>
+                <motion.button 
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 lg:px-8 py-2 lg:py-3 md:py-2 rounded-lg lg:rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 lg:space-x-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="lg:text-base md:text-sm">{dummyData.whyWeStarted.buttonText}</span>
+                  <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+                </motion.button>
               </Link>
-            </div>
+            </motion.div>
+            <motion.div 
+              className="relative"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="relative h-64 lg:h-80 md:h-64 sm:h-48 rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src={dummyData.whyWeStarted.image}
+                  alt="Why We Started"
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </section>
-
-      <Testimonials />
+      </motion.section>
     </main>
   );
 };

@@ -13,7 +13,7 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
       <Star
         key={i}
         className={`h-4 w-4 ${
-          i < difficulty ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+          i < difficulty ? "fill-blue-400 text-blue-400" : "text-gray-300"
         }`}
       />
     ));
@@ -35,7 +35,7 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
 
   return (
     <motion.div 
-      className="relative bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 text-white overflow-hidden"
+      className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -93,7 +93,7 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
               variants={itemVariants}
             >
               <div className="flex items-center space-x-2 md:space-x-1">
-                <Star className="h-5 w-5 md:h-4 md:w-4 fill-yellow-300 text-yellow-300" />
+                <Star className="h-5 w-5 md:h-4 md:w-4 fill-blue-300 text-blue-300" />
                 <span className="font-semibold md:text-sm">{course.rating || "4.8"}</span>
                 <span className="text-white/70 md:text-sm sm:text-xs">rating</span>
               </div>
@@ -183,12 +183,12 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
               {/* Enrollment Buttons */}
               <div className="space-y-3 lg:space-y-2">
                 <Link href="/contact" className="w-full">
-                  <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 lg:py-2.5 md:py-2 text-lg lg:text-base md:text-sm rounded-lg shadow-lg transform transition hover:scale-105">
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 lg:py-2.5 md:py-2 text-lg lg:text-base md:text-sm rounded-lg shadow-lg transform transition hover:scale-105">
                     Enroll Now
                   </Button>
                 </Link>
                 <Link href="/contact" className="w-full">
-                  <Button variant="outline" className="w-full border-yellow-600 text-yellow-600 hover:bg-yellow-50 font-semibold py-3 lg:py-2.5 md:py-2 lg:text-base md:text-sm rounded-lg">
+                  <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 lg:py-2.5 md:py-2 lg:text-base md:text-sm rounded-lg">
                     Ask Questions
                   </Button>
                 </Link>
@@ -202,19 +202,19 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
                 </h4>
                 <ul className="space-y-2 lg:space-y-1 text-sm md:text-xs text-gray-600">
                   <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mr-3 lg:mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 lg:mr-2"></div>
                     {course.materials?.[0] || "Course materials"}
                   </li>
                   <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mr-3 lg:mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 lg:mr-2"></div>
                     {course.materials?.[1] || "Live sessions"}
                   </li>
                   <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mr-3 lg:mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 lg:mr-2"></div>
                     Certificate of completion
                   </li>
                   <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mr-3 lg:mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 lg:mr-2"></div>
                     Lifetime access
                   </li>
                 </ul>
