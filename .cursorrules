@@ -1,0 +1,121 @@
+# Markazul Bayaan - Project Intelligence
+
+## Project Overview
+Markazul Bayaan is an Islamic education platform built with Next.js 14, TypeScript, and Tailwind CSS. The platform offers six comprehensive courses in Arabic, Quranic studies, and Islamic theology taught by Abu Kawthar Lukman.
+
+## Key Project Patterns
+
+### Architecture Decisions
+- **Next.js Pages Router**: Using traditional pages/ directory structure (not App Router)
+- **Component Organization**: Atomic design with components in logical folders (home/, ui/, shared/, navBar/)
+- **Content Management**: Markdown-based blog with Decap CMS for non-technical content updates
+- **Styling Strategy**: Tailwind CSS with shadcn/ui components for consistency
+
+### Critical Implementation Details
+
+#### Navigation System
+- **Current Implementation**: `MainNav` component is active (imported in _app.tsx)
+- **Legacy Component**: `Nav.tsx` exists but is commented out - should be removed
+- **Pattern**: Conditional rendering - navigation/footer hidden on admin pages
+
+#### Course Data Structure
+- **Location**: Exported `courses` array in `src/pages/course/index.tsx`
+- **Schema**: Each course has id, slug, title, description, metadata (duration, students, price, instructor, level), syllabus array, objectives array
+- **Routing**: Dynamic routes via `[slug].tsx` for individual course pages
+
+#### Contact Form Implementation
+- **Service**: EmailJS for client-side email sending
+- **Validation**: Real-time validation with comprehensive error handling
+- **Environment Variables Required**:
+  - `NEXT_PUBLIC_SERVICE_ID`
+  - `NEXT_PUBLIC_TEMPLATE_ID`
+  - `NEXT_PUBLIC_EMAIL_KEY`
+
+#### Blog System
+- **Content Location**: Markdown files in `/public/_posts/`
+- **Frontmatter**: YAML headers with layout, title, date, thumbnail, author, body
+- **CMS**: Decap CMS configured for Git-based content management
+- **Admin Access**: Available at `/admin` route
+
+### Component Patterns
+
+#### Animation Strategy
+- **Primary**: Framer Motion for page transitions and interactions
+- **Secondary**: React Spring (consider consolidating to one library)
+- **Carousel**: Embla Carousel for testimonials with autoplay
+
+#### Form Handling
+- **Pattern**: useState for form data, real-time validation on blur
+- **Error Management**: Separate touched state and validation errors objects
+- **Feedback**: Toast notifications for success/error states
+
+#### Responsive Design
+- **Approach**: Mobile-first with Tailwind breakpoints
+- **Navigation**: Hamburger menu for mobile, full nav for desktop
+- **Images**: Next.js Image component with proper sizing and optimization
+
+### Content Strategy
+
+#### Course Offerings (6 Total)
+1. Arabic Language (3 months, $100/month)
+2. Beginner Quranic Studies/Juz Amma (6 months, $120)
+3. Tawhid/Islamic Monotheism (4 months, $100/month)
+4. Tafsir (6 months, $70/month)
+5. Fiqh (8 weeks, $70/month)
+6. Tajwid (4 months, $50/month)
+
+#### Blog Content Focus
+- Arabic language learning
+- Quranic studies and interpretation
+- Islamic education methodology
+- Scholarly articles by Abu Kawthar Lukman
+
+### Development Guidelines
+
+#### Code Quality
+- **TypeScript**: Strict mode enabled, full type safety required
+- **ESLint**: Next.js configuration with React hooks rules
+- **Component Style**: Functional components with hooks (modern React patterns)
+
+#### Performance Considerations
+- **Bundle Size**: Monitor multiple animation libraries impact
+- **Image Optimization**: Use Next.js Image component consistently
+- **Font Loading**: Google Fonts with display swap optimization
+- **Static Generation**: Leverage Next.js SSG for better performance
+
+#### SEO Implementation
+- **Meta Tags**: Comprehensive SEO metadata in _app.tsx
+- **Analytics**: Google Analytics and Google Tag Manager integrated
+- **Structured Data**: Educational content markup for search engines
+
+### Known Technical Debt
+- **Dual Navigation**: Remove unused Nav.tsx component
+- **Animation Libraries**: Consider standardizing on Framer Motion only
+- **Asset Organization**: Improve image directory structure
+- **Component Consistency**: Standardize prop-passing patterns
+
+### Environment Setup
+- **Node.js**: Version 18+ required
+- **Package Manager**: npm (package-lock.json present)
+- **Development**: `npm run dev` starts on localhost:3000
+- **Build**: `npm run build` for production optimization
+
+### Cultural Considerations
+- **Content Sensitivity**: Appropriate presentation of Islamic educational content
+- **Multilingual**: Arabic and English content considerations
+- **Scholarly Approach**: Authentic Islamic methodology and sources
+- **Community Focus**: Student testimonials and social proof important
+
+### Future Enhancement Priorities
+1. **Payment Integration**: Stripe/PayPal for course enrollment
+2. **Student Portal**: User accounts and progress tracking
+3. **Content Expansion**: Video lectures and interactive materials
+4. **Community Features**: Discussion forums and study groups
+5. **Mobile App**: PWA or native app for better mobile experience
+
+## Development Workflow
+- **Memory Bank**: Always read memory-bank/ files before starting work
+- **Component Creation**: Follow atomic design principles
+- **Styling**: Use Tailwind utilities with shadcn/ui components
+- **Testing**: Verify contact forms work with proper EmailJS setup
+- **Content**: Use CMS admin interface for blog post management 
