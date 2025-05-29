@@ -124,7 +124,7 @@ export default function Component() {
             >
               <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-white/95 backdrop-blur-sm group">
                 <CardHeader className="text-center pb-4 lg:pb-3">
-                  <feature.icon className="w-10 h-10 lg:w-8 lg:h-8 md:w-6 md:w-6 text-yellow-500 mb-2 lg:mb-1 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                  <feature.icon className="w-10 h-10 lg:w-8 lg:h-8 md:w-6 md:h-6 text-yellow-500 mb-2 lg:mb-1 mx-auto group-hover:scale-110 transition-transform duration-300" />
                   <CardTitle className="lg:text-base md:text-sm sm:text-xs group-hover:text-yellow-600 transition-colors duration-300">
                     {feature.title}
                   </CardTitle>
