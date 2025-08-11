@@ -35,7 +35,7 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
 
   return (
     <motion.div 
-      className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden"
+      className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden mt-10"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -135,7 +135,7 @@ const CourseHero: React.FC<{ course: Course }> = ({ course }) => {
 
           {/* Enrollment Card - Right Side */}
           <motion.div 
-            className="col-span-1 lg:col-span-1 lg:mt-6"
+            className="col-span-1 lg:col-span-1 lg:mt-6 mb-10"
             variants={itemVariants}
           >
             <div className="bg-white rounded-2xl lg:rounded-xl shadow-2xl p-6 lg:p-5 md:p-4 space-y-6 lg:space-y-4 md:space-y-3 sticky top-6 lg:static">

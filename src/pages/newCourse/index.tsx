@@ -29,7 +29,7 @@ type Course = {
 
 export default function NewCourse() {
   const { theme } = useTheme();
-  
+
   const courses: Course[] = [
     {
       imageSrc: arabic_course,
@@ -41,7 +41,7 @@ export default function NewCourse() {
       duration: "3 months",
       students: 5,
       rating: 4.8,
-      price: "$100/month"
+      price: "$100 monthly",
     },
     {
       imageSrc: quran_course,
@@ -53,7 +53,7 @@ export default function NewCourse() {
       duration: "6 months",
       students: 10,
       rating: 4.9,
-      price: "$120"
+      price: "$120",
     },
     {
       imageSrc: tawhid_course,
@@ -65,7 +65,7 @@ export default function NewCourse() {
       duration: "4 months",
       students: 5,
       rating: 4.7,
-      price: "$100/month"
+      price: "$100 monthly",
     },
     {
       imageSrc: tafsir_course,
@@ -76,7 +76,7 @@ export default function NewCourse() {
       duration: "6 months",
       students: 5,
       rating: 4.6,
-      price: "$70/month"
+      price: "$70 monthly",
     },
     {
       imageSrc: fiqh_course,
@@ -87,7 +87,7 @@ export default function NewCourse() {
       duration: "8 weeks",
       students: 15,
       rating: 4.5,
-      price: "$70/month"
+      price: "$70 monthly",
     },
     {
       imageSrc: tajwid_course,
@@ -98,7 +98,7 @@ export default function NewCourse() {
       duration: "4 months",
       students: 120,
       rating: 4.9,
-      price: "$50/month"
+      price: "$50 monthly",
     },
   ];
 
@@ -109,58 +109,60 @@ export default function NewCourse() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
-      scale: 0.95
+      scale: 0.95,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
     hover: {
       y: -8,
       scale: 1.02,
-      transition: { 
+      transition: {
         duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   const buttonVariants = {
     hover: {
       scale: 1.05,
       x: 5,
-      transition: { duration: 0.2 }
+      transition: { duration: 0.2 },
     },
     tap: {
-      scale: 0.95
-    }
+      scale: 0.95,
+    },
   };
 
   const arrowVariants = {
     hover: {
       x: 5,
-      transition: { duration: 0.2 }
-    }
+      transition: { duration: 0.2 },
+    },
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
-    }`}>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
+      }`}
+    >
       <Hero
         bgImage={"/assets/course_hero.png"}
         heading={["Our Courses"]}
@@ -174,39 +176,44 @@ export default function NewCourse() {
         buttonText={"Contact Us"}
         buttonLink={"/contact"}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="p-20 xl:p-16 lg:p-12 md:p-8 sm:p-6"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16 lg:mb-12 md:mb-8"
           variants={cardVariants}
         >
-          <h2 className={`text-4xl lg:text-3xl md:text-2xl font-bold mb-4 lg:mb-3 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2
+            className={`text-4xl lg:text-3xl md:text-2xl font-bold mb-4 lg:mb-3 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Available Courses
           </h2>
-          <p className={`text-xl lg:text-lg md:text-base max-w-3xl mx-auto ${
-            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            Choose from our carefully curated Islamic education programs designed to nurture your spiritual and intellectual growth.
+          <p
+            className={`text-xl lg:text-lg md:text-base max-w-3xl mx-auto ${
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Choose from our carefully curated Islamic education programs
+            designed to nurture your spiritual and intellectual growth.
           </p>
         </motion.div>
 
         {/* Courses Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-1 gap-10 lg:gap-8 md:gap-6 sm:gap-4">
+        <div className="cursor-pointer grid grid-cols-2 lg:grid-cols-1 gap-10 lg:gap-8 md:gap-6 sm:gap-4">
           {courses.map((course, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className={`group rounded-2xl lg:rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border ${
-                theme === 'dark' 
-                  ? 'bg-gray-800 border-gray-700' 
-                  : 'bg-white border-gray-100'
+                theme === "dark"
+                  ? "bg-gray-800 border-gray-700"
+                  : "bg-white border-gray-100"
               }`}
               variants={cardVariants}
               whileHover="hover"
@@ -225,18 +232,22 @@ export default function NewCourse() {
                     className="h-[280px] lg:h-[240px] md:h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
-                
+
                 {/* Overlay with stats */}
                 <div className="absolute top-4 lg:top-3 right-4 lg:right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 lg:px-2 lg:py-1.5">
                   <div className="flex items-center space-x-1">
                     <Star className="h-4 w-4 lg:h-3 lg:w-3 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm lg:text-xs font-semibold text-gray-900">{course.rating}</span>
+                    <span className="text-sm lg:text-xs font-semibold text-gray-900">
+                      {course.rating}
+                    </span>
                   </div>
                 </div>
 
                 {/* Price Badge */}
                 <div className="absolute bottom-4 lg:bottom-3 left-4 lg:left-3 bg-yellow-600 text-white rounded-lg px-3 py-1.5 lg:px-2 lg:py-1">
-                  <span className="text-sm lg:text-xs font-semibold">{course.price}</span>
+                  <span className="text-sm lg:text-xs font-semibold">
+                    {course.price}
+                  </span>
                 </div>
               </div>
 
@@ -247,9 +258,11 @@ export default function NewCourse() {
                   <div className="text-2xl lg:text-xl md:text-lg text-yellow-600">
                     {course.logo}
                   </div>
-                  <div className={`flex items-center space-x-4 lg:space-x-3 md:space-x-2 text-sm lg:text-xs ${
-                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
+                  <div
+                    className={`flex items-center space-x-4 lg:space-x-3 md:space-x-2 text-sm lg:text-xs ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
                     <div className="flex items-center space-x-1">
                       <Clock className="h-4 w-4 lg:h-3 lg:w-3" />
                       <span>{course.duration}</span>
@@ -262,16 +275,20 @@ export default function NewCourse() {
                 </div>
 
                 {/* Course Title */}
-                <h3 className={`text-2xl lg:text-xl md:text-lg font-bold mb-3 lg:mb-2 group-hover:text-yellow-600 transition-colors duration-300 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h3
+                  className={`text-2xl lg:text-xl md:text-lg font-bold mb-3 lg:mb-2 group-hover:text-yellow-600 transition-colors duration-300 ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   {course.title}
                 </h3>
 
                 {/* Course Description */}
-                <p className={`lg:text-sm md:text-xs leading-relaxed mb-6 lg:mb-5 md:mb-4 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                }`}>
+                <p
+                  className={`lg:text-sm md:text-xs leading-relaxed mb-6 lg:mb-5 md:mb-4 ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
                   {course.description}
                 </p>
 
@@ -283,7 +300,9 @@ export default function NewCourse() {
                     whileHover="hover"
                     whileTap="tap"
                   >
-                    <span className="lg:text-sm md:text-xs">Explore Course Details</span>
+                    <span className="lg:text-sm md:text-xs">
+                      Explore Course Details
+                    </span>
                     <motion.div variants={arrowVariants}>
                       <ArrowRight className="h-5 w-5 lg:h-4 lg:w-4 md:h-3 md:w-3" />
                     </motion.div>
@@ -295,23 +314,28 @@ export default function NewCourse() {
         </div>
 
         {/* Bottom CTA Section */}
-        <motion.div 
+        <motion.div
           className={`text-center mt-16 lg:mt-12 md:mt-8 rounded-2xl lg:rounded-xl p-8 lg:p-6 md:p-4 border transition-colors duration-300 ${
-            theme === 'dark'
-              ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600'
-              : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-100'
+            theme === "dark"
+              ? "bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600"
+              : "bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-100"
           }`}
           variants={cardVariants}
         >
-          <h3 className={`text-2xl lg:text-xl md:text-lg font-bold mb-4 lg:mb-3 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h3
+            className={`text-2xl lg:text-xl md:text-lg font-bold mb-4 lg:mb-3 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Ready to Begin Your Islamic Education Journey?
           </h3>
-          <p className={`lg:text-sm md:text-xs mb-6 lg:mb-4 max-w-2xl mx-auto ${
-            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            Join hundreds of students worldwide in authentic Islamic learning. Contact us to discuss which course is right for you.
+          <p
+            className={`lg:text-sm md:text-xs mb-6 lg:mb-4 max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Join hundreds of students worldwide in authentic Islamic learning.
+            Contact us to discuss which course is right for you.
           </p>
           <Link href="/contact">
             <motion.button
@@ -319,7 +343,9 @@ export default function NewCourse() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="lg:text-sm md:text-xs">Start Your Journey Today</span>
+              <span className="lg:text-sm md:text-xs">
+                Start Your Journey Today
+              </span>
               <ArrowRight className="h-5 w-5 lg:h-4 lg:w-4 md:h-3 md:w-3" />
             </motion.button>
           </Link>
