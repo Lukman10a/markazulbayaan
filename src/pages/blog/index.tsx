@@ -9,6 +9,7 @@ import DefaultThumbnail from "@/components/defaultThumbnail";
 import { formatDate } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowRight, Star, Clock } from "lucide-react";
+import { useTheme } from "@/lib/theme-context";
 
 const POSTS_PER_PAGE = 6;
 
@@ -66,6 +67,7 @@ const Blog = ({
   featuredPosts: FeaturedPost[];
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const { theme } = useTheme();
 
   const indexOfLastPost = currentPage * POSTS_PER_PAGE;
   const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
@@ -110,7 +112,9 @@ const Blog = ({
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className={`min-h-screen transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
+    }`}>
       {/* Hero Section */}
       <motion.section
         className="relative w-full p-5 lg:p-8 md:p-6 sm:p-4 text-white mb-2 lg:mb-6 md:mb-4 min-h-[60vh] lg:min-h-[50vh] md:min-h-[40vh] flex items-center"
@@ -177,7 +181,9 @@ const Blog = ({
           variants={containerVariants}
         >
           <motion.h2 
-            className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center text-gray-900"
+            className={`text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}
             variants={itemVariants}
           >
             Featured Posts
@@ -186,7 +192,9 @@ const Blog = ({
             {featuredPosts.map((featuredPost: FeaturedPost, index: number) => (
               <motion.article
                 key={index}
-                className="rounded-lg lg:rounded-xl overflow-hidden border-2 border-amber-200 hover:border-amber-400 transition-all duration-300 bg-white shadow-lg hover:shadow-xl group"
+                className={`rounded-lg lg:rounded-xl overflow-hidden border-2 border-amber-200 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl group ${
+                  theme === 'dark' ? 'bg-gray-800' : 'bg-white'
+                }`}
                 variants={cardVariants}
                 whileHover="hover"
               >
@@ -202,10 +210,14 @@ const Blog = ({
                   </div>
                 </div>
                 <div className="p-3 lg:p-5 md:p-4">
-                  <h3 className="text-lg lg:text-xl md:text-lg font-bold my-2 lg:my-3 md:my-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight">
+                  <h3 className={`text-lg lg:text-xl md:text-lg font-bold my-2 lg:my-3 md:my-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>
                     {featuredPost.title}
                   </h3>
-                  <p className="text-gray-600 mb-2 lg:mb-4 md:mb-3 text-sm lg:text-base md:text-sm leading-relaxed line-clamp-3">
+                  <p className={`mb-2 lg:mb-4 md:mb-3 text-sm lg:text-base md:text-sm leading-relaxed line-clamp-3 ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
                     {featuredPost.description}
                   </p>
                   <Link href={`/blog/${featuredPost.slug}`}>
@@ -233,7 +245,9 @@ const Blog = ({
           variants={containerVariants}
         >
           <motion.h2 
-            className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center text-gray-900"
+            className={`text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-6 lg:mb-8 md:mb-6 text-center ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}
             variants={itemVariants}
           >
             All Posts
@@ -242,7 +256,11 @@ const Blog = ({
             {currentPosts.map((post: PostData, index: number) => (
               <motion.article
                 key={index}
-                className="bg-white rounded-lg lg:rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100"
+                className={`rounded-lg lg:rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800 border-gray-700' 
+                    : 'bg-white border-gray-100'
+                }`}
                 variants={cardVariants}
                 whileHover="hover"
               >
@@ -257,7 +275,9 @@ const Blog = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-6 lg:p-8 md:p-6 sm:p-4 grid grid-rows-[auto_1fr_auto] gap-2 lg:gap-3 h-full">
-                  <div className="flex items-center text-sm lg:text-base md:text-sm text-gray-600 space-x-4 lg:space-x-6 mb-2 lg:mb-3">
+                  <div className={`flex items-center text-sm lg:text-base md:text-sm space-x-4 lg:space-x-6 mb-2 lg:mb-3 ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
                     <span className="flex items-center text-amber-600 font-medium">
                       <User className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                       {post.author}
@@ -269,10 +289,14 @@ const Blog = ({
                   </div>
 
                   <div>
-                    <h3 className="text-xl lg:text-2xl md:text-xl font-bold capitalize mb-2 lg:mb-3 md:mb-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight">
+                    <h3 className={`text-xl lg:text-2xl md:text-xl font-bold capitalize mb-2 lg:mb-3 md:mb-2 group-hover:text-amber-600 transition-colors duration-300 leading-tight ${
+                      theme === 'dark' ? 'text-white' : 'text-gray-900'
+                    }`}>
                       {post.title}
                     </h3>
-                    <p className="text-gray-600 lg:text-base md:text-sm line-clamp-3 leading-relaxed">
+                    <p className={`lg:text-base md:text-sm line-clamp-3 leading-relaxed ${
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
                       {post.description}
                     </p>
                   </div>
@@ -303,7 +327,11 @@ const Blog = ({
 
       {/* About Us and Our Mission Section */}
       <motion.section 
-        className="bg-gradient-to-r from-yellow-50 to-amber-50 py-12 lg:py-16 md:py-12 sm:py-8"
+        className={`py-12 lg:py-16 md:py-12 sm:py-8 transition-colors duration-300 ${
+          theme === 'dark' 
+            ? 'bg-gradient-to-r from-gray-800 to-gray-700' 
+            : 'bg-gradient-to-r from-yellow-50 to-amber-50'
+        }`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -313,10 +341,14 @@ const Blog = ({
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 lg:gap-10 md:gap-8 sm:gap-6">
             <motion.div variants={itemVariants}>
               <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">About Us</h2>
-              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
+              <p className={`text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 leading-tight ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
                 {dummyData.aboutUs.title}
               </p>
-              <p className="text-gray-600 mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed">
+              <p className={`mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 {dummyData.aboutUs.description}
               </p>
               <Link href="/about" passHref>
@@ -332,10 +364,14 @@ const Blog = ({
             </motion.div>
             <motion.div variants={itemVariants}>
               <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">Our Mission</h2>
-              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
+              <p className={`text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 leading-tight ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
                 {dummyData.ourMission.title}
               </p>
-              <p className="text-gray-600 lg:text-lg md:text-base leading-relaxed">
+              <p className={`lg:text-lg md:text-base leading-relaxed ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 {dummyData.ourMission.description}
               </p>
             </motion.div>
@@ -345,7 +381,9 @@ const Blog = ({
 
       {/* Why We Started Section */}
       <motion.section 
-        className="py-12 lg:py-16 md:py-12 sm:py-8 bg-white"
+        className={`py-12 lg:py-16 md:py-12 sm:py-8 transition-colors duration-300 ${
+          theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+        }`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -355,10 +393,14 @@ const Blog = ({
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 lg:gap-10 md:gap-8 sm:gap-6 items-center">
             <motion.div variants={itemVariants}>
               <h2 className="text-sm lg:text-base md:text-sm font-semibold mb-2 lg:mb-3 md:mb-2 text-amber-600 uppercase tracking-wider">Why We Started</h2>
-              <p className="text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 text-gray-900 leading-tight">
+              <p className={`text-2xl lg:text-3xl md:text-2xl sm:text-xl font-bold mb-4 lg:mb-6 md:mb-4 leading-tight ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
                 {dummyData.whyWeStarted.title}
               </p>
-              <p className="text-gray-600 mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed">
+              <p className={`mb-4 lg:mb-6 md:mb-4 lg:text-lg md:text-base leading-relaxed ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 {dummyData.whyWeStarted.description}
               </p>
               <Link href="/about" passHref>

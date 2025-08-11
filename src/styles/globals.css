@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -28,7 +29,30 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom Islamic theme colors */
+    --islamic-gold: 45 100% 51%;
+    --islamic-gold-dark: 45 100% 45%;
+    --islamic-green: 120 61% 34%;
+    --islamic-green-dark: 120 61% 28%;
+    --islamic-blue: 210 100% 50%;
+    --islamic-blue-dark: 210 100% 40%;
+    --islamic-yellow: 60 100% 50%;
+    --islamic-yellow-dark: 60 100% 45%;
+    
+    /* Background variations */
+    --bg-primary: 0 0% 100%;
+    --bg-secondary: 0 0% 98%;
+    --bg-tertiary: 0 0% 96%;
+    --bg-accent: 45 100% 97%;
+    
+    /* Text variations */
+    --text-primary: 0 0% 10%;
+    --text-secondary: 0 0% 30%;
+    --text-muted: 0 0% 50%;
+    --text-accent: 45 100% 40%;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -54,20 +78,80 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Custom Islamic theme colors for dark mode */
+    --islamic-gold: 45 100% 60%;
+    --islamic-gold-dark: 45 100% 55%;
+    --islamic-green: 120 61% 45%;
+    --islamic-green-dark: 120 61% 40%;
+    --islamic-blue: 210 100% 60%;
+    --islamic-blue-dark: 210 100% 50%;
+    --islamic-yellow: 60 100% 60%;
+    --islamic-yellow-dark: 60 100% 55%;
+    
+    /* Background variations for dark mode */
+    --bg-primary: 0 0% 4%;
+    --bg-secondary: 0 0% 8%;
+    --bg-tertiary: 0 0% 12%;
+    --bg-accent: 45 100% 8%;
+    
+    /* Text variations for dark mode */
+    --text-primary: 0 0% 95%;
+    --text-secondary: 0 0% 80%;
+    --text-muted: 0 0% 65%;
+    --text-accent: 45 100% 70%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
-  /* html {
-    font-family: var(--font-inter);
+  
+  /* Smooth transitions for theme switching */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
-
-  h1 {
-    font-family: var(--font-instrument);
-  } */
+  
+  /* Custom utility classes for Islamic theme */
+  .bg-islamic-gold {
+    background-color: hsl(var(--islamic-gold));
+  }
+  
+  .bg-islamic-green {
+    background-color: hsl(var(--islamic-green));
+  }
+  
+  .bg-islamic-blue {
+    background-color: hsl(var(--islamic-blue));
+  }
+  
+  .text-islamic-gold {
+    color: hsl(var(--islamic-gold));
+  }
+  
+  .text-islamic-green {
+    color: hsl(var(--islamic-green));
+  }
+  
+  .text-islamic-blue {
+    color: hsl(var(--islamic-blue));
+  }
+  
+  /* Dark mode specific utilities */
+  .dark .bg-islamic-gold {
+    background-color: hsl(var(--islamic-gold));
+  }
+  
+  .dark .bg-islamic-green {
+    background-color: hsl(var(--islamic-green));
+  }
+  
+  .dark .bg-islamic-blue {
+    background-color: hsl(var(--islamic-blue));
+  }
 }

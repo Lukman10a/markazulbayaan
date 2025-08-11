@@ -1,8 +1,8 @@
 import React from "react";
-// import Button from "../button";
 import Link from "next/link";
 import { InView } from "../ui/animated/in-view";
 import NewButton from "../ui/newButton";
+import { useTheme } from "@/lib/theme-context";
 
 interface HeroProps {
   bgImage: string;
@@ -19,14 +19,25 @@ export const Hero: React.FC<HeroProps> = ({
   buttonText,
   buttonLink,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <section
-      className="bg-center object-cover bg-cover h-[600px] flex p-10"
+      className={`bg-center object-cover bg-cover h-[600px] flex p-10 relative ${
+        theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+      }`}
       style={{
         backgroundImage: `url('${bgImage}')`,
       }}
     >
-      <div className="text-white self-end space-y-4 overflow-hidden">
+      {/* Dark overlay for better text readability */}
+      <div className={`absolute inset-0 ${
+        theme === 'dark' 
+          ? 'bg-black/70' 
+          : 'bg-black/40'
+      }`}></div>
+      
+      <div className="text-white self-end space-y-4 overflow-hidden relative z-10">
         {/* Heading */}
         <InView
           variants={{
@@ -36,7 +47,9 @@ export const Hero: React.FC<HeroProps> = ({
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <h1 className="text-8xl font-serif lg:text-7xl md:text-5xl sm:text-4xl">
+          <h1 className={`text-8xl font-serif lg:text-7xl md:text-5xl sm:text-4xl ${
+            theme === 'dark' ? 'text-white' : 'text-white'
+          }`}>
             {heading.map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -55,7 +68,9 @@ export const Hero: React.FC<HeroProps> = ({
           viewOptions={{ margin: "0px 0px -200px 0px", once: true }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <p className="text-[#8B99A1] font-inter sm:text-sm">
+          <p className={`font-inter sm:text-sm ${
+            theme === 'dark' ? 'text-gray-200' : 'text-gray-100'
+          }`}>
             {description.map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -68,7 +83,6 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Button */}
         <div>
           <Link href={buttonLink}>
-            {/* <Button text={buttonText} /> */}
             <NewButton text="Explore" />
           </Link>
         </div>

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import Button from "@/components/button";
+import { useTheme } from "@/lib/theme-context";
 
 export const courses = [
   {
@@ -227,6 +228,8 @@ export const courses = [
 ];
 
 export default function CoursePage() {
+  const { theme } = useTheme();
+  
   // Animation Variants for cards
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -266,20 +269,25 @@ export default function CoursePage() {
 
   return (
     <Fragment>
-      <section className="bg-[url(/assets/course_bg.jpg)] bg-center object-cover text-center bg-cover overflow-hidden py-10">
-        <div className="px-[5vw] py-20 text-white top-[10vmin] lg:top-[7vmax]">
+      <section className="bg-[url(/assets/course_bg.jpg)] bg-center object-cover text-center bg-cover overflow-hidden py-10 relative">
+        {/* Dark overlay for better text readability */}
+        <div className={`absolute inset-0 ${
+          theme === 'dark' 
+            ? 'bg-black/70' 
+            : 'bg-black/40'
+        }`}></div>
+        
+        <div className="px-[5vw] py-20 text-white top-[10vmin] lg:top-[7vmax] relative z-10">
           <h1
             style={{
-              // color: "transparent",
-              // textShadow: "0px 2px 1px #F8E7C5",
               backgroundClip: "text",
               backgroundColor: "black",
             }}
-            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin] "
+            className="text-[8vmin] md:text-[8vmin] lg:text-[9vmin] font-extrabold mb-[3.5vmin]"
           >
             Our Courses
           </h1>
-          <p className="text-[3vmin] xl:text-[3vmin] sm:text-[2vmin] font-medium leading-normal  ">
+          <p className="text-[3vmin] xl:text-[3vmin] sm:text-[2vmin] font-medium leading-normal">
             Embark on your journey of Islamic knowledge with our comprehensive
             range of courses.
           </p>
@@ -290,16 +298,24 @@ export default function CoursePage() {
           </div>
         </div>
       </section>
-      <section className="py-16 bg-yellow-50 ">
+      <section className={`py-16 transition-colors duration-300 ${
+        theme === 'dark' ? 'bg-gray-900' : 'bg-yellow-50'
+      }`}>
         <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-semibold mb-12 text-center">
+          <h3 className={`text-3xl font-semibold mb-12 text-center ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             Available Courses
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8">
             {courses.map((course, index) => (
               <motion.div
                 key={index}
-                className="bg-background p-6 rounded-lg shadow-md text-center hover:shadow-xl hover:bg-yellow-100 hover:text-black"
+                className={`p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 hover:bg-gray-700 hover:text-white'
+                    : 'bg-background hover:bg-yellow-100 hover:text-black'
+                }`}
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
@@ -322,8 +338,12 @@ export default function CoursePage() {
                   >
                     {course.icon}
                   </motion.div>
-                  <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
-                  <p>{course.description}</p>
+                  <h4 className={`text-xl font-semibold mb-2 ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>{course.title}</h4>
+                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                    {course.description}
+                  </p>
                 </Link>
               </motion.div>
             ))}
@@ -331,7 +351,9 @@ export default function CoursePage() {
           <div className="flex justify-center pt-10">
             <Link href="https://bit.ly/Learn-at-markazbayan">
               <motion.div
-                className="px-8 py-4 text-white font-semibold bg-yellow-900 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+                className={`px-8 py-4 text-white font-semibold rounded-lg cursor-pointer flex items-center justify-center gap-2 ${
+                  theme === 'dark' ? 'bg-yellow-600 hover:bg-yellow-700' : 'bg-yellow-900 hover:bg-yellow-800'
+                } transition-colors duration-200`}
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"

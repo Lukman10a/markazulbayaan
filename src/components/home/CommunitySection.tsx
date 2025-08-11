@@ -2,6 +2,7 @@ import React from "react";
 import CommunityCard, { CommunityCardProps } from "./CommityCard";
 import { Clock, Users, GraduationCap, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/lib/theme-context";
 
 const communityCardDataArray: CommunityCardProps[] = [
   {
@@ -70,8 +71,12 @@ const iconVariants = {
 };
 
 export const CommunitySection = () => {
+  const { theme } = useTheme();
+
   return (
-    <section className="bg-gray-900 py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw] mb-20 bg-[url('../../public/assets/mask-group.png')]">
+    <section className={`py-16 xl:mx-[5vw] xl:rounded-lg px-[5vw] mb-20 bg-[url('../../public/assets/mask-group.png')] transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-800' : 'bg-gray-900'
+    }`}>
       <div className="mx-auto text-center">
         {/* Header Section */}
         <motion.div
@@ -81,10 +86,14 @@ export const CommunitySection = () => {
           viewport={{ once: true }}
           variants={headerVariants}
         >
-          <h2 className="text-[6.5vmin] text-white font-serif mb-2">
+          <h2 className={`text-[6.5vmin] font-serif mb-2 ${
+            theme === 'dark' ? 'text-white' : 'text-white'
+          }`}>
             Why Choose Markazul-Bayan?
           </h2>
-          <p className="text-white text-xl font-normal mb-2">
+          <p className={`text-xl font-normal mb-2 ${
+            theme === 'dark' ? 'text-gray-200' : 'text-white'
+          }`}>
             Join our Community of Islamic Learners
           </p>
         </motion.div>
@@ -105,11 +114,7 @@ export const CommunitySection = () => {
               <CommunityCard
                 title={communityCardData.title}
                 description={communityCardData.description}
-                icon={
-                  <motion.div variants={iconVariants}>
-                    {communityCardData.icon}
-                  </motion.div>
-                }
+                icon={communityCardData.icon}
                 link={communityCardData.link}
               />
             </motion.div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { AnimatedGroup } from "./ui/animated/animateGroup";
 import { InView } from "./ui/animated/in-view";
+import { useTheme } from "@/lib/theme-context";
 
 interface Offer {
   title: string;
@@ -17,8 +18,12 @@ interface OfferSectionProps {
 }
 
 const OfferSection: React.FC<OfferSectionProps> = ({ offers }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="py-16 px-4 md:px-8 lg:px-16 font-serif max-w-7xl mx-auto">
+    <div className={`py-16 px-4 md:px-8 lg:px-16 font-serif max-w-7xl mx-auto transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
       <div className="flex justify-between sm:flex-col py-6  items-center overflow-hidden">
         <div className="sm:self-start">
           <InView
@@ -29,7 +34,9 @@ const OfferSection: React.FC<OfferSectionProps> = ({ offers }) => {
             viewOptions={{ margin: "0px 0px -200px 0px" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <h2 className="text-6xl sm:text-2xl font-medium text-center mb-8">
+            <h2 className={`text-6xl sm:text-2xl font-medium text-center mb-8 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
               What we offer
             </h2>
           </InView>
@@ -42,7 +49,9 @@ const OfferSection: React.FC<OfferSectionProps> = ({ offers }) => {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <p className="max-w-2xl text-lg sm:text-sm text-left">
+          <p className={`max-w-2xl text-lg sm:text-sm text-left ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+          }`}>
             At <span className="text-yellow-500">Markazul-Bayan,</span> we
             provide access to a wealth of resources, including authentic{" "}
             <span className="block sm:inline">
@@ -72,17 +81,25 @@ const OfferSection: React.FC<OfferSectionProps> = ({ offers }) => {
                 alt={offer.imageAlt}
                 width={200}
                 height={200}
-                className="h-40 bg-gray-300 mb-4 rounded-md w-full"
+                className={`h-40 mb-4 rounded-md w-full ${
+                  theme === 'dark' ? 'bg-gray-700' : 'bg-gray-300'
+                }`}
               />
-              <h3 className="text-3xl sm:text-lg font-medium mb-2 px-2">
+              <h3 className={`text-3xl sm:text-lg font-medium mb-2 px-2 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
                 {offer.title}
               </h3>
-              <p className="text-gray-600  font-inter text-xl sm:sm mb-4 px-2">
+              <p className={`font-inter text-xl sm:sm mb-4 px-2 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 {offer.description}
               </p>
               <Link
                 href={offer.link}
-                className="text-neutral-600 font-medium font-sans hover:underline hover:text-yellow-500 px-2"
+                className={`font-medium font-sans hover:underline hover:text-yellow-500 px-2 transition-colors duration-200 ${
+                  theme === 'dark' ? 'text-gray-400 hover:text-yellow-400' : 'text-neutral-600'
+                }`}
               >
                 Learn more &rarr;
               </Link>

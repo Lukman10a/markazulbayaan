@@ -2,16 +2,25 @@ import Image from "next/image";
 import quran from "/public/assets/quran.svg";
 import volume from "/public/assets/volume.svg";
 import moon from "/public/assets/moon.svg";
+import { useTheme } from "@/lib/theme-context";
 
 export default function StatSection() {
+  const { theme } = useTheme();
+
   return (
-    <section className="px-4 md:px-10 py-8 md:py-16 bg-slate-100">
+    <section className={`px-4 md:px-10 py-8 md:py-16 transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-800' : 'bg-slate-100'
+    }`}>
       <div className="mx-auto container">
         <div className="text-center space-y-6">
-          <h3 className=" text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h3 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             A Platform to Learn the Qur&apos;an & Sunnah
           </h3>
-          <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto">
+          <p className={`text-lg md:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl mx-auto ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+          }`}>
             Master the recitation of the{" "}
             <span className="font-bold">Qur&apos;an (with Tajweed) </span>and
             immerse yourself in the teachings of Prophet Muhammad (peace and
@@ -64,14 +73,24 @@ function StatItem({
   number: string;
   text: string;
 }) {
+  const { theme } = useTheme();
+
   return (
     <div className="flex flex-col items-center text-center">
-      <Image src={icon} alt={alt} className="w-16 h-16 md:w-20 md:h-20" />
+      <Image 
+        src={icon} 
+        alt={alt} 
+        className={`w-16 h-16 md:w-20 md:h-20 ${
+          theme === 'dark' ? 'filter invert' : ''
+        }`} 
+      />
       <div className="mt-4 space-y-2">
-        <p className="text-[#E8B33F] font-bold text-3xl md:text-4xl">
+        <p className="text-yellow-500 font-bold text-3xl md:text-4xl">
           {number}
         </p>
-        <p className="text-[#3F2E07] text-sm md:text-base font-medium">
+        <p className={`text-sm md:text-base font-medium ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+        }`}>
           {text}
         </p>
       </div>

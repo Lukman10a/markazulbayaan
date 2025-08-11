@@ -107,6 +107,31 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        // Custom Islamic theme colors
+        islamic: {
+          gold: "hsl(var(--islamic-gold))",
+          "gold-dark": "hsl(var(--islamic-gold-dark))",
+          green: "hsl(var(--islamic-green))",
+          "green-dark": "hsl(var(--islamic-green-dark))",
+          blue: "hsl(var(--islamic-blue))",
+          "blue-dark": "hsl(var(--islamic-blue-dark))",
+          yellow: "hsl(var(--islamic-yellow))",
+          "yellow-dark": "hsl(var(--islamic-yellow-dark))",
+        },
+        // Background variations
+        bg: {
+          primary: "hsl(var(--bg-primary))",
+          secondary: "hsl(var(--bg-secondary))",
+          tertiary: "hsl(var(--bg-tertiary))",
+          accent: "hsl(var(--bg-accent))",
+        },
+        // Text variations
+        text: {
+          primary: "hsl(var(--text-primary))",
+          secondary: "hsl(var(--text-secondary))",
+          muted: "hsl(var(--text-muted))",
+          accent: "hsl(var(--text-accent))",
+        },
       },
       gridTemplateColumns: {
         repeat4: "repeat(4, minmax(100px, 500px))",
@@ -130,14 +155,28 @@ const config: Config = {
             height: "0",
           },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-in": "slide-in 0.5s ease-out",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
         serif: ["var(--font-instrument-serif)"],
+      },
+      transitionProperty: {
+        "colors": "color, background-color, border-color, text-decoration-color, fill, stroke",
+        "all": "all",
       },
     },
   },

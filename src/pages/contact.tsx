@@ -12,6 +12,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "@/lib/theme-context";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -37,6 +38,7 @@ export default function Contact() {
     message: "",
   });
   const { toast } = useToast();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const { from_name, from_email, phone_number, message } = formData;
@@ -158,7 +160,11 @@ export default function Contact() {
   };
 
   return (
-    <main className="bg-gradient-to-b from-yellow-50 to-white">
+    <main className={`transition-colors duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-b from-gray-900 to-gray-800' 
+        : 'bg-gradient-to-b from-yellow-50 to-white'
+    }`}>
       {/* Hero Section */}
       <section className="py-20 relative isolate px-4 bg-[url(/assets/bg.jpg)] bg-no-repeat bg-cover bg-center">
         <div className="absolute inset-0 z-[-1]">
@@ -195,47 +201,77 @@ export default function Contact() {
       </section>
 
       <section className="flex sm:flex-col items-start justify-between gap-7 px-4 py-10">
-        <Card className="w-full ">
+        <Card className={`w-full transition-colors duration-300 ${
+          theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'
+        }`}>
           <CardHeader>
-            <CardTitle>Contact Information</CardTitle>
+            <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+              Contact Information
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="text-emerald-600" />
-              <p>Olunlade, Ilorin, Nigeria</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Olunlade, Ilorin, Nigeria
+              </p>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="text-emerald-600" />
-              <p>+234 8089287065</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                +234 8089287065
+              </p>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="text-emerald-600" />
-              <p>markazulbayaan9@gmail.com</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                markazulbayaan9@gmail.com
+              </p>
             </div>
             <div className="mt-6">
-              <h3 className="font-semibold mb-2">Office Hours</h3>
-              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-              <p>Saturday: 10:00 AM - 2:00 PM</p>
-              <p>Sunday: Closed</p>
+              <h3 className={`font-semibold mb-2 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>Office Hours</h3>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Monday - Friday: 9:00 AM - 5:00 PM
+              </p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Saturday: 10:00 AM - 2:00 PM
+              </p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Sunday: Closed
+              </p>
             </div>
           </CardContent>
         </Card>
 
-        <div className="w-full  rounded-lg bg-white p-5 text-black shadow-lg">
-          <h3 className="mb-5 text-xl sm:text-2xl font-medium">
+        <div className={`w-full rounded-lg p-5 shadow-lg transition-colors duration-300 ${
+          theme === 'dark' 
+            ? 'bg-gray-800 text-white' 
+            : 'bg-white text-black'
+        }`}>
+          <h3 className={`mb-5 text-xl sm:text-2xl font-medium ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             Fill out the form and we will be in touch!
           </h3>
           <form ref={formRef} onSubmit={sendEmail}>
             <div className="space-y-4">
               <label htmlFor="from_name" className="mb-4 block">
-                <p className="mb-2 text-sm font-semibold">Name</p>
+                <p className={`mb-2 text-sm font-semibold ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                }`}>Name</p>
                 <input
                   type="text"
                   name="from_name"
                   value={formData.from_name}
                   onChange={handleInputChange}
                   onBlur={handleBlur}
-                  className="w-full rounded-lg border border-gray-400 p-3"
+                  className={`w-full rounded-lg border p-3 transition-colors duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-gray-600 bg-gray-700 text-white' 
+                      : 'border-gray-400 bg-white text-gray-900'
+                  }`}
                 />
                 {validationErrors.from_name && (
                   <p className="text-sm text-red-500">
@@ -244,14 +280,20 @@ export default function Contact() {
                 )}
               </label>
               <label htmlFor="from_email" className="mb-4 block">
-                <p className="mb-2 text-sm font-semibold">Email</p>
+                <p className={`mb-2 text-sm font-semibold ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                }`}>Email</p>
                 <input
                   type="email"
                   name="from_email"
                   value={formData.from_email}
                   onChange={handleInputChange}
                   onBlur={handleBlur}
-                  className="w-full rounded-lg border border-gray-400 p-3"
+                  className={`w-full rounded-lg border p-3 transition-colors duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-gray-600 bg-gray-700 text-white' 
+                      : 'border-gray-400 bg-white text-gray-900'
+                  }`}
                 />
                 {validationErrors.from_email && (
                   <p className="text-sm text-red-500">
@@ -260,14 +302,20 @@ export default function Contact() {
                 )}
               </label>
               <label htmlFor="phone_number" className="mb-4 block">
-                <p className="mb-2 text-sm font-semibold">Phone Number</p>
+                <p className={`mb-2 text-sm font-semibold ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                }`}>Phone Number</p>
                 <input
                   type="tel"
                   name="phone_number"
                   value={formData.phone_number}
                   onChange={handleInputChange}
                   onBlur={handleBlur}
-                  className="w-full rounded-lg border border-gray-400 p-3"
+                  className={`w-full rounded-lg border p-3 transition-colors duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-gray-600 bg-gray-700 text-white' 
+                      : 'border-gray-400 bg-white text-gray-900'
+                  }`}
                 />
                 {validationErrors.phone_number && (
                   <p className="text-sm text-red-500">
@@ -276,7 +324,9 @@ export default function Contact() {
                 )}
               </label>
               <label htmlFor="message" className="mb-4 block">
-                <p className="mb-2 text-sm font-semibold">
+                <p className={`mb-2 text-sm font-semibold ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                }`}>
                   How can we help you
                 </p>
                 <textarea
@@ -286,7 +336,11 @@ export default function Contact() {
                   onBlur={handleBlur}
                   cols={30}
                   rows={10}
-                  className="w-full rounded-lg border border-gray-400 p-3"
+                  className={`w-full rounded-lg border p-3 transition-colors duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-gray-600 bg-gray-700 text-white' 
+                      : 'border-gray-400 bg-white text-gray-900'
+                  }`}
                 ></textarea>
                 {validationErrors.message && (
                   <p className="text-sm text-red-500">
@@ -297,7 +351,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="mt-5 w-full rounded-lg bg-black p-2 font-normal text-white disabled:cursor-not-allowed disabled:bg-gray-400"
+              className="mt-5 w-full rounded-lg bg-black p-2 font-normal text-white disabled:cursor-not-allowed disabled:bg-gray-400 transition-colors duration-300"
               disabled={isLoading || !isFormValid}
             >
               {isLoading ? "Sending..." : "Send"}
@@ -308,21 +362,29 @@ export default function Contact() {
       </section>
       {/* Instructors Section */}
       <section className="container mx-auto mt-16 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+        <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-8 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>
           Our Instructors
         </h2>
         <div className="grid sm:grid-cols-1 grid-cols-2 gap-8">
-          <Card>
+          <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
             <CardHeader>
-              <CardTitle>One on One Convenient Classes</CardTitle>
+              <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+                One on One Convenient Classes
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">
+              <p className={`mb-4 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
                 Take Qur&apos;ān, Tawheed, Arabiyyah, Fiqh at your convenience
                 no matter how tight your schedule is.
               </p>
-              <p className="font-semibold">Tutor: Abu Anwar</p>
-              <p>Female Tutors available</p>
+              <p className="font-semibold text-yellow-500">Tutor: Abu Anwar</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Female Tutors available
+              </p>
               <Button asChild className="mt-4">
                 <Link href="https://wa.link/gwee51">
                   Contact for Qur&apos;an Made Easy
@@ -330,18 +392,24 @@ export default function Contact() {
               </Button>
             </CardContent>
           </Card>
-          <Card>
+          <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
             <CardHeader>
-              <CardTitle>Qur&apos;an Recitation and Memorization</CardTitle>
+              <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+                Qur&apos;an Recitation and Memorization
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">
+              <p className={`mb-4 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
                 Do you want to learn and develop love for the Qur&apos;an? Join
                 other students who have aced their recitation and memorization
                 through our one-on-one Qur&apos;an sessions.
               </p>
-              <p className="font-semibold">Tutor: Abu Haleemah</p>
-              <p>Your specific needs guide our teachings.</p>
+              <p className="font-semibold text-yellow-500">Tutor: Abu Haleemah</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Your specific needs guide our teachings.
+              </p>
               <Button asChild className="mt-4">
                 <Link href="https://bit.ly/Quran-MarkazulBayan">
                   Contact for Qur&apos;an Sessions
@@ -349,18 +417,24 @@ export default function Contact() {
               </Button>
             </CardContent>
           </Card>
-          <Card>
+          <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
             <CardHeader>
-              <CardTitle>Nurture Your Kid’s Eemān (بإذن الله) 📖</CardTitle>
+              <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+                Nurture Your Kid&apos;s Eemān (بإذن الله) 📖
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">
+              <p className={`mb-4 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
                 Our interactive online classes, led by experienced teachers,
-                provide your kid(s) with a strong foundation in Qur’an, Basic
+                provide your kid(s) with a strong foundation in Qur&apos;an, Basic
                 Aqeedah, Arabic Conversation, and Reading & Writing.
               </p>
-              <p className="font-semibold">Tutor: Multiple</p>
-              <p>Register for any of the courses today</p>
+              <p className="font-semibold text-yellow-500">Tutor: Multiple</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Register for any of the courses today
+              </p>
               <Button asChild className="mt-4">
                 <Link href="http://wa.link/j2fsqe">
                   Contact for Kids Sessions
@@ -368,19 +442,25 @@ export default function Contact() {
               </Button>
             </CardContent>
           </Card>
-          <Card>
+          <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
             <CardHeader>
-              <CardTitle>Study Arabic and Quran</CardTitle>
+              <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+                Study Arabic and Quran
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">
+              <p className={`mb-4 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
                 We take Arabic and Quran classes with an easy, but effective
                 syllabus. Insha Allaah.
               </p>
-              <p className="font-semibold">
+              <p className="font-semibold text-yellow-500">
                 Tutor: Abul Abbaas AbdulKabir Ibn Ibrahim At-Taawusiy.
               </p>
-              <p>Register for any of the courses today</p>
+              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                Register for any of the courses today
+              </p>
               <Button asChild className="mt-4">
                 <Link href="https://Bit.ly/3XiKL9d">
                   Contact for Kids Sessions
@@ -395,18 +475,26 @@ export default function Contact() {
 
       {/* Arabic Learning Section */}
       <section className="container mx-auto mt-16  px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Arabic Learning</h2>
-        <Card>
+        <h2 className={`text-3xl font-bold text-center mb-8 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>Arabic Learning</h2>
+        <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
           <CardHeader>
-            <CardTitle>Master the Arabic Language</CardTitle>
+            <CardTitle className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+              Master the Arabic Language
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">
+            <p className={`mb-4 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+            }`}>
               Unlock the beauty of the Qur&apos;an and deepen your understanding
               of Islamic texts through our comprehensive Arabic language
               courses.
             </p>
-            <ul className="list-disc list-inside space-y-2 mb-4">
+            <ul className={`list-disc list-inside space-y-2 mb-4 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+            }`}>
               <li>Learn Arabic grammar and vocabulary</li>
               <li>Practice conversation with native speakers</li>
               <li>Understand Qur&apos;anic Arabic</li>
@@ -421,7 +509,9 @@ export default function Contact() {
 
       {/* Features Section */}
       <section className="container mx-auto mt-16 mb-4 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+        <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-8 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>
           Why Choose Markazul-Bayan?
         </h2>
         <div className="grid sm:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-8">
@@ -455,12 +545,18 @@ function FeatureCard({
   title: string;
   description: string;
 }) {
+  const { theme } = useTheme();
+  
   return (
-    <Card>
+    <Card className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'}>
       <CardContent className="pt-6">
         <div className="mb-4">{icon}</div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className={`text-xl font-semibold mb-2 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>{title}</h3>
+        <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+          {description}
+        </p>
       </CardContent>
     </Card>
   );

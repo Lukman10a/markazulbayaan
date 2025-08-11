@@ -13,6 +13,7 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { ArrowRight, Clock, Users, Star } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTheme } from "@/lib/theme-context";
 
 type Course = {
   title: string;
@@ -27,6 +28,8 @@ type Course = {
 };
 
 export default function NewCourse() {
+  const { theme } = useTheme();
+  
   const courses: Course[] = [
     {
       imageSrc: arabic_course,
@@ -155,7 +158,9 @@ export default function NewCourse() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
+    }`}>
       <Hero
         bgImage={"/assets/course_hero.png"}
         heading={["Our Courses"]}
@@ -181,10 +186,14 @@ export default function NewCourse() {
           className="text-center mb-16 lg:mb-12 md:mb-8"
           variants={cardVariants}
         >
-          <h2 className="text-4xl lg:text-3xl md:text-2xl font-bold text-gray-900 mb-4 lg:mb-3">
+          <h2 className={`text-4xl lg:text-3xl md:text-2xl font-bold mb-4 lg:mb-3 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             Available Courses
           </h2>
-          <p className="text-xl lg:text-lg md:text-base text-gray-600 max-w-3xl mx-auto">
+          <p className={`text-xl lg:text-lg md:text-base max-w-3xl mx-auto ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Choose from our carefully curated Islamic education programs designed to nurture your spiritual and intellectual growth.
           </p>
         </motion.div>
@@ -194,7 +203,11 @@ export default function NewCourse() {
           {courses.map((course, index) => (
             <motion.div 
               key={index} 
-              className="group bg-white rounded-2xl lg:rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100"
+              className={`group rounded-2xl lg:rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border ${
+                theme === 'dark' 
+                  ? 'bg-gray-800 border-gray-700' 
+                  : 'bg-white border-gray-100'
+              }`}
               variants={cardVariants}
               whileHover="hover"
             >
@@ -234,7 +247,9 @@ export default function NewCourse() {
                   <div className="text-2xl lg:text-xl md:text-lg text-yellow-600">
                     {course.logo}
                   </div>
-                  <div className="flex items-center space-x-4 lg:space-x-3 md:space-x-2 text-sm lg:text-xs text-gray-600">
+                  <div className={`flex items-center space-x-4 lg:space-x-3 md:space-x-2 text-sm lg:text-xs ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
                     <div className="flex items-center space-x-1">
                       <Clock className="h-4 w-4 lg:h-3 lg:w-3" />
                       <span>{course.duration}</span>
@@ -247,12 +262,16 @@ export default function NewCourse() {
                 </div>
 
                 {/* Course Title */}
-                <h3 className="text-2xl lg:text-xl md:text-lg font-bold text-gray-900 mb-3 lg:mb-2 group-hover:text-yellow-600 transition-colors duration-300">
+                <h3 className={`text-2xl lg:text-xl md:text-lg font-bold mb-3 lg:mb-2 group-hover:text-yellow-600 transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>
                   {course.title}
                 </h3>
 
                 {/* Course Description */}
-                <p className="text-gray-600 lg:text-sm md:text-xs leading-relaxed mb-6 lg:mb-5 md:mb-4">
+                <p className={`lg:text-sm md:text-xs leading-relaxed mb-6 lg:mb-5 md:mb-4 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                }`}>
                   {course.description}
                 </p>
 
@@ -277,13 +296,21 @@ export default function NewCourse() {
 
         {/* Bottom CTA Section */}
         <motion.div 
-          className="text-center mt-16 lg:mt-12 md:mt-8 bg-gradient-to-r from-yellow-50 to-amber-50 rounded-2xl lg:rounded-xl p-8 lg:p-6 md:p-4 border border-yellow-100"
+          className={`text-center mt-16 lg:mt-12 md:mt-8 rounded-2xl lg:rounded-xl p-8 lg:p-6 md:p-4 border transition-colors duration-300 ${
+            theme === 'dark'
+              ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600'
+              : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-100'
+          }`}
           variants={cardVariants}
         >
-          <h3 className="text-2xl lg:text-xl md:text-lg font-bold text-gray-900 mb-4 lg:mb-3">
+          <h3 className={`text-2xl lg:text-xl md:text-lg font-bold mb-4 lg:mb-3 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             Ready to Begin Your Islamic Education Journey?
           </h3>
-          <p className="text-gray-600 lg:text-sm md:text-xs mb-6 lg:mb-4 max-w-2xl mx-auto">
+          <p className={`lg:text-sm md:text-xs mb-6 lg:mb-4 max-w-2xl mx-auto ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Join hundreds of students worldwide in authentic Islamic learning. Contact us to discuss which course is right for you.
           </p>
           <Link href="/contact">

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Testimonial } from "@/lib/types";
 import Autoplay from "embla-carousel-autoplay";
+import { useTheme } from "@/lib/theme-context";
 
 export const testimonialsData = [
   {
@@ -32,7 +33,7 @@ export const testimonialsData = [
     name: "Umm AbiBakr",
     location: "Ghana",
     comment:
-      "As salaamu alaykum WaRahmatuLlah WaBarakatuh Markazul Bayaan is one of the best Quranic institute I have ever come across. Their teachers have patience which makes learning easy. And they teach in a way which make memorization easy. The class is fix to suit your schedule . I purchased for Qur’an course but I’m been taught a book in addition and I get to ask any questions about Islam. And it has deepen my Islamic knowledge. I recommend everyone whether a beginner or an advanced student to enroll in any of their courses. And you will appreciate it. In shaa Allah.",
+      "As salaamu alaykum WaRahmatuLlah WaBarakatuh Markazul Bayaan is one of the best Quranic institute I have ever come across. Their teachers have patience which makes learning easy. And they teach in a way which make memorization easy. The class is fix to suit your schedule . I purchased for Qur'an course but I'm been taught a book in addition and I get to ask any questions about Islam. And it has deepen my Islamic knowledge. I recommend everyone whether a beginner or an advanced student to enroll in any of their courses. And you will appreciate it. In shaa Allah.",
   },
   {
     name: "Sis Taqiyyah",
@@ -44,19 +45,19 @@ export const testimonialsData = [
     name: "Sis Bint",
     location: "Nigeria",
     comment:
-      "This is an honest review, ĪnshaAllah. The 6 weeks Arabic course has been so beneficial, Alhamdulilah. From the videos to the class materials and the necessary reminders. The highlight of the class for me is the fact that, one way or the other the class actually helped in being consistent with my other ibaadat. May Allah bless the organizers and grant us, the students more understanding of the deen. ",
+      "This is an honest review, ĪnshaAllah. The 6 weeks Arabic course has been so beneficial, Alhamdulilah. From the videos to the class materials and the necessary reminders. The highlight of the class for me is the fact that, one way or the other the class actually helped in being consistent with my other ibaadat. May Allah bless the organizers and grant us, the students more understanding of the deen. ",
   },
   {
     name: "Sis Iqra Kareem",
     location: "India",
     comment:
-      "I took Islamic studies, Arabic speaking, and Quran classes for my daughter. The teacher was patient and dedicated. I really saw an improvement in my daughter's memorization in less than a month. May Allah bless everyone associated with the organization. Jazak Allah Khair! ",
+      "I took Islamic studies, Arabic speaking, and Quran classes for my daughter. The teacher was patient and dedicated. I really saw an improvement in my daughter's memorization in less than a month. May Allah bless everyone associated with the organization. Jazak Allah Khair! ",
   },
   {
     name: "Umm Abdillah Leyla",
     location: "Sweeden",
     comment:
-      "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
+      "Asalamu aleykum . AlhamduliLah I am really happy I enrolled the class. I've really benefitted alot. The classes are interactive and there's the opportunity to ask the teacher anything you don't grasp.  The classes are very good Allahumma barik. I highly recommend ",
   },
   {
     name: "Aisha Lawal",
@@ -67,17 +68,25 @@ export const testimonialsData = [
 ];
 
 export function Testimonials() {
+  const { theme } = useTheme();
+
   return (
-    <section className="py-10  -mt-[25px] mb-[20px]">
+    <section className={`py-10 -mt-[25px] mb-[20px] transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+    }`}>
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-8">
         {/* Text Section */}
         <section className="px-4 py-8 flex-1 text-center lg:text-left">
-          <p className="py-4 uppercase font-bold text-neutral-700">
+          <p className={`py-4 uppercase font-bold ${
+            theme === 'dark' ? 'text-gray-300' : 'text-neutral-700'
+          }`}>
             Testimonials
           </p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8">
+          <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-8 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             What people say about <br />
-            <span className=" text-[#f2b400]">MARKAZUL-BAYAN</span>
+            <span className="text-yellow-500">MARKAZUL-BAYAN</span>
           </h2>
         </section>
         {/* Carousel for testimonials */}
@@ -101,9 +110,15 @@ export function Testimonials() {
                     key={index}
                     className="max-w-full lg:max-w-md mx-auto"
                   >
-                    <Card className="p-6">
+                    <Card className={`p-6 transition-colors duration-300 ${
+                      theme === 'dark' 
+                        ? 'bg-gray-800 border-gray-700' 
+                        : 'bg-white border-gray-200'
+                    }`}>
                       <CardContent>
-                        <p className="text-sm md:text-base  mb-4">
+                        <p className={`text-sm md:text-base mb-4 ${
+                          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                        }`}>
                           &ldquo;{testimonial.comment}&rdquo;
                         </p>
                         <div className="flex items-center">
@@ -115,10 +130,14 @@ export function Testimonials() {
                             className="rounded-full"
                           />
                           <div className="ml-4">
-                            <p className="text-xs md:text-base">
+                            <p className={`text-xs md:text-base font-medium ${
+                              theme === 'dark' ? 'text-white' : 'text-gray-900'
+                            }`}>
                               {testimonial.name}
                             </p>
-                            <p className="text-xs md:text-sm">
+                            <p className={`text-xs md:text-sm ${
+                              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                            }`}>
                               {testimonial.location}
                             </p>
                           </div>

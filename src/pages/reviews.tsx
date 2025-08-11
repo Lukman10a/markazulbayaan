@@ -9,8 +9,11 @@ import { Book, GraduationCap, Users, MessageCircle, Star, Quote } from "lucide-r
 import Button from "../components/button";
 import { testimonialsData } from "@/components/testimonial";
 import { motion } from "framer-motion";
+import { useTheme } from "@/lib/theme-context";
 
 export default function Component() {
+  const { theme } = useTheme();
+  
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,18 +51,24 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
+    }`}>
       {/* Hero Section */}
       <motion.section 
-        className="bg-center object-cover bg-cover text-primary-foreground py-36 xl:py-32 lg:py-28 md:py-24 sm:py-20 mb-8 lg:mb-6 md:mb-4 bg-[url('../../public/assets/blog3.png')] relative"
+        className={`bg-center object-cover bg-cover text-primary-foreground py-36 xl:py-32 lg:py-28 md:py-24 sm:py-20 mb-8 lg:mb-6 md:mb-4 bg-[url('../../public/assets/blog3.png')] relative ${
+          theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+        }`}
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className={`absolute inset-0 ${
+          theme === 'dark' ? 'bg-black/60' : 'bg-black/40'
+        }`}></div>
         <div className="container mx-auto px-4 xl:px-6 lg:px-8 md:px-6 sm:px-4 text-center relative z-10">
           <motion.h2 
-            className="text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg font-bold mb-4 lg:mb-3 md:mb-2"
+            className="text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg font-bold mb-4 lg:mb-3 md:mb-2 text-white"
             variants={itemVariants}
           >
             Markazul-Bayan
@@ -122,15 +131,21 @@ export default function Component() {
               variants={cardVariants}
               whileHover="hover"
             >
-              <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-white/95 backdrop-blur-sm group">
+              <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 backdrop-blur-sm group ${
+                theme === 'dark' ? 'bg-gray-800/95' : 'bg-white/95'
+              }`}>
                 <CardHeader className="text-center pb-4 lg:pb-3">
                   <feature.icon className="w-10 h-10 lg:w-8 lg:h-8 md:w-6 md:h-6 text-yellow-500 mb-2 lg:mb-1 mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <CardTitle className="lg:text-base md:text-sm sm:text-xs group-hover:text-yellow-600 transition-colors duration-300">
+                  <CardTitle className={`lg:text-base md:text-sm sm:text-xs group-hover:text-yellow-600 transition-colors duration-300 ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center lg:text-sm md:text-xs leading-relaxed">
+                  <CardDescription className={`text-center lg:text-sm md:text-xs leading-relaxed ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -161,7 +176,11 @@ export default function Component() {
               variants={cardVariants}
               whileHover="hover"
             >
-              <Card className="bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-xl hover:shadow-2xl transition-all duration-300 border-0 group h-full">
+              <Card className={`shadow-xl hover:shadow-2xl transition-all duration-300 border-0 group h-full ${
+                theme === 'dark' 
+                  ? 'bg-gradient-to-br from-gray-800 to-gray-700 text-white' 
+                  : 'bg-gradient-to-br from-gray-900 to-gray-800 text-white'
+              }`}>
                 <CardHeader className="relative">
                   <Quote className="absolute top-4 lg:top-3 right-4 lg:right-3 w-8 h-8 lg:w-6 lg:h-6 md:w-5 md:h-5 text-yellow-500/30" />
                   <CardTitle className="text-white lg:text-base md:text-sm group-hover:text-yellow-300 transition-colors duration-300">
@@ -191,7 +210,11 @@ export default function Component() {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-2xl lg:rounded-xl p-12 xl:p-10 lg:p-8 md:p-6 sm:p-4 border border-yellow-100 shadow-lg">
+        <div className={`rounded-2xl lg:rounded-xl p-12 xl:p-10 lg:p-8 md:p-6 sm:p-4 border shadow-lg transition-colors duration-300 ${
+          theme === 'dark'
+            ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600'
+            : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-100'
+        }`}>
           <motion.h2 
             className="text-3xl xl:text-2xl lg:text-xl md:text-lg sm:text-base font-semibold mb-4 lg:mb-3 md:mb-2 text-yellow-500"
             variants={itemVariants}
@@ -199,7 +222,9 @@ export default function Component() {
             Start Your Islamic Learning Journey Today
           </motion.h2>
           <motion.p 
-            className="text-xl xl:text-lg lg:text-base md:text-sm sm:text-xs text-muted-foreground mb-6 lg:mb-4 md:mb-3 max-w-3xl mx-auto leading-relaxed"
+            className={`text-xl xl:text-lg lg:text-base md:text-sm sm:text-xs mb-6 lg:mb-4 md:mb-3 max-w-3xl mx-auto leading-relaxed ${
+              theme === 'dark' ? 'text-gray-300' : 'text-muted-foreground'
+            }`}
             variants={itemVariants}
           >
             Join thousands of students worldwide in pursuing sacred knowledge and spiritual growth

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
+import { useTheme } from "@/lib/theme-context";
 
 // Define the prop types
 interface ButtonProps {
@@ -9,8 +10,10 @@ interface ButtonProps {
 }
 
 const NewButton: React.FC<ButtonProps> = ({ text, className }) => {
+  const { theme } = useTheme();
+
   return (
-    <StyledButton className={className}>
+    <StyledButton className={className} $isDark={theme === 'dark'}>
       {text}
       <FaArrowRight className="icon" />
     </StyledButton>
@@ -20,14 +23,14 @@ const NewButton: React.FC<ButtonProps> = ({ text, className }) => {
 // Make sure external class styles override internal styles
 const StyledButton = styled.button.attrs((props) => ({
   className: props.className, // Pass down the className prop
-}))`
+}))<{ $isDark: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
   position: relative;
   padding: 10px 20px;
   border-radius: 7px;
-  border: 1px solid #e8ac04;
+  border: 1px solid ${props => props.$isDark ? '#fbbf24' : '#e8ac04'};
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
@@ -40,8 +43,8 @@ const StyledButton = styled.button.attrs((props) => ({
   cursor: pointer;
 
   &:hover {
-    background: #e8ac04;
-    box-shadow: 0 0 30px 5px #e8ac04;
+    background: ${props => props.$isDark ? '#fbbf24' : '#e8ac04'};
+    box-shadow: 0 0 30px 5px ${props => props.$isDark ? '#fbbf24' : '#e8ac04'};
     transition: all 0.2s ease-out;
   }
 
@@ -87,7 +90,7 @@ const StyledButton = styled.button.attrs((props) => ({
   }
 
   &:hover .icon {
-    color: black;
+    color: ${props => props.$isDark ? '#1f2937' : '#000'};
   }
 `;
 

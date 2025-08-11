@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./button";
+import { useTheme } from "@/lib/theme-context";
 
 const faqs = [
   {
@@ -36,22 +37,29 @@ const faqs = [
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { theme } = useTheme();
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faq" className="mx-auto container my-10 p-10">
+    <section id="faq" className={`mx-auto container my-10 p-10 transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+    }`}>
       <div className="grid grid-cols-2 sm:grid-cols-1 gap-8">
         {/* Left Side: FAQ Description */}
         <div>
-          <h2 className="text-6xl sm:text-4xl font-serif mb-4">
+          <h2 className={`text-6xl sm:text-4xl font-serif mb-4 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             Frequently asked Questions
           </h2>
-          <p className="text-gray-600  mb-6">
+          <p className={`mb-6 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Everything you need to know about{" "}
-            <span className="text-[#DFB203]">Markazul Bayan. </span>
+            <span className="text-yellow-500">Markazul Bayan. </span>
             Find answers to the most common questions below.
           </p>
           <Button text="Start Now" />
@@ -60,18 +68,26 @@ const FAQ: React.FC = () => {
         {/* Right Side: FAQ Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-gray-300 pb-4">
+            <div key={index} className={`border-b pb-4 ${
+              theme === 'dark' ? 'border-gray-700' : 'border-gray-300'
+            }`}>
               <button
                 onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full text-left text-gray-700 font-serif focus:outline-none"
+                className={`flex justify-between items-center w-full text-left font-serif focus:outline-none transition-colors duration-200 ${
+                  theme === 'dark' ? 'text-white hover:text-yellow-400' : 'text-gray-700 hover:text-gray-900'
+                }`}
               >
                 <span className="text-3xl sm:text-xl">{faq.question}</span>
-                <span className="text-2xl sm:text-xl">
+                <span className={`text-2xl sm:text-xl ${
+                  theme === 'dark' ? 'text-yellow-400' : 'text-gray-600'
+                }`}>
                   {openIndex === index ? "-" : "+"}
                 </span>
               </button>
               {openIndex === index && (
-                <p className="mt-2 text-gray-600 sm:text-xs">{faq.answer}</p>
+                <p className={`mt-2 sm:text-xs ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                }`}>{faq.answer}</p>
               )}
             </div>
           ))}
