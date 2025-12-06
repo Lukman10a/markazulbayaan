@@ -650,10 +650,10 @@ const CourseDetails: React.FC<{ course: Course }> = ({ course }) => {
                         theme === "dark" ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
-                      A qualified Islamic scholar with extensive knowledge in
-                      Islamic studies, Arabic language, and Quranic sciences.
-                      Dedicated to providing authentic Islamic education with
-                      traditional methodology adapted for modern learning.
+                      A student of knowledge with extensive knowledge in Islamic
+                      studies, Arabic language, and Quranic sciences. Dedicated
+                      to providing authentic Islamic education with traditional
+                      methodology adapted for modern learning.
                     </p>
                     <div
                       className={`flex items-center space-x-4 lg:space-x-3 md:space-x-2 mt-4 lg:mt-3 md:mt-2 text-sm lg:text-xs md:text-xs ${

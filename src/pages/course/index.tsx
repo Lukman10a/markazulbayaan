@@ -19,16 +19,27 @@ export const courses = [
     icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "3 months",
     students: 5,
-    price: "$100 monthly",
+    price: "$150 monthly",
     instructor: "Abu Kawthar Lukman",
     level: "Beginner",
-    detailedDescription: "Master the beautiful Arabic language through our comprehensive program designed for beginners. Learn to read, write, and understand Arabic with focus on Quranic vocabulary and grammar. This course builds a strong foundation for Islamic studies and Quranic understanding.",
-    prerequisites: ["Basic ability to read English", "Commitment to daily practice", "Access to computer/tablet for lessons"],
-    courseFormat: "Live Online Sessions + Recorded Materials",
-    language: "English instruction with Arabic immersion",
-    materials: ["Digital textbook", "Audio pronunciation guides", "Practice worksheets", "Vocabulary flashcards"],
+    detailedDescription:
+      "Master the beautiful Arabic language through our comprehensive program designed for beginners. Learn to read, write, and understand Arabic with focus on Quranic vocabulary and grammar. This course builds a strong foundation for Islamic studies and Quranic understanding.",
+    prerequisites: [
+      "Basic ability to read English",
+      "Commitment to daily practice",
+      "Access to computer/tablet for lessons",
+    ],
+    courseFormat: "Live Online Sessions",
+    language: "English Language",
+    materials: [
+      "Digital textbook",
+      "Audio pronunciation guides",
+      "Practice worksheets",
+      "Vocabulary flashcards",
+    ],
     assessment: "Weekly assignments, oral examinations, and final assessment",
-    certificate: "Certificate of completion upon successfully finishing the course",
+    certificate:
+      "Certificate of completion upon successfully finishing the course",
     difficulty: 3,
     rating: 4.8,
     completionRate: 92,
@@ -56,14 +67,25 @@ export const courses = [
     icon: <LiaQuranSolid className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "6 months",
     students: 10,
-    price: "$120",
+    price: "$150",
     instructor: "Abu Kawthar Lukman",
-    detailedDescription: "Begin your journey with the Holy Quran through Juz Amma (the 30th section). Learn proper recitation, memorization techniques, and understand the meanings of these fundamental Surahs that every Muslim should know.",
-    prerequisites: ["Basic Arabic alphabet knowledge (recommended)", "Sincere intention to learn", "Regular practice commitment"],
+    detailedDescription:
+      "Begin your journey with the Holy Quran through Juz Amma (the 30th section). Learn proper recitation, memorization techniques, and understand the meanings of these fundamental Surahs that every Muslim should know.",
+    prerequisites: [
+      "Basic Arabic alphabet knowledge (recommended)",
+      "Sincere intention to learn",
+      "Regular practice commitment",
+    ],
     courseFormat: "Interactive Live Sessions + Audio Practice",
     language: "Arabic recitation with English explanations",
-    materials: ["Quran with translation", "Audio recitation files", "Memorization guides", "Tajwid rule charts"],
-    assessment: "Recitation tests, memorization checkpoints, and understanding evaluations",
+    materials: [
+      "Quran with translation",
+      "Audio recitation files",
+      "Memorization guides",
+      "Tajwid rule charts",
+    ],
+    assessment:
+      "Recitation tests, memorization checkpoints, and understanding evaluations",
     certificate: "Quranic Studies Certificate with completed Surahs listed",
     difficulty: 2,
     rating: 4.9,
@@ -92,13 +114,23 @@ export const courses = [
     icon: <BsHandIndex className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "4 months",
     students: 5,
-    price: "$100 monthly",
+    price: "$150 monthly",
     instructor: "Abu Kawthar Lukman",
-    detailedDescription: "Deepen your understanding of Islamic monotheism (Tawhid) through comprehensive study of classical texts and scholarly explanations. Strengthen your faith and understanding of Allah's oneness in all aspects of worship and life.",
-    prerequisites: ["Basic Islamic knowledge", "Ability to read English", "Open mind for theological discussions"],
+    detailedDescription:
+      "Deepen your understanding of Islamic monotheism (Tawhid) through comprehensive study of classical texts and scholarly explanations. Strengthen your faith and understanding of Allah's oneness in all aspects of worship and life.",
+    prerequisites: [
+      "Basic Islamic knowledge",
+      "Ability to read English",
+      "Open mind for theological discussions",
+    ],
     courseFormat: "Scholarly Lectures + Discussion Sessions",
     language: "English with Arabic terminology explained",
-    materials: ["Classical Tawhid texts", "Scholarly commentaries", "Discussion guides", "Reference materials"],
+    materials: [
+      "Classical Tawhid texts",
+      "Scholarly commentaries",
+      "Discussion guides",
+      "Reference materials",
+    ],
     assessment: "Essays, oral discussions, and practical applications",
     certificate: "Islamic Theology (Tawhid) Certificate",
     difficulty: 4,
@@ -127,14 +159,24 @@ export const courses = [
     icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "6 months",
     students: 5,
-    price: "$70 monthly",
+    price: "$100 monthly",
     instructor: "Abu Kawthar Lukman",
     level: "Intermediate",
-    detailedDescription: "Explore the profound meanings of the Quran through classical and contemporary Tafsir methodologies. Learn to interpret Quranic verses with proper context, linguistic analysis, and scholarly wisdom.",
-    prerequisites: ["Basic Arabic reading ability", "Completed Quranic Studies course (recommended)", "Islamic foundation knowledge"],
+    detailedDescription:
+      "Explore the profound meanings of the Quran through classical and contemporary Tafsir methodologies. Learn to interpret Quranic verses with proper context, linguistic analysis, and scholarly wisdom.",
+    prerequisites: [
+      "Basic Arabic reading ability",
+      "Completed Quranic Studies course (recommended)",
+      "Islamic foundation knowledge",
+    ],
     courseFormat: "Analytical Study Sessions + Group Discussions",
     language: "English with Arabic text analysis",
-    materials: ["Major Tafsir works", "Linguistic analysis tools", "Historical context guides", "Comparative studies"],
+    materials: [
+      "Major Tafsir works",
+      "Linguistic analysis tools",
+      "Historical context guides",
+      "Comparative studies",
+    ],
     assessment: "Tafsir assignments, verse analysis, and research projects",
     certificate: "Quranic Interpretation (Tafsir) Certificate",
     difficulty: 4,
@@ -163,13 +205,23 @@ export const courses = [
     icon: <BookOpen className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "8 weeks",
     students: 15,
-    price: "$70 monthly",
+    price: "$150 monthly",
     instructor: "Abu Kawthar Lukman",
-    detailedDescription: "Master Islamic jurisprudence (Fiqh) and learn how Islamic law applies to daily life. Study the methodologies of different schools of thought and develop skills in deriving Islamic rulings from primary sources.",
-    prerequisites: ["Basic Islamic knowledge", "Understanding of Arabic terms", "Interest in Islamic law"],
+    detailedDescription:
+      "Master Islamic jurisprudence (Fiqh) and learn how Islamic law applies to daily life. Study the methodologies of different schools of thought and develop skills in deriving Islamic rulings from primary sources.",
+    prerequisites: [
+      "Basic Islamic knowledge",
+      "Understanding of Arabic terms",
+      "Interest in Islamic law",
+    ],
     courseFormat: "Case Study Analysis + Practical Applications",
     language: "English with Arabic legal terminology",
-    materials: ["Fiqh textbooks", "Legal case studies", "Comparative analysis charts", "Quick reference guides"],
+    materials: [
+      "Fiqh textbooks",
+      "Legal case studies",
+      "Comparative analysis charts",
+      "Quick reference guides",
+    ],
     assessment: "Case analysis, practical scenarios, and final examination",
     certificate: "Islamic Jurisprudence (Fiqh) Certificate",
     difficulty: 3,
@@ -198,14 +250,25 @@ export const courses = [
     icon: <FaBook className="w-12 h-12 mx-auto mb-4 text-yellow-600" />,
     duration: "4 months",
     students: 120,
-    price: "$50 monthly",
+    price: "$100 monthly",
     instructor: "Abu Kawthar Lukman",
-    detailedDescription: "Perfect your Quranic recitation through comprehensive Tajwid training. Learn the precise rules of pronunciation, elongation, and rhythm to recite the Quran as it was revealed. Gain confidence in leading prayers and public recitation.",
-    prerequisites: ["Ability to read Arabic letters", "Basic Quran reading ability", "Microphone for practice sessions"],
+    detailedDescription:
+      "Perfect your Quranic recitation through comprehensive Tajwid training. Learn the precise rules of pronunciation, elongation, and rhythm to recite the Quran as it was revealed. Gain confidence in leading prayers and public recitation.",
+    prerequisites: [
+      "Ability to read Arabic letters",
+      "Basic Quran reading ability",
+      "Microphone for practice sessions",
+    ],
     courseFormat: "Interactive Recitation Sessions + Audio Practice",
     language: "Arabic recitation with English rule explanations",
-    materials: ["Tajwid rule book", "Color-coded Quran", "Audio practice files", "Pronunciation guides"],
-    assessment: "Recitation tests, rule applications, and final performance evaluation",
+    materials: [
+      "Tajwid rule book",
+      "Color-coded Quran",
+      "Audio practice files",
+      "Pronunciation guides",
+    ],
+    assessment:
+      "Recitation tests, rule applications, and final performance evaluation",
     certificate: "Tajwid Mastery Certificate",
     difficulty: 2,
     rating: 4.9,
@@ -229,7 +292,7 @@ export const courses = [
 
 export default function CoursePage() {
   const { theme } = useTheme();
-  
+
   // Animation Variants for cards
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -271,12 +334,12 @@ export default function CoursePage() {
     <Fragment>
       <section className="bg-[url(/assets/course_bg.jpg)] bg-center object-cover text-center bg-cover overflow-hidden py-10 relative">
         {/* Dark overlay for better text readability */}
-        <div className={`absolute inset-0 ${
-          theme === 'dark' 
-            ? 'bg-black/70' 
-            : 'bg-black/40'
-        }`}></div>
-        
+        <div
+          className={`absolute inset-0 ${
+            theme === "dark" ? "bg-black/70" : "bg-black/40"
+          }`}
+        ></div>
+
         <div className="px-[5vw] py-20 text-white top-[10vmin] lg:top-[7vmax] relative z-10">
           <h1
             style={{
@@ -298,13 +361,17 @@ export default function CoursePage() {
           </div>
         </div>
       </section>
-      <section className={`py-16 transition-colors duration-300 ${
-        theme === 'dark' ? 'bg-gray-900' : 'bg-yellow-50'
-      }`}>
+      <section
+        className={`py-16 transition-colors duration-300 ${
+          theme === "dark" ? "bg-gray-900" : "bg-yellow-50"
+        }`}
+      >
         <div className="container mx-auto px-4">
-          <h3 className={`text-3xl font-semibold mb-12 text-center ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h3
+            className={`text-3xl font-semibold mb-12 text-center ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Available Courses
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8">
@@ -312,9 +379,9 @@ export default function CoursePage() {
               <motion.div
                 key={index}
                 className={`p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 ${
-                  theme === 'dark'
-                    ? 'bg-gray-800 hover:bg-gray-700 hover:text-white'
-                    : 'bg-background hover:bg-yellow-100 hover:text-black'
+                  theme === "dark"
+                    ? "bg-gray-800 hover:bg-gray-700 hover:text-white"
+                    : "bg-background hover:bg-yellow-100 hover:text-black"
                 }`}
                 variants={cardVariants}
                 initial="hidden"
@@ -338,10 +405,18 @@ export default function CoursePage() {
                   >
                     {course.icon}
                   </motion.div>
-                  <h4 className={`text-xl font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>{course.title}</h4>
-                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
+                  <h4
+                    className={`text-xl font-semibold mb-2 ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {course.title}
+                  </h4>
+                  <p
+                    className={
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }
+                  >
                     {course.description}
                   </p>
                 </Link>
@@ -352,7 +427,9 @@ export default function CoursePage() {
             <Link href="https://bit.ly/Learn-at-markazbayan">
               <motion.div
                 className={`px-8 py-4 text-white font-semibold rounded-lg cursor-pointer flex items-center justify-center gap-2 ${
-                  theme === 'dark' ? 'bg-yellow-600 hover:bg-yellow-700' : 'bg-yellow-900 hover:bg-yellow-800'
+                  theme === "dark"
+                    ? "bg-yellow-600 hover:bg-yellow-700"
+                    : "bg-yellow-900 hover:bg-yellow-800"
                 } transition-colors duration-200`}
                 variants={buttonVariants}
                 whileHover="hover"
